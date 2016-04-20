@@ -16,7 +16,6 @@ namespace TicketVerkoopVoetbal.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Ticket verkoop voetbal.";
-
             return View();
         }
 
