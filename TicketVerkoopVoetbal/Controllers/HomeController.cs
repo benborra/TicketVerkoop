@@ -19,9 +19,9 @@ namespace TicketVerkoopVoetbal.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Stadions()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Hier komen , dynamisch geladen weliswaar, alle stadions";
 
             return View();
         }

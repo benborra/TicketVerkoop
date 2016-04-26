@@ -335,3 +335,12 @@ C:\Users\Ben\SkyDrive\School 2015-2016\ASP.NET\OpdrachtVoetbal\TicketVerkoop\Tic
 C:\Users\Ben\SkyDrive\School 2015-2016\ASP.NET\OpdrachtVoetbal\TicketVerkoop\TicketVerkoopVoetbal\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Ben\SkyDrive\School 2015-2016\ASP.NET\OpdrachtVoetbal\TicketVerkoop\TicketVerkoopVoetbal\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Ben\SkyDrive\School 2015-2016\ASP.NET\OpdrachtVoetbal\TicketVerkoop\TicketVerkoopVoetbal\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Arno\School\2015-1016\Webprogrammeren\2eSemester\New folder\TicketVerkoopVoetbal\bin\SendGrid.dll
+C:\Users\Arno\School\2015-1016\Webprogrammeren\2eSemester\New folder\TicketVerkoopVoetbal\bin\SendGrid.SmtpApi.dll
+C:\Users\Arno\School\2015-1016\Webprogrammeren\2eSemester\New folder\TicketVerkoopVoetbal\bin\SendGridMail.dll
+C:\Users\Arno\School\2015-1016\Webprogrammeren\2eSemester\New folder\TicketVerkoopVoetbal\bin\System.Net.Http.Formatting.dll
+C:\Users\Arno\School\2015-1016\Webprogrammeren\2eSemester\New folder\TicketVerkoopVoetbal\bin\Ticket.BLL.dll
+C:\Users\Arno\School\2015-1016\Webprogrammeren\2eSemester\New folder\TicketVerkoopVoetbal\bin\Ticket.Model.dll
+C:\Users\Arno\School\2015-1016\Webprogrammeren\2eSemester\New folder\TicketVerkoopVoetbal\bin\Ticket.BLL.pdb
+C:\Users\Arno\School\2015-1016\Webprogrammeren\2eSemester\New folder\TicketVerkoopVoetbal\bin\Ticket.Model.pdb
+C:\Users\Arno\School\2015-1016\Webprogrammeren\2eSemester\New folder\TicketVerkoopVoetbal\bin\System.Net.Http.Formatting.xml
