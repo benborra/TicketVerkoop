@@ -1,9 +1,0 @@
-C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.BLL\bin\Debug\Ticket.BLL.dll
-C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.BLL\bin\Debug\Ticket.BLL.pdb
-C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.BLL\bin\Debug\Ticket.Model.dll
-C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.BLL\bin\Debug\EntityFramework.dll
-C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.BLL\bin\Debug\Ticket.Model.pdb
-C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.BLL\bin\Debug\EntityFramework.xml
-C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.BLL\obj\Debug\Ticket.DAO.csprojResolveAssemblyReference.cache
-C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.BLL\obj\Debug\Ticket.BLL.dll
-C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.BLL\obj\Debug\Ticket.BLL.pdb

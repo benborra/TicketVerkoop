@@ -316,8 +316,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Ticket.BLL\Ticket.DAO.csproj">
-      <Project>{a7183327-1633-4aa5-b487-a1c2800daa0e}</Project>
+    <ProjectReference Include="..\Ticket.DAO\Ticket.DAO.csproj">
+      <Project>{82052d97-d7af-4530-8dab-2a2e3029a5ec}</Project>
       <Name>Ticket.DAO</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ticket.Model\Ticket.Model.csproj">

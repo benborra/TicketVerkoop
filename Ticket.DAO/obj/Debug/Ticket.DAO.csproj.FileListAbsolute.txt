@@ -1,0 +1,4 @@
+C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.DAO\bin\Debug\Ticket.DAO.dll
+C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.DAO\bin\Debug\Ticket.DAO.pdb
+C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.DAO\obj\Debug\Ticket.DAO.dll
+C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.DAO\obj\Debug\Ticket.DAO.pdb

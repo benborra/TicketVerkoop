@@ -28,6 +28,5 @@ C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.Model\bin
 C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.Model\bin\Debug\Microsoft.QualityTools.Testing.Fakes.dll
 C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.Model\bin\Debug\EntityFramework.xml
 C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.Model\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.Model\obj\Debug\Ticket.Model.csprojResolveAssemblyReference.cache
 C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.Model\obj\Debug\Ticket.Model.dll
 C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.Model\obj\Debug\Ticket.Model.pdb

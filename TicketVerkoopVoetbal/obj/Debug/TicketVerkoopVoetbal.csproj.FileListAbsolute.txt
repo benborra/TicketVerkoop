@@ -262,7 +262,6 @@ C:\Users\Arno\School\2015-1016\Webprogrammeren\2eSemester\New folder\TicketVerko
 C:\Users\Arno\School\2015-1016\Webprogrammeren\2eSemester\New folder\TicketVerkoopVoetbal\bin\Ticket.BLL.pdb
 C:\Users\Arno\School\2015-1016\Webprogrammeren\2eSemester\New folder\TicketVerkoopVoetbal\bin\Ticket.Model.pdb
 C:\Users\Arno\School\2015-1016\Webprogrammeren\2eSemester\New folder\TicketVerkoopVoetbal\bin\System.Net.Http.Formatting.xml
-C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\obj\Debug\TicketVerkoopVoetbal.csprojResolveAssemblyReference.cache
 C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\ApplicationInsights.config
 C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\roslyn\csc.exe
 C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\roslyn\csc.exe.config
@@ -330,10 +329,10 @@ C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\TicketVerkoopVoe
 C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\System.Web.WebPages.Deployment.dll
 C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\System.Web.WebPages.dll
 C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\System.Web.WebPages.Razor.dll
-C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\Ticket.BLL.dll
+C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\Ticket.DAO.dll
 C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\Ticket.Model.dll
 C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\WebGrease.dll
-C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\Ticket.BLL.pdb
+C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\Ticket.DAO.pdb
 C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\Ticket.Model.pdb
 C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\Antlr3.Runtime.pdb
 C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\Microsoft.AI.DependencyCollector.xml
@@ -365,5 +364,6 @@ C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\TicketVerkoopVoe
 C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\obj\Debug\TicketVerkoopVoetbal.csprojResolveAssemblyReference.cache
 C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\obj\Debug\TicketVerkoopVoetbal.dll
 C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\obj\Debug\TicketVerkoopVoetbal.pdb

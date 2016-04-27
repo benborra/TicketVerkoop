@@ -12,7 +12,7 @@ using Microsoft.Owin.Security;
 using TicketVerkoopVoetbal.Models;
 using Ticket.DAO;
 using System.Net.Mail;
-
+using TicketVerkoopVoetbal;
 
 namespace TicketVerkoopVoetbal.Controllers
 {
