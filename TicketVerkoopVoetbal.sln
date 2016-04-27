@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketVerkoopVoetbal", "Tic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ticket.Model", "Ticket.Model\Ticket.Model.csproj", "{FA9A8CFD-2B7E-4EB6-A729-2076C9961E40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ticket.BLL", "Ticket.BLL\Ticket.BLL.csproj", "{A7183327-1633-4AA5-B487-A1C2800DAA0E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ticket.DAO", "Ticket.BLL\Ticket.DAO.csproj", "{A7183327-1633-4AA5-B487-A1C2800DAA0E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
