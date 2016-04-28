@@ -212,6 +212,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\StadionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -307,6 +308,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\info.cshtml" />
     <Content Include="Scripts\jquery-2.2.3.min.map" />
+    <Content Include="Views\Stadion\Index.cshtml" />
+    <Content Include="Views\Stadion\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -323,6 +326,10 @@
     <ProjectReference Include="..\Ticket.Model\Ticket.Model.csproj">
       <Project>{fa9a8cfd-2b7e-4eb6-a729-2076c9961e40}</Project>
       <Name>Ticket.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ticket.Service\Ticket.Service.csproj">
+      <Project>{b9a312c7-feab-4a68-bfc1-44f008711bc6}</Project>
+      <Name>Ticket.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
