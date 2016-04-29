@@ -10,9 +10,9 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 
 using TicketVerkoopVoetbal.Models;
-using Ticket.DAO;
 using System.Net.Mail;
 using TicketVerkoopVoetbal;
+using Ticket.Service;
 
 namespace TicketVerkoopVoetbal.Controllers
 {

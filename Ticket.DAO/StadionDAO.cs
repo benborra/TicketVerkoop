@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using Ticket.Model;
 using System.Data.Entity;
-using System.Linq;
+
 namespace Ticket.DAO
 {
     public class StadionDAO
@@ -25,7 +26,7 @@ namespace Ticket.DAO
             {
                 // include steekt ook deze resultaten in de lijst
                 // Gecontroleerd, werkt
-                
+
                 return db.Stadion.ToList();
             }
         }
