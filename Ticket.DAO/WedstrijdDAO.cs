@@ -27,7 +27,27 @@ namespace Ticket.DAO
         }
 
         // get wedstrijdPerPloeg
+
+        public IEnumerable<Wedstrijd> GetWedStrijdPerPloeg(int id)
+        {
+            using (var db = new TicketEntities())
+            {
+                return db.Wedstrijd.Where(r => r.thuisPloeg == id ||  r.bezoekersPloeg == id).ToList();
+            }
+
+            
+        }
         // get wedstrijd per datum
+
+        public IEnumerable<Wedstrijd> WedstrijdPerDatum(DateTime time)
+        {
+            using (var db = new TicketEntities())
+            {
+                // geen datetime om op te filteren!
+                // return db.Wedstrijd.Where(r => r.).ToList();
+            }
+            return null;
+        }
          
     }
 }
