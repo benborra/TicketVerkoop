@@ -13,10 +13,15 @@ namespace TicketVerkoopVoetbal.Controllers
     public class StadionController : Controller
     {
         private StadionService stadionService;
+        private ClubService clubService;
         // GET: Stadion
+
+        public StadionController() {
+            stadionService = new StadionService();
+        }
         public ActionResult Index()
         {
-            stadionService = new StadionService();
+            
             var stadions = stadionService.All();
             if (stadions == null)
             {
@@ -37,7 +42,7 @@ namespace TicketVerkoopVoetbal.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            stadionService = new StadionService();
+            
             Stadion stadion = stadionService.Get(Convert.ToInt32(id));
             if (stadion == null)
             {
@@ -51,11 +56,47 @@ namespace TicketVerkoopVoetbal.Controllers
             return View(stadion);
         }
 
-        public ActionResult Save()
+        // details
+        public ActionResult Details(int? id)
         {
-            // als er op de button save wordt geklikt komen we hiernaartoe
-            // insert update statement met controle
-            // terugkeren naar de lijst, die zal geupdate zijn.
+            Stadion s = stadionService.Get(Convert.ToInt32(id));
+            // opzoeken van welk team dit stadion is
+            // om mee te geven 
+            
+            return View(s);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateStadion(Stadion stadion)
+        {
+            if (stadion == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            stadionService.UpdateStadion(stadion);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Delete(int id)
+        {
+            // controle of het stadion in gebruik is, dan kan je niet verwijderen
+            Stadion s = stadionService.Get(id);
+            stadionService.RemoveStadion(s);
+
+            return RedirectToAction("Index");
+        }
+
+        // klikt actionLink
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Add(Stadion stadion)
+        {
+            stadionService.AddStadion(stadion);
             return RedirectToAction("Index");
         }
     }

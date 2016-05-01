@@ -22,3 +22,15 @@ C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.DAO\bin\D
 C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.DAO\obj\Debug\Ticket.DAO.csprojResolveAssemblyReference.cache
 C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.DAO\obj\Debug\Ticket.DAO.dll
 C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.DAO\obj\Debug\Ticket.DAO.pdb
+E:\School\ASPDOTNET\Ticket.DAO\bin\Debug\Ticket.DAO.dll.config
+E:\School\ASPDOTNET\Ticket.DAO\bin\Debug\Ticket.DAO.dll
+E:\School\ASPDOTNET\Ticket.DAO\bin\Debug\Ticket.DAO.pdb
+E:\School\ASPDOTNET\Ticket.DAO\bin\Debug\EntityFramework.dll
+E:\School\ASPDOTNET\Ticket.DAO\bin\Debug\EntityFramework.SqlServer.dll
+E:\School\ASPDOTNET\Ticket.DAO\bin\Debug\Ticket.Model.dll
+E:\School\ASPDOTNET\Ticket.DAO\bin\Debug\Ticket.Model.pdb
+E:\School\ASPDOTNET\Ticket.DAO\bin\Debug\EntityFramework.xml
+E:\School\ASPDOTNET\Ticket.DAO\bin\Debug\EntityFramework.SqlServer.xml
+E:\School\ASPDOTNET\Ticket.DAO\obj\Debug\Ticket.DAO.csprojResolveAssemblyReference.cache
+E:\School\ASPDOTNET\Ticket.DAO\obj\Debug\Ticket.DAO.dll
+E:\School\ASPDOTNET\Ticket.DAO\obj\Debug\Ticket.DAO.pdb
