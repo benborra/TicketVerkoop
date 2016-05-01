@@ -328,9 +328,12 @@
       <Name>Ticket.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ticket.Service\Ticket.Service.csproj">
-      <Project>{b9a312c7-feab-4a68-bfc1-44f008711bc6}</Project>
+      <Project>{2f524941-dfb8-4cff-a5b7-b014fe11ec71}</Project>
       <Name>Ticket.Service</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

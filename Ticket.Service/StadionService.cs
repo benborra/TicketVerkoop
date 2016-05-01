@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using Ticket.DAO;
 using Ticket.Model;
 
 namespace Ticket.Service
 {
-   public class StadionService
+    public class StadionService
     {
-        private  StadionDAO stadionDao;
+        private StadionDAO stadionDao;
 
         public StadionService()
         {

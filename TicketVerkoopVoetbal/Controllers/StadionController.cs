@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+
 using Ticket.Model;
 using Ticket.Service;
 
@@ -11,7 +12,6 @@ namespace TicketVerkoopVoetbal.Controllers
 {
     public class StadionController : Controller
     {
-
         private StadionService stadionService;
         // GET: Stadion
         public ActionResult Index()
@@ -44,7 +44,7 @@ namespace TicketVerkoopVoetbal.Controllers
                 return HttpNotFound();
             }
 
-            
+
             ViewBag.StadionNr =
                     new SelectList(stadionService.All(), "Brouwernr", "Naam");
 

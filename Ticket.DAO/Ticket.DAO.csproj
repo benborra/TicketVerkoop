@@ -49,7 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MailService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StadionDAO.cs" />
   </ItemGroup>
@@ -58,6 +57,9 @@
       <Project>{fa9a8cfd-2b7e-4eb6-a729-2076c9961e40}</Project>
       <Name>Ticket.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

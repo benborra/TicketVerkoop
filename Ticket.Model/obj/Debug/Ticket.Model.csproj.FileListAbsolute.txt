@@ -30,3 +30,14 @@ C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.Model\bin
 C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.Model\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.Model\obj\Debug\Ticket.Model.dll
 C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.Model\obj\Debug\Ticket.Model.pdb
+C:\Users\Terror Byte\Desktop\TicketVerkoop-LastWorking\Ticket.Model\bin\Debug\Ticket.Model.dll.config
+C:\Users\Terror Byte\Desktop\TicketVerkoop-LastWorking\Ticket.Model\bin\Debug\Ticket.Model.dll
+C:\Users\Terror Byte\Desktop\TicketVerkoop-LastWorking\Ticket.Model\bin\Debug\Ticket.Model.pdb
+C:\Users\Terror Byte\Desktop\TicketVerkoop-LastWorking\Ticket.Model\bin\Debug\EntityFramework.dll
+C:\Users\Terror Byte\Desktop\TicketVerkoop-LastWorking\Ticket.Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Terror Byte\Desktop\TicketVerkoop-LastWorking\Ticket.Model\bin\Debug\Microsoft.QualityTools.Testing.Fakes.dll
+C:\Users\Terror Byte\Desktop\TicketVerkoop-LastWorking\Ticket.Model\bin\Debug\EntityFramework.xml
+C:\Users\Terror Byte\Desktop\TicketVerkoop-LastWorking\Ticket.Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Terror Byte\Desktop\TicketVerkoop-LastWorking\Ticket.Model\obj\Debug\Ticket.Model.csprojResolveAssemblyReference.cache
+C:\Users\Terror Byte\Desktop\TicketVerkoop-LastWorking\Ticket.Model\obj\Debug\Ticket.Model.dll
+C:\Users\Terror Byte\Desktop\TicketVerkoop-LastWorking\Ticket.Model\obj\Debug\Ticket.Model.pdb
