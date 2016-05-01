@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TicketModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Abonnement">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Seizoenid" Type="int" Nullable="false" />
+    <Property Name="Clubsid" Type="int" Nullable="false" />
+    <Property Name="Persoonid" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="100" />
+    <Property Name="ClaimType" Type="nvarchar" MaxLength="255" />
+    <Property Name="ClaimValue" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="ProviderKey" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="255" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_9FC047_ASPVoe.dbo.AspNetUserRoles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="SecurityStamp" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="date" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="PhoneNumber" Type="int" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="100" />
+    <Property Name="AdressLine" Type="varchar" MaxLength="255" />
+    <Property Name="City" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Clubs">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="naam" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Stadionid" Type="int" Nullable="false" />
+    <Property Name="logo" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Plaats">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Stadionid" Type="int" Nullable="false" />
+    <Property Name="Vakid" Type="int" Nullable="false" />
+    <Property Name="prijs" Type="real" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Seizoen">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="jaar" Type="int" Nullable="false" />
+    <Property Name="prijs" Type="real" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Stadion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="naam" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="adres" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tickets">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="barcode" Type="int" Nullable="false" />
+    <Property Name="Wedstrijdid" Type="int" Nullable="false" />
+    <Property Name="Persoonid" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="plaatsId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vak">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="naam" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Wedstrijd">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="thuisPloeg" Type="int" Nullable="false" />
+    <Property Name="bezoekersPloeg" Type="int" Nullable="false" />
+    <Property Name="stadionId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FKAbonnement271256">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="Abonnement" Type="Self.Abonnement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Abonnement">
+        <PropertyRef Name="Persoonid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKAbonnement465404">
+    <End Role="Clubs" Type="Self.Clubs" Multiplicity="1" />
+    <End Role="Abonnement" Type="Self.Abonnement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clubs">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Abonnement">
+        <PropertyRef Name="Clubsid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKAbonnement949791">
+    <End Role="Seizoen" Type="Self.Seizoen" Multiplicity="1" />
+    <End Role="Abonnement" Type="Self.Abonnement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Seizoen">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Abonnement">
+        <PropertyRef Name="Seizoenid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKAspNetUser206039">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1" />
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKAspNetUser475027">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKClubs232228">
+    <End Role="Stadion" Type="Self.Stadion" Multiplicity="1" />
+    <End Role="Clubs" Type="Self.Clubs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Stadion">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Clubs">
+        <PropertyRef Name="Stadionid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKPlaats402282">
+    <End Role="Vak" Type="Self.Vak" Multiplicity="1" />
+    <End Role="Plaats" Type="Self.Plaats" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vak">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Plaats">
+        <PropertyRef Name="Vakid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKPlaats620177">
+    <End Role="Stadion" Type="Self.Stadion" Multiplicity="1" />
+    <End Role="Plaats" Type="Self.Plaats" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Stadion">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Plaats">
+        <PropertyRef Name="Stadionid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKTickets280003">
+    <End Role="Wedstrijd" Type="Self.Wedstrijd" Multiplicity="1" />
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Wedstrijd">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Tickets">
+        <PropertyRef Name="Wedstrijdid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKTickets323226">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tickets">
+        <PropertyRef Name="Persoonid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKTickets327836">
+    <End Role="Plaats" Type="Self.Plaats" Multiplicity="1" />
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Plaats">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Tickets">
+        <PropertyRef Name="plaatsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKWedstrijd170540">
+    <End Role="Clubs" Type="Self.Clubs" Multiplicity="1" />
+    <End Role="Wedstrijd" Type="Self.Wedstrijd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clubs">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Wedstrijd">
+        <PropertyRef Name="thuisPloeg" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKWedstrijd589657">
+    <End Role="Clubs" Type="Self.Clubs" Multiplicity="1" />
+    <End Role="Wedstrijd" Type="Self.Wedstrijd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clubs">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Wedstrijd">
+        <PropertyRef Name="bezoekersPloeg" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKWedstrijd63892">
+    <End Role="Stadion" Type="Self.Stadion" Multiplicity="1" />
+    <End Role="Wedstrijd" Type="Self.Wedstrijd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Stadion">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Wedstrijd">
+        <PropertyRef Name="stadionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TicketModelStoreContainer">
+    <EntitySet Name="Abonnement" EntityType="Self.Abonnement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Clubs" EntityType="Self.Clubs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Plaats" EntityType="Self.Plaats" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Seizoen" EntityType="Self.Seizoen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Stadion" EntityType="Self.Stadion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tickets" EntityType="Self.Tickets" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vak" EntityType="Self.Vak" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Wedstrijd" EntityType="Self.Wedstrijd" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [AspNetUserRoles].[UserId] AS [UserId], 
+    [AspNetUserRoles].[RoleId] AS [RoleId]
+    FROM [dbo].[AspNetUserRoles] AS [AspNetUserRoles]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FKAbonnement271256" Association="Self.FKAbonnement271256">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Abonnement" EntitySet="Abonnement" />
+    </AssociationSet>
+    <AssociationSet Name="FKAbonnement465404" Association="Self.FKAbonnement465404">
+      <End Role="Clubs" EntitySet="Clubs" />
+      <End Role="Abonnement" EntitySet="Abonnement" />
+    </AssociationSet>
+    <AssociationSet Name="FKAbonnement949791" Association="Self.FKAbonnement949791">
+      <End Role="Seizoen" EntitySet="Seizoen" />
+      <End Role="Abonnement" EntitySet="Abonnement" />
+    </AssociationSet>
+    <AssociationSet Name="FKAspNetUser206039" Association="Self.FKAspNetUser206039">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FKAspNetUser475027" Association="Self.FKAspNetUser475027">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FKClubs232228" Association="Self.FKClubs232228">
+      <End Role="Stadion" EntitySet="Stadion" />
+      <End Role="Clubs" EntitySet="Clubs" />
+    </AssociationSet>
+    <AssociationSet Name="FKPlaats402282" Association="Self.FKPlaats402282">
+      <End Role="Vak" EntitySet="Vak" />
+      <End Role="Plaats" EntitySet="Plaats" />
+    </AssociationSet>
+    <AssociationSet Name="FKPlaats620177" Association="Self.FKPlaats620177">
+      <End Role="Stadion" EntitySet="Stadion" />
+      <End Role="Plaats" EntitySet="Plaats" />
+    </AssociationSet>
+    <AssociationSet Name="FKTickets280003" Association="Self.FKTickets280003">
+      <End Role="Wedstrijd" EntitySet="Wedstrijd" />
+      <End Role="Tickets" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FKTickets323226" Association="Self.FKTickets323226">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Tickets" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FKTickets327836" Association="Self.FKTickets327836">
+      <End Role="Plaats" EntitySet="Plaats" />
+      <End Role="Tickets" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FKWedstrijd170540" Association="Self.FKWedstrijd170540">
+      <End Role="Clubs" EntitySet="Clubs" />
+      <End Role="Wedstrijd" EntitySet="Wedstrijd" />
+    </AssociationSet>
+    <AssociationSet Name="FKWedstrijd589657" Association="Self.FKWedstrijd589657">
+      <End Role="Clubs" EntitySet="Clubs" />
+      <End Role="Wedstrijd" EntitySet="Wedstrijd" />
+    </AssociationSet>
+    <AssociationSet Name="FKWedstrijd63892" Association="Self.FKWedstrijd63892">
+      <End Role="Stadion" EntitySet="Stadion" />
+      <End Role="Wedstrijd" EntitySet="Wedstrijd" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

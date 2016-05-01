@@ -17,19 +17,16 @@ namespace Ticket.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Wedstrijd()
         {
-            this.Clubs = new HashSet<Clubs>();
             this.Tickets = new HashSet<Tickets>();
         }
     
         public int id { get; set; }
-        public int Plaatsid { get; set; }
         public int thuisPloeg { get; set; }
         public int bezoekersPloeg { get; set; }
         public int stadionId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Clubs> Clubs { get; set; }
-        public virtual Plaats Plaats { get; set; }
+        public virtual Clubs Clubs { get; set; }
+        public virtual Clubs Clubs1 { get; set; }
         public virtual Stadion Stadion { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tickets> Tickets { get; set; }

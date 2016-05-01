@@ -18,7 +18,6 @@ namespace Ticket.Model
         public AspNetRoles()
         {
             this.AspNetUserRoles = new HashSet<AspNetUserRoles>();
-            this.AspNetUserRoles1 = new HashSet<AspNetUserRoles>();
         }
     
         public string Id { get; set; }
@@ -26,7 +25,5 @@ namespace Ticket.Model
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetUserRoles> AspNetUserRoles { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AspNetUserRoles> AspNetUserRoles1 { get; set; }
     }
 }

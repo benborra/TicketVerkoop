@@ -18,7 +18,6 @@ namespace Ticket.Model
         public string RoleId { get; set; }
     
         public virtual AspNetRoles AspNetRoles { get; set; }
-        public virtual AspNetRoles AspNetRoles1 { get; set; }
         public virtual AspNetUsers AspNetUsers { get; set; }
     }
 }
