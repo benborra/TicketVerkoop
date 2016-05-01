@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClubService.cs" />
     <Compile Include="MailService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StadionService.cs" />
@@ -50,7 +51,7 @@
       <Name>Ticket.DAO</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ticket.Model\Ticket.Model.csproj">
-      <Project>{fa9a8cfd-2b7e-4eb6-a729-2076c9961e40}</Project>
+      <Project>{c93e6c9f-ec2f-467e-9131-a063e54bcf85}</Project>
       <Name>Ticket.Model</Name>
     </ProjectReference>
   </ItemGroup>

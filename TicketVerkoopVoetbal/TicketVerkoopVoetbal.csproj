@@ -209,7 +209,9 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ClubController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StadionController.cs" />
@@ -250,6 +252,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Areas\Admin\Views\web.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -310,9 +313,14 @@
     <Content Include="Scripts\jquery-2.2.3.min.map" />
     <Content Include="Views\Stadion\Index.cshtml" />
     <Content Include="Views\Stadion\Edit.cshtml" />
+    <Content Include="Views\Shared\_Nav.cshtml" />
+    <Content Include="Views\Club\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Controllers\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -324,7 +332,7 @@
       <Name>Ticket.DAO</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ticket.Model\Ticket.Model.csproj">
-      <Project>{fa9a8cfd-2b7e-4eb6-a729-2076c9961e40}</Project>
+      <Project>{c93e6c9f-ec2f-467e-9131-a063e54bcf85}</Project>
       <Name>Ticket.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ticket.Service\Ticket.Service.csproj">

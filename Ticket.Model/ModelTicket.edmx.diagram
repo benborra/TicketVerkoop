@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3258e4359f3246e5beb4a1c205a4e6ec" Name="Diagram1">
+        <EntityTypeShape EntityType="TicketModel.Abonnement" Width="1.5" PointX="3.5" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TicketModel.AspNetRoles" Width="1.5" PointX="6.125" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TicketModel.AspNetUserClaims" Width="1.5" PointX="1.625" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TicketModel.AspNetUserLogins" Width="1.5" PointX="3.625" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TicketModel.AspNetUsers" Width="1.5" PointX="6.125" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TicketModel.Clubs" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TicketModel.Plaats" Width="1.5" PointX="12.375" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TicketModel.Seizoen" Width="1.5" PointX="0.875" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TicketModel.Stadion" Width="1.5" PointX="12.625" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TicketModel.Tickets" Width="1.5" PointX="9.5" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TicketModel.Vak" Width="1.5" PointX="12.25" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TicketModel.Wedstrijd" Width="1.5" PointX="9.5" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TicketModel.AspNetUserRoles" Width="1.5" PointX="6" PointY="14.375" IsExpanded="true" />
+        <AssociationConnector Association="TicketModel.FKAbonnement271256" ManuallyRouted="false" />
+        <AssociationConnector Association="TicketModel.FKAbonnement465404" ManuallyRouted="false" />
+        <AssociationConnector Association="TicketModel.FKAbonnement949791" ManuallyRouted="false" />
+        <AssociationConnector Association="TicketModel.FKAspNetUser206039" ManuallyRouted="false" ></AssociationConnector>
+        <AssociationConnector Association="TicketModel.FKAspNetUser475027" ManuallyRouted="false" />
+        <AssociationConnector Association="TicketModel.FKTickets323226" ManuallyRouted="false" />
+        <AssociationConnector Association="TicketModel.FKClubs232228" ManuallyRouted="false" />
+        <AssociationConnector Association="TicketModel.FKWedstrijd170540" ManuallyRouted="false" />
+        <AssociationConnector Association="TicketModel.FKWedstrijd589657" ManuallyRouted="false" />
+        <AssociationConnector Association="TicketModel.FKPlaats402282" ManuallyRouted="false" />
+        <AssociationConnector Association="TicketModel.FKPlaats620177" ManuallyRouted="false" />
+        <AssociationConnector Association="TicketModel.FKTickets327836" ManuallyRouted="false" />
+        <AssociationConnector Association="TicketModel.FKWedstrijd63892" ManuallyRouted="false" />
+        <AssociationConnector Association="TicketModel.FKTickets280003" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

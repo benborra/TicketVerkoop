@@ -18,6 +18,15 @@ namespace TicketVerkoopVoetbal
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "Admin",
+                url: "{controller}/{action}/{name}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                namespaces: new string[] { "TicketVerkoopVoetbal.Areas.Admin.Controllers"}
+            );
         }
+
+
     }
 }

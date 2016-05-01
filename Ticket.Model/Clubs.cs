@@ -18,17 +18,21 @@ namespace Ticket.Model
         public Clubs()
         {
             this.Abonnement = new HashSet<Abonnement>();
+            this.Wedstrijd = new HashSet<Wedstrijd>();
+            this.Wedstrijd1 = new HashSet<Wedstrijd>();
         }
     
         public int id { get; set; }
         public string naam { get; set; }
         public int Stadionid { get; set; }
         public string logo { get; set; }
-        public int Wedstrijdid { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Abonnement> Abonnement { get; set; }
         public virtual Stadion Stadion { get; set; }
-        public virtual Wedstrijd Wedstrijd { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Wedstrijd> Wedstrijd { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Wedstrijd> Wedstrijd1 { get; set; }
     }
 }

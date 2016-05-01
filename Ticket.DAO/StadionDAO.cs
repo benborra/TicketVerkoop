@@ -22,7 +22,7 @@ namespace Ticket.DAO
         // vraagt alle stadions op. 
         public IEnumerable<Stadion> All()
         {
-            using (var db = new DB_9FC047_ASPVoeEntities1())
+            using (var db = new TicketEntities())
             {
                 // include steekt ook deze resultaten in de lijst
                 // Gecontroleerd, werkt
@@ -33,7 +33,7 @@ namespace Ticket.DAO
 
         public Stadion Get(int id)
         {
-            using (var db = new DB_9FC047_ASPVoeEntities1())
+            using (var db = new TicketEntities())
             {
                 // returned eerste gevonden stadion met dit id, 
                 // to test
