@@ -123,6 +123,7 @@ warning 6002: The table/view 'DB_9FC047_ASPVoe.dbo.AspNetUserRoles' does not hav
     <Property Name="thuisPloeg" Type="int" Nullable="false" />
     <Property Name="bezoekersPloeg" Type="int" Nullable="false" />
     <Property Name="stadionId" Type="int" Nullable="false" />
+    <Property Name="Date" Type="datetime2" Precision="7" Nullable="false" />
   </EntityType>
   <Association Name="FKAbonnement271256">
     <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
@@ -172,7 +173,7 @@ warning 6002: The table/view 'DB_9FC047_ASPVoe.dbo.AspNetUserRoles' does not hav
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FKAspNetUser475027">
+  <Association Name="FKAspNetUserToId">
     <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
     <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
     <ReferentialConstraint>
@@ -327,7 +328,7 @@ warning 6002: The table/view 'DB_9FC047_ASPVoe.dbo.AspNetUserRoles' does not hav
       <End Role="AspNetRoles" EntitySet="AspNetRoles" />
       <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
     </AssociationSet>
-    <AssociationSet Name="FKAspNetUser475027" Association="Self.FKAspNetUser475027">
+    <AssociationSet Name="FKAspNetUserToId" Association="Self.FKAspNetUserToId">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
     </AssociationSet>

@@ -128,6 +128,7 @@ warning 6002: The table/view 'DB_9FC047_ASPVoe.dbo.AspNetUserRoles' does not hav
           <Property Name="thuisPloeg" Type="int" Nullable="false" />
           <Property Name="bezoekersPloeg" Type="int" Nullable="false" />
           <Property Name="stadionId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime2" Precision="7" Nullable="false" />
         </EntityType>
         <Association Name="FKAbonnement271256">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
@@ -177,7 +178,7 @@ warning 6002: The table/view 'DB_9FC047_ASPVoe.dbo.AspNetUserRoles' does not hav
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FKAspNetUser475027">
+        <Association Name="FKAspNetUserToId">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
           <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
           <ReferentialConstraint>
@@ -332,7 +333,7 @@ warning 6002: The table/view 'DB_9FC047_ASPVoe.dbo.AspNetUserRoles' does not hav
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
-          <AssociationSet Name="FKAspNetUser475027" Association="Self.FKAspNetUser475027">
+          <AssociationSet Name="FKAspNetUserToId" Association="Self.FKAspNetUserToId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
@@ -516,6 +517,7 @@ warning 6002: The table/view 'DB_9FC047_ASPVoe.dbo.AspNetUserRoles' does not hav
           <NavigationProperty Name="Clubs1" Relationship="Self.FKWedstrijd589657" FromRole="Wedstrijd" ToRole="Clubs" />
           <NavigationProperty Name="Stadion" Relationship="Self.FKWedstrijd63892" FromRole="Wedstrijd" ToRole="Stadion" />
           <NavigationProperty Name="Tickets" Relationship="Self.FKTickets280003" FromRole="Wedstrijd" ToRole="Tickets" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="7" />
         </EntityType>
         <EntityType Name="AspNetUserRoles">
           <Key>
@@ -891,6 +893,7 @@ warning 6002: The table/view 'DB_9FC047_ASPVoe.dbo.AspNetUserRoles' does not hav
           <EntitySetMapping Name="Wedstrijd">
             <EntityTypeMapping TypeName="TicketModel.Wedstrijd">
               <MappingFragment StoreEntitySet="Wedstrijd">
+                <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="thuisPloeg" ColumnName="thuisPloeg" />
                 <ScalarProperty Name="bezoekersPloeg" ColumnName="bezoekersPloeg" />

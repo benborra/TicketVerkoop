@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -26,13 +29,26 @@ namespace TicketVerkoopVoetbal.Controllers
         }
 
         // GET: Club/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            clubService = new ClubService();
+            Clubs clubs = clubService.Get(Convert.ToInt32(id));
+
+            if (clubs == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(clubs);
         }
 
         // GET: Club/Create
-        [Authorize(Roles="Admin")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -45,7 +61,14 @@ namespace TicketVerkoopVoetbal.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
+                clubService = new ClubService();
+                Clubs club = new Clubs();
+
+                club.naam = collection["naam"];
+                club.Stadionid = Convert.ToInt32(collection["StadionId"]);
+                club.logo = collection["logo"];
+
+                clubService.Add(club);
 
                 return RedirectToAction("Index");
             }
@@ -57,33 +80,72 @@ namespace TicketVerkoopVoetbal.Controllers
 
         // GET: Club/Edit/5
         [Authorize(Roles = "Admin")]
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            clubService = new ClubService();
+            Clubs clubs = clubService.Get(Convert.ToInt32(id));
+
+            if (clubs == null)
+            {
+                return HttpNotFound();
+            }
+
+            StadionService stadionService = new StadionService();
+            ViewBag.StadionId = new SelectList(stadionService.All(), "Stadion nr", "Naam");
+
+            return View(clubs);
         }
 
         // POST: Club/Edit/5
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(
+            [Bind(Include = "Id, Naam, StadionId, Logo")]Clubs entity, string stadionId)
         {
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    clubService = new ClubService();
+                    clubService.Update(entity);
+                    return RedirectToAction("Index");
+                }
             }
-            catch
+            catch (DataException ex)
             {
-                return View();
+                ModelState.AddModelError("DataExeption", "Exception in wegschrijven edit: " + ex);
             }
+
+
+            return View(entity);
         }
 
         // GET: Club/Delete/5
         [Authorize(Roles = "Admin")]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            clubService = new ClubService();
+            Clubs clubs = clubService.Get(Convert.ToInt32(id));
+
+            if (clubs == null)
+            {
+                return HttpNotFound();
+            }
+
+            StadionService stadionService = new StadionService();
+            ViewBag.StadionId = new SelectList(stadionService.All(), "Stadion nr", "Naam");
+
+            return View(clubs);
         }
 
         // POST: Club/Delete/5
@@ -93,7 +155,8 @@ namespace TicketVerkoopVoetbal.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
+                Clubs club = clubService.Get(id);
+                clubService.RemoveClub(club);
 
                 return RedirectToAction("Index");
             }
