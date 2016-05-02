@@ -315,6 +315,8 @@
     <Content Include="Views\Stadion\Edit.cshtml" />
     <Content Include="Views\Shared\_Nav.cshtml" />
     <Content Include="Views\Club\Index.cshtml" />
+    <Content Include="Views\Stadion\Create.cshtml" />
+    <Content Include="Views\Stadion\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

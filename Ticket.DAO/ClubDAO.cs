@@ -26,5 +26,8 @@ namespace Ticket.DAO
                 return db.Clubs.Where(c => c.id == id).First();
             }
         }
+
+        // methods to write:
+        // public 
     }
 }

@@ -27,5 +27,19 @@ namespace Ticket.Service
         {
             return stadionDao.Get(id);
         }
+
+        public void AddStadion(Stadion stadion)
+        {
+            stadionDao.Create(stadion);
+        }
+        public void UpdateStadion(Stadion stadion)
+        {
+            stadionDao.UpdateStadion(stadion);
+        }
+
+        public void RemoveStadion(Stadion stadion)
+        {
+            stadionDao.RemoveStadion(stadion);
+        }
     }
 }

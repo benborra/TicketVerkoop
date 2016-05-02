@@ -18,7 +18,6 @@ namespace Ticket.DAO
 
     */
 
-
         // vraagt alle stadions op. 
         public IEnumerable<Stadion> All()
         {
@@ -40,5 +39,45 @@ namespace Ticket.DAO
                 return db.Stadion.Where(s => s.id == id).First();
             }
         }
+
+        
+        public void Create(Stadion stadion)
+        {
+            using (var db = new TicketEntities())
+            {
+                
+                db.Stadion.Add(stadion);
+                db.SaveChanges();
+            }
+
+        }
+
+
+        public void UpdateStadion(Stadion stadion)
+        {
+            using (var db = new TicketEntities())
+            {
+                db.Stadion.Attach(stadion);
+                db.Entry(stadion).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
+
+
+        public void RemoveStadion(Stadion stadion)
+        {
+            // CONTROLE OP "wort hier nog een wedsrtijd gespeeld, anders error")
+                using (var db = new TicketEntities())
+                {
+                        // db.Stadion.Remove(), werkt niet, howcome?
+                    db.Entry(stadion).State = EntityState.Deleted;
+                    db.SaveChanges();
+                }
+        }
+        
+       
+
+
+        
     }
 }
