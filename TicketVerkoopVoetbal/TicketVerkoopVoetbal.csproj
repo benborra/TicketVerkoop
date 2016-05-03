@@ -216,6 +216,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StadionController.cs" />
+    <Compile Include="Controllers\WedstrijdController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -330,6 +331,9 @@
     <Content Include="Views\Club\Edit.cshtml" />
     <Content Include="Views\Club\Delete.cshtml" />
     <Content Include="Views\Club\Create.cshtml" />
+    <Content Include="Views\Wedstrijd\Details.cshtml" />
+    <Content Include="Views\Wedstrijd\Index.cshtml" />
+    <Content Include="Views\Wedstrijd\Geschiedenis.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -45,7 +45,6 @@ namespace Ticket.DAO
         {
             using (var db = new TicketEntities())
             {
-                
                 db.Stadion.Add(stadion);
                 db.SaveChanges();
             }

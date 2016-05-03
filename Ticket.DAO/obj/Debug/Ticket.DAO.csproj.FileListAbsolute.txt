@@ -34,3 +34,15 @@ E:\School\ASPDOTNET\Ticket.DAO\bin\Debug\EntityFramework.SqlServer.xml
 E:\School\ASPDOTNET\Ticket.DAO\obj\Debug\Ticket.DAO.csprojResolveAssemblyReference.cache
 E:\School\ASPDOTNET\Ticket.DAO\obj\Debug\Ticket.DAO.dll
 E:\School\ASPDOTNET\Ticket.DAO\obj\Debug\Ticket.DAO.pdb
+C:\Users\Arno\School\2015-1016\Webprogrammeren\EINDOPDRACHT MF'ER\Ticket.DAO\bin\Debug\Ticket.DAO.dll.config
+C:\Users\Arno\School\2015-1016\Webprogrammeren\EINDOPDRACHT MF'ER\Ticket.DAO\bin\Debug\Ticket.DAO.dll
+C:\Users\Arno\School\2015-1016\Webprogrammeren\EINDOPDRACHT MF'ER\Ticket.DAO\bin\Debug\Ticket.DAO.pdb
+C:\Users\Arno\School\2015-1016\Webprogrammeren\EINDOPDRACHT MF'ER\Ticket.DAO\bin\Debug\EntityFramework.dll
+C:\Users\Arno\School\2015-1016\Webprogrammeren\EINDOPDRACHT MF'ER\Ticket.DAO\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Arno\School\2015-1016\Webprogrammeren\EINDOPDRACHT MF'ER\Ticket.DAO\bin\Debug\Ticket.Model.dll
+C:\Users\Arno\School\2015-1016\Webprogrammeren\EINDOPDRACHT MF'ER\Ticket.DAO\bin\Debug\Ticket.Model.pdb
+C:\Users\Arno\School\2015-1016\Webprogrammeren\EINDOPDRACHT MF'ER\Ticket.DAO\bin\Debug\EntityFramework.xml
+C:\Users\Arno\School\2015-1016\Webprogrammeren\EINDOPDRACHT MF'ER\Ticket.DAO\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Arno\School\2015-1016\Webprogrammeren\EINDOPDRACHT MF'ER\Ticket.DAO\obj\Debug\Ticket.DAO.csprojResolveAssemblyReference.cache
+C:\Users\Arno\School\2015-1016\Webprogrammeren\EINDOPDRACHT MF'ER\Ticket.DAO\obj\Debug\Ticket.DAO.dll
+C:\Users\Arno\School\2015-1016\Webprogrammeren\EINDOPDRACHT MF'ER\Ticket.DAO\obj\Debug\Ticket.DAO.pdb
