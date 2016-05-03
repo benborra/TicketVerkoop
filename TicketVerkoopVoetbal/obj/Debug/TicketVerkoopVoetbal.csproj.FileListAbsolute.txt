@@ -690,3 +690,5 @@ C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin
 C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\obj\Debug\TicketVerkoopVoetbal.dll
 C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\obj\Debug\TicketVerkoopVoetbal.pdb
+C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\itextsharp.dll
+C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\itextsharp.xml
