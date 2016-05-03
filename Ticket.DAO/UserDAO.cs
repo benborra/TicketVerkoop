@@ -9,23 +9,23 @@ using System.Data.Entity;
 
 namespace Ticket.DAO
 {
-    public class ClubDAO
+    public class UserDAO
     {
-        public IEnumerable<Clubs> All()
+        public IEnumerable<AspNetUsers> All()
         {
             using (var db = new TicketEntities())
             {
-                return db.Clubs.Include(s => s.Stadion).ToList();
+                return db.AspNetUsers.ToList();
             }
         }
 
-        public Clubs Get(int id)
+        public AspNetUsers Get(string email)
         {
             try
             {
                 using (var db = new TicketEntities())
                 {
-                    return db.Clubs.Where(c => c.id == id).First();
+                    return db.AspNetUsers.Where(u => u.Email.Equals(email)).First();
                 }
             }
             catch (InvalidOperationException ex)
@@ -35,18 +35,18 @@ namespace Ticket.DAO
             }
         }
 
-        public void Add(Clubs club)
+        public void Add(AspNetUsers user)
         {
             using (var db = new TicketEntities())
             {
-                db.Entry(club).State = EntityState.Added;
+                db.Entry(user).State = EntityState.Added;
                 db.SaveChanges();
             }
 
-                throw new NotImplementedException();
+            throw new NotImplementedException();
         }
 
-        public IEnumerable<Clubs> Update(Clubs entity)
+        public IEnumerable<AspNetUsers> Update(AspNetUsers entity)
         {
             using (var db = new TicketEntities())
             {
@@ -57,11 +57,11 @@ namespace Ticket.DAO
             return null;
         }
 
-        public void RemoveClub(Clubs club)
+        public void RemoveUser(AspNetUsers user)
         {
             using (var db = new TicketEntities())
             {
-                db.Entry(club).State = EntityState.Deleted;
+                db.Entry(user).State = EntityState.Deleted;
                 db.SaveChanges();
             }
         }

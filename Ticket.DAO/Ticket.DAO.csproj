@@ -50,14 +50,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbonnementDAO.cs" />
     <Compile Include="ClubDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SeizoenDAO.cs" />
     <Compile Include="StadionDAO.cs" />
     <Compile Include="TicketDAO.cs" />
+    <Compile Include="UserDAO.cs" />
     <Compile Include="WedstrijdDAO.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
