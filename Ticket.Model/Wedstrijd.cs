@@ -24,6 +24,9 @@ namespace Ticket.Model
         public int thuisPloeg { get; set; }
         public int bezoekersPloeg { get; set; }
         public int stadionId { get; set; }
+        public System.DateTime Date { get; set; }
+        public Nullable<int> scoreThuis { get; set; }
+        public Nullable<int> scoreBezoekers { get; set; }
     
         public virtual Clubs Clubs { get; set; }
         public virtual Clubs Clubs1 { get; set; }

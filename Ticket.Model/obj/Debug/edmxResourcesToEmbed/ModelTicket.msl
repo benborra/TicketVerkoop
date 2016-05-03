@@ -120,6 +120,9 @@
     <EntitySetMapping Name="Wedstrijd">
       <EntityTypeMapping TypeName="TicketModel.Wedstrijd">
         <MappingFragment StoreEntitySet="Wedstrijd">
+          <ScalarProperty Name="scoreBezoekers" ColumnName="scoreBezoekers" />
+          <ScalarProperty Name="scoreThuis" ColumnName="scoreThuis" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="thuisPloeg" ColumnName="thuisPloeg" />
           <ScalarProperty Name="bezoekersPloeg" ColumnName="bezoekersPloeg" />

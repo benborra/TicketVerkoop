@@ -139,6 +139,9 @@
     <NavigationProperty Name="Clubs1" Relationship="Self.FKWedstrijd589657" FromRole="Wedstrijd" ToRole="Clubs" />
     <NavigationProperty Name="Stadion" Relationship="Self.FKWedstrijd63892" FromRole="Wedstrijd" ToRole="Stadion" />
     <NavigationProperty Name="Tickets" Relationship="Self.FKTickets280003" FromRole="Wedstrijd" ToRole="Tickets" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="scoreThuis" Type="Int32" />
+    <Property Name="scoreBezoekers" Type="Int32" />
   </EntityType>
   <EntityType Name="AspNetUserRoles">
     <Key>

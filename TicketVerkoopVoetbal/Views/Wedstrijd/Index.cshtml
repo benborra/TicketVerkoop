@@ -1,0 +1,96 @@
+﻿@model IEnumerable<Ticket.Model.Wedstrijd>
+   
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm("Filter","Wedstrijd"))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <div class="form-group">
+        @* Html.Label("Datums", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @*je hebt in je controller de viewbag brouwerid gebruikt, haalt door het attribuut "brouwerid" de data uit de viewbag 
+            @Html.DropDownList("WedstrijdDatum", null, htmlAttributes: new { @class = "form-control" })
+            @*zal posten op de server met brouwerid, als je iets selecteert 
+        </div>*@
+    
+
+       @Html.Label("Filter op ploeg: ", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @*je hebt in je controller de viewbag brouwerid gebruikt, haalt door het attribuut "brouwerid" de data uit de viewbag *@
+            @Html.DropDownList("Ploegen", null, htmlAttributes: new { @class = "form-control" })
+            @*zal posten op de server met brouwerid, als je iets selecteert *@
+        </div> 
+    </div> 
+</div>
+}
+@Html.ActionLink("Geschiedenis", "Geschiedenis")
+<table class="table">
+    <tr>
+        <th>
+            @Html.Label("Thuisploeg")
+        </th>
+        <th>
+           @Html.Label("Bezoekersploeg")
+        </th>
+        <th>
+            @Html.Label("Stadion")
+        </th>
+        <th>
+           @Html.Label("Datum")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Clubs.naam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Clubs1.naam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Stadion.naam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.id })
+            @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+                {
+                <text> | </text>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id })
+                <text> | </text>
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            }
+        </td>
+    </tr>
+}
+
+    
+        
+</table>
+
+
+    @section scripts
+    {
+    <script>
+        $("#Ploegen").on("Change",  function(){
+            console.log("where u at");
+            alert("kak");
+            $("form").trigger("submit");
+        });
+
+    </script>
+}

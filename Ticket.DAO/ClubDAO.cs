@@ -15,19 +15,58 @@ namespace Ticket.DAO
         {
             using (var db = new TicketEntities())
             {
-                return db.Clubs.ToList();
+                return db.Clubs.Include(s => s.Stadion).ToList();
             }
         }
 
         public Clubs Get(int id)
         {
-            using (var db = new TicketEntities())
+            try
             {
-                return db.Clubs.Where(c => c.id == id).First();
+                using (var db = new TicketEntities())
+                {
+                    return db.Clubs.Where(c => c.id == id).First();
+                }
+            }
+            catch (InvalidOperationException ex)
+            {
+                Console.WriteLine(ex);
+                return null;
             }
         }
 
-        // methods to write:
+        public void Add(Clubs club)
+        {
+            using (var db = new TicketEntities())
+            {
+                db.Entry(club).State = EntityState.Added;
+                db.SaveChanges();
+            }
+
+                throw new NotImplementedException();
+        }
+
+        public IEnumerable<Clubs> Update(Clubs entity)
+        {
+            using (var db = new TicketEntities())
+            {
+                db.Entry(entity).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+
+            return null;
+        }
+
+        public void RemoveClub(Clubs club)
+        {
+            using (var db = new TicketEntities())
+            {
+                db.Entry(club).State = EntityState.Deleted;
+                db.SaveChanges();
+            }
+        }
+
+        // TODO methods to write:
         // public 
     }
 }

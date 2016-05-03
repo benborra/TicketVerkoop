@@ -19,7 +19,12 @@
                         <li>@Html.ActionLink("Clubs", "Index", "Club")</li>
                     </ul>
                 </li>
-                
+
+                @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+                {
+                    <li>@Html.ActionLink("Admin", "Index", "Admin", new { area = "Admin" }, null)</li>
+                }
+
             </ul>
             @Html.Partial("_LoginPartial")
         </div>

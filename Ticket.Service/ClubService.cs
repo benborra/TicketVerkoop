@@ -27,5 +27,20 @@ namespace Ticket.Service
         {
             return clubDao.Get(id);
         }
+
+        public void Update(Clubs entity)
+        {
+            clubDao.Update(entity);
+        }
+
+        public void RemoveClub(Clubs club)
+        {
+            clubDao.RemoveClub(club);
+        }
+
+        public void Add(Clubs club)
+        {
+            clubDao.Add(club);
+        }
     }
 }

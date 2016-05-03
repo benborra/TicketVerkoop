@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Ticket.Model.Wedstrijd>
+
+@{
+    ViewBag.Title = "Geschiedenis";
+}
+
+<h2>Geschiedenis</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.thuisPloeg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bezoekersPloeg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.stadionId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Clubs.naam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Clubs1.naam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Stadion.naam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+           @Html.ActionLink("Details", "Details", new { id = item.id })
+        @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+                {
+            <text> | </text>
+            @Html.ActionLink("Edit", "Edit", new { id = item.id })
+            <text> | </text>
+            @Html.ActionLink("Delete", "Delete", new { id = item.id })
+        }
+        </td>
+    </tr>
+}
+
+</table>
