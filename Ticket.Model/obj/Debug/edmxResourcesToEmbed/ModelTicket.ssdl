@@ -124,6 +124,8 @@ warning 6002: The table/view 'DB_9FC047_ASPVoe.dbo.AspNetUserRoles' does not hav
     <Property Name="bezoekersPloeg" Type="int" Nullable="false" />
     <Property Name="stadionId" Type="int" Nullable="false" />
     <Property Name="Date" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="scoreThuis" Type="int" />
+    <Property Name="scoreBezoekers" Type="int" />
   </EntityType>
   <Association Name="FKAbonnement271256">
     <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />

@@ -583,7 +583,6 @@ E:\School\ASPDOTNET\TicketVerkoopVoetbal\bin\Microsoft.Owin.Security.MicrosoftAc
 E:\School\ASPDOTNET\TicketVerkoopVoetbal\obj\Debug\TicketVerkoopVoetbal.csprojResolveAssemblyReference.cache
 E:\School\ASPDOTNET\TicketVerkoopVoetbal\obj\Debug\TicketVerkoopVoetbal.dll
 E:\School\ASPDOTNET\TicketVerkoopVoetbal\obj\Debug\TicketVerkoopVoetbal.pdb
-C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\obj\Debug\TicketVerkoopVoetbal.csprojResolveAssemblyReference.cache
 C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\ApplicationInsights.config
 C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\roslyn\csc.exe
 C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\roslyn\csc.exe.config
@@ -617,6 +616,7 @@ C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin
 C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\Antlr3.Runtime.dll
 C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\EntityFramework.dll
 C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\EntityFramework.SqlServer.dll
+C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\itextsharp.dll
 C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\Microsoft.AI.Agent.Intercept.dll
 C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\Microsoft.AI.DependencyCollector.dll
 C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\Microsoft.AI.PerfCounterCollector.dll
@@ -659,6 +659,7 @@ C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin
 C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\Ticket.Model.pdb
 C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\Ticket.Service.pdb
 C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\Antlr3.Runtime.pdb
+C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\itextsharp.xml
 C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\Microsoft.AI.DependencyCollector.xml
 C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\Microsoft.AI.Web.xml
@@ -688,7 +689,6 @@ C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin
 C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\obj\Debug\TicketVerkoopVoetbal.csprojResolveAssemblyReference.cache
 C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\obj\Debug\TicketVerkoopVoetbal.dll
 C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\obj\Debug\TicketVerkoopVoetbal.pdb
-C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\itextsharp.dll
-C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin\itextsharp.xml

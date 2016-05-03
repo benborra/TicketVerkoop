@@ -129,6 +129,8 @@ warning 6002: The table/view 'DB_9FC047_ASPVoe.dbo.AspNetUserRoles' does not hav
           <Property Name="bezoekersPloeg" Type="int" Nullable="false" />
           <Property Name="stadionId" Type="int" Nullable="false" />
           <Property Name="Date" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="scoreThuis" Type="int" />
+          <Property Name="scoreBezoekers" Type="int" />
         </EntityType>
         <Association Name="FKAbonnement271256">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
@@ -518,6 +520,8 @@ warning 6002: The table/view 'DB_9FC047_ASPVoe.dbo.AspNetUserRoles' does not hav
           <NavigationProperty Name="Stadion" Relationship="Self.FKWedstrijd63892" FromRole="Wedstrijd" ToRole="Stadion" />
           <NavigationProperty Name="Tickets" Relationship="Self.FKTickets280003" FromRole="Wedstrijd" ToRole="Tickets" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="scoreThuis" Type="Int32" />
+          <Property Name="scoreBezoekers" Type="Int32" />
         </EntityType>
         <EntityType Name="AspNetUserRoles">
           <Key>
@@ -893,6 +897,8 @@ warning 6002: The table/view 'DB_9FC047_ASPVoe.dbo.AspNetUserRoles' does not hav
           <EntitySetMapping Name="Wedstrijd">
             <EntityTypeMapping TypeName="TicketModel.Wedstrijd">
               <MappingFragment StoreEntitySet="Wedstrijd">
+                <ScalarProperty Name="scoreBezoekers" ColumnName="scoreBezoekers" />
+                <ScalarProperty Name="scoreThuis" ColumnName="scoreThuis" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="thuisPloeg" ColumnName="thuisPloeg" />
