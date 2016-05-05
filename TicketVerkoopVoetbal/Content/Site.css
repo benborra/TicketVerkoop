@@ -22,3 +22,32 @@ select,
 textarea {
     max-width: 280px;
 }
+/* ------------ Match Display ---------  */
+.matchView {
+    width: auto;
+    padding: 15px;
+    align-content: center;
+    margin-left:auto;
+    margin-right:auto;
+}
+    .matchView  .clubThuis {
+        float:left;
+        font-size: 28px;
+        padding: 15px;
+    }
+    .matchView .score{
+        float:left;
+        padding: 20px;
+    }
+    .matchView .clubVerplaatsing {
+        font-size: 28px;
+         padding: 15px;
+        
+    }
+.image {
+    width: 150px;
+    align-self:center;
+    
+    clear:right;
+    
+}
