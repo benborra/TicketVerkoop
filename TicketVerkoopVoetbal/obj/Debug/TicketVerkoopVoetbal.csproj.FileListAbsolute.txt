@@ -692,3 +692,5 @@ C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\bin
 C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\obj\Debug\TicketVerkoopVoetbal.csprojResolveAssemblyReference.cache
 C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\obj\Debug\TicketVerkoopVoetbal.dll
 C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\TicketVerkoopVoetbal\obj\Debug\TicketVerkoopVoetbal.pdb
+E:\School\ASPDOTNET\TicketVerkoopVoetbal\bin\itextsharp.dll
+E:\School\ASPDOTNET\TicketVerkoopVoetbal\bin\itextsharp.xml

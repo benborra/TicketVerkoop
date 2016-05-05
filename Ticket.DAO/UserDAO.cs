@@ -66,7 +66,5 @@ namespace Ticket.DAO
             }
         }
 
-        // TODO methods to write:
-        // public 
     }
 }
