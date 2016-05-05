@@ -47,8 +47,8 @@
     <Compile Include="SeizoenService.cs" />
     <Compile Include="StadionService.cs" />
     <Compile Include="TicketService.cs" />
-    <Compile Include="WedstrijdService.cs" />
     <Compile Include="UserService.cs" />
+    <Compile Include="WedstrijdService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ticket.DAO\Ticket.DAO.csproj">

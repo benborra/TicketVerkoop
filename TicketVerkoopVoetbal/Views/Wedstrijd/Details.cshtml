@@ -8,43 +8,44 @@
 
 <div>
     <h4>Wedstrijd</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.thuisPloeg)
-        </dt>
+    <p>
+        @if (Model.scoreThuis == null)
+        {
+            @Html.Label("Deze wedstrijd moet nog gespeeld worden en zal doorgaan op "+ Convert.ToString(Model.Date) +" in het stadion " + Model.Stadion.naam )
+        }
+    </p>
+   <div class="matchView">
+       <div class="clubThuis">
+           @* add club logo*@
+           <img src="~/@Url.Content(Model.Clubs.logo)" alt="Logo" class="image"/>
+           @Html.DisplayFor(model => model.Clubs.naam)
+       </div>
+       <div class="score">
+          
+          @if (Model.scoreThuis == null)
+          {
+              @Html.Label("°°°")
+          }
+           @Html.DisplayFor(model => model.scoreThuis) - 
+           
+           @if (Model.scoreBezoekers == null)
+           {
+               @Html.Label("°°°")
+           }
 
-        <dd>
-            @Html.DisplayFor(model => model.Clubs.naam)
-        </dd>
+               @Html.DisplayFor(model => model.scoreBezoekers)
 
-        <dt>
-            @Html.DisplayNameFor(model => model.bezoekersPloeg)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Clubs1.naam)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.stadionId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Stadion.naam)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
-      
-       
-
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
-
-    </dl>
+           </div>
+           <div class="clubVerplaatsing">
+           @*add club logo*@
+               
+           @Html.DisplayFor(model => model.Clubs1.naam)
+               <img src="~/@Url.Content(Model.Clubs1.logo)" alt="Logo" class="image" />
+       </div>
+   </div>
+    <div class="matchInfo">
+        <p> Hier komt randinfo over de wedstrijd, aantal tickets verkocht, een link om tickets te kopen, of hoeveel bezoekers geweest waren</p>
+    </div>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
