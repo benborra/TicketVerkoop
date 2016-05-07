@@ -48,6 +48,7 @@
     <Compile Include="StadionService.cs" />
     <Compile Include="TicketService.cs" />
     <Compile Include="UserService.cs" />
+    <Compile Include="VakService.cs" />
     <Compile Include="WedstrijdService.cs" />
   </ItemGroup>
   <ItemGroup>

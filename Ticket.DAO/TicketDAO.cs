@@ -53,5 +53,14 @@ namespace Ticket.DAO
                 return db.Tickets.Where(t => t.Wedstrijdid == wedstrijdId).ToList();
             }
         }
+
+        public void Add(Tickets ticket)
+        {
+            using (var db = new TicketEntities())
+            {
+                db.Tickets.Add(ticket);
+                db.SaveChanges();
+            }
+        }
     }
 }

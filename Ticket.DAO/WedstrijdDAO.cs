@@ -93,7 +93,8 @@ namespace Ticket.DAO
                 return db.Wedstrijd.Where(r => r.Date < now).ToList();
             }
         }
-
+        
+        
         
          
     }

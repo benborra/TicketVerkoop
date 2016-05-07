@@ -220,6 +220,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\ReservatieController.cs" />
     <Compile Include="Controllers\StadionController.cs" />
     <Compile Include="Controllers\WedstrijdController.cs" />
     <Compile Include="Global.asax.cs">
@@ -342,6 +343,7 @@
     <Content Include="Views\Wedstrijd\Index.cshtml" />
     <Content Include="Views\Wedstrijd\Geschiedenis.cshtml" />
     <Content Include="Views\Profile\View.cshtml" />
+    <Content Include="Views\Reservatie\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

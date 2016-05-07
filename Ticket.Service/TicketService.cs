@@ -41,5 +41,10 @@ namespace Ticket.Service
         {
             return ticketDao.getTicketsPerWedstrijd(wedstrijd);
         }
+
+        public void Add(Tickets ticket)
+        {
+             ticketDao.Add(ticket);
+        }
     }
 }

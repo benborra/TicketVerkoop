@@ -801,3 +801,5 @@ C:\Users\Arno\School\2015-1016\Webprogrammeren\EINDOPDRACHT MF'ER\TicketVerkoopV
 C:\Users\Arno\School\2015-1016\Webprogrammeren\EINDOPDRACHT MF'ER\TicketVerkoopVoetbal\obj\Debug\TicketVerkoopVoetbal.csprojResolveAssemblyReference.cache
 C:\Users\Arno\School\2015-1016\Webprogrammeren\EINDOPDRACHT MF'ER\TicketVerkoopVoetbal\obj\Debug\TicketVerkoopVoetbal.dll
 C:\Users\Arno\School\2015-1016\Webprogrammeren\EINDOPDRACHT MF'ER\TicketVerkoopVoetbal\obj\Debug\TicketVerkoopVoetbal.pdb
+E:\School\ASPDOTNET\TicketVerkoopVoetbal\bin\itextsharp.dll
+E:\School\ASPDOTNET\TicketVerkoopVoetbal\bin\itextsharp.xml

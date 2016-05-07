@@ -57,6 +57,7 @@
     <Compile Include="StadionDAO.cs" />
     <Compile Include="TicketDAO.cs" />
     <Compile Include="UserDAO.cs" />
+    <Compile Include="VakDAO.cs" />
     <Compile Include="WedstrijdDAO.cs" />
   </ItemGroup>
   <ItemGroup>
