@@ -90,7 +90,7 @@ namespace Ticket.DAO
             using (var db = new TicketEntities())
             {
                 // geen datetime om op te filteren!
-                return db.Wedstrijd.Where(r => r.Date < now).ToList();
+                return db.Wedstrijd.Include(s => s.Stadion).Include(c => c.Clubs).Include(p => p.Clubs1).Where(r => r.Date < now).ToList();
             }
         }
         

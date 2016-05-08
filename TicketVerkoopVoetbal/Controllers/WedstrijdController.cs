@@ -40,7 +40,7 @@ namespace TicketVerkoopVoetbal.Controllers
 
 
         [HttpPost]
-        public ActionResult Filter(DateTime date)
+        public ActionResult FilterDate(DateTime date)
         {
 
             if (date == null)
@@ -56,7 +56,7 @@ namespace TicketVerkoopVoetbal.Controllers
         }
 
         [HttpPost]
-        public ActionResult Filter(int? ploegId)
+        public ActionResult FilterPloeg(int? ploegId)
         {
 
             if (ploegId == null)

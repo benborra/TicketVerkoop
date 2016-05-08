@@ -163,7 +163,7 @@ warning 6002: The table/view 'DB_9FC047_ASPVoe.dbo.AspNetUserRoles' does not hav
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FKAspNetUser206039">
+  <Association Name="FKAspNetUser206040">
     <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1" />
     <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
     <ReferentialConstraint>
@@ -175,7 +175,7 @@ warning 6002: The table/view 'DB_9FC047_ASPVoe.dbo.AspNetUserRoles' does not hav
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FKAspNetUserToId">
+  <Association Name="FKAspNetUser475028">
     <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
     <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
     <ReferentialConstraint>
@@ -326,11 +326,11 @@ warning 6002: The table/view 'DB_9FC047_ASPVoe.dbo.AspNetUserRoles' does not hav
       <End Role="Seizoen" EntitySet="Seizoen" />
       <End Role="Abonnement" EntitySet="Abonnement" />
     </AssociationSet>
-    <AssociationSet Name="FKAspNetUser206039" Association="Self.FKAspNetUser206039">
+    <AssociationSet Name="FKAspNetUser206040" Association="Self.FKAspNetUser206040">
       <End Role="AspNetRoles" EntitySet="AspNetRoles" />
       <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
     </AssociationSet>
-    <AssociationSet Name="FKAspNetUserToId" Association="Self.FKAspNetUserToId">
+    <AssociationSet Name="FKAspNetUser475028" Association="Self.FKAspNetUser475028">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
     </AssociationSet>
