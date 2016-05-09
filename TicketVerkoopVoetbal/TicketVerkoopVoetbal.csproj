@@ -243,12 +243,15 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Reservatie.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="images\KRCGenk.jpg" />
-    <Content Include="images\StandardLuik.jpg" />
+    <Content Include="images\clubs\KRCGenk.jpg" />
+    <Content Include="images\clubs\StandardLuik.jpg" />
+    <Content Include="images\shared\veld.png" />
+    <Content Include="images\shared\vs.bmp" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="ApplicationInsights.config">

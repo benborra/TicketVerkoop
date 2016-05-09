@@ -14,11 +14,14 @@ namespace TicketVerkoopVoetbal.Controllers
 
         WedstrijdService wedstrijdService;
         TicketService ticketService;
+        StadionService stadionService;
         VakService vakService;
+
         public ReservatieController()
         {
             wedstrijdService = new WedstrijdService();
             ticketService = new TicketService();
+            stadionService = new StadionService();
             vakService = new VakService();
         }
         // GET: Reservatie
@@ -29,15 +32,18 @@ namespace TicketVerkoopVoetbal.Controllers
             {
                 return RedirectToAction("Index", "Wedstrijd");
             }
-   
-            ViewBag.WedstrijdId = wedstrijdService.Get(Convert.ToInt16(id));
-            // meegeven van dropdownlist zodat er kan gekozen worden in welk vak ze willen zitten
-            ViewBag.vakLijst =
-                     new SelectList(vakService.All(), "id", "naam");
-            // TODO op de pagina zetten we een save button die enkel getoond word indien de gebruiker ingelogd is
-            // indien niet ingelogd => doorverwijzen naar inlogpagina
 
-            return View();
+            Wedstrijd wedstrijd = wedstrijdService.Get(Convert.ToInt32(id));
+
+            if (wedstrijd == null)
+            {
+                return HttpNotFound();
+            }
+
+            ViewBag.stadionNr = new SelectList(stadionService.All(), "StadionId", "stadionNaam");
+            ViewBag.vakNummer = new SelectList(vakService.All(), "id", "naam");
+
+            return View(wedstrijd);
         }
    
         public ActionResult ReserveerConfirmed(Tickets ticket)

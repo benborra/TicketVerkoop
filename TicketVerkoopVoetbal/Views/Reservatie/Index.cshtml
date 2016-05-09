@@ -1,35 +1,58 @@
-﻿@model Ticket.Model.Tickets
+﻿@model Ticket.Model.Wedstrijd
+
+@Styles.Render("~/Content/Reservatie")
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Best tickets";
 }
 
-<h2>Index</h2>
+<h2>Ticket bestellen</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Ticket bestellen</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Wedstrijdid, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Wedstrijdid, new { htmlAttributes = new { @class = "form-control" }})
-                @Html.ValidationMessageFor(model => model.Wedstrijdid, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <hr />
+
+    <table>
+        <tr>
+            <th>
+                <img src="~/@Url.Content(Model.Clubs.logo)" alt="Logo" class="logo" />
+            </th>
+            <th>
+                <img src="~/images/shared/vs.bmp" alt="vs" class="vs" />
+            </th>
+            <th>
+                <img src="~/@Url.Content(Model.Clubs1.logo)" alt="Logo" class="logo" />
+            </th>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayFor(model => model.Clubs.naam)
+            </th>
+            <th></th>
+            <th>
+                @Html.DisplayFor(model => model.Clubs1.naam)
+            </th>
+        </tr>
+    </table>
+
+    <br />
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
 
         <div class="form-group">
             @Html.Label("Waar wilt u zitten?", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("vakLijst", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.plaatsId, "", new { @class = "text-danger" })
+                @Html.DropDownList("vakNummer", null, htmlAttributes: new { @class = "form-control" })
             </div>
+
+            <img src="~/images/shared/veld.png" alt="veld" class="veld" usemap="#veldmap"/>
+            <map name="veldmap">
+                <area shape="rect" coords="35,145,65,355" alt="Tribune" href="test.html" />
+            </map>
         </div>
 
         <div class="form-group">
