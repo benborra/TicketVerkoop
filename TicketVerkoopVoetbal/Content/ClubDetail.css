@@ -1,0 +1,14 @@
+﻿
+div {
+    
+}
+
+.content {
+    float: left;
+    margin-right: 40px;
+}
+
+footer, p {
+    float: left;
+    width: 100%;
+}

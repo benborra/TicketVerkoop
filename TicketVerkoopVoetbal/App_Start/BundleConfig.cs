@@ -32,6 +32,9 @@ namespace TicketVerkoopVoetbal
 
             bundles.Add(new StyleBundle("~/Content/Tabel").Include(
                       "~/Content/tabel.css"));
+
+            bundles.Add(new StyleBundle("~/Content/ClubDetail").Include(
+                      "~/Content/ClubDetail.css"));
         }
     }
 }

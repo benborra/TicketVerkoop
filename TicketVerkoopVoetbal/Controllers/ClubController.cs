@@ -15,11 +15,14 @@ namespace TicketVerkoopVoetbal.Controllers
     public class ClubController : Controller
     {
         private ClubService clubService;
-
+        private StadionService stadionService;
+        private WedstrijdService wedstrijdService;
 
         public ClubController()
         {
             clubService = new ClubService();
+            stadionService = new StadionService();
+            wedstrijdService = new WedstrijdService();
         }
 
         public ActionResult Index()
@@ -44,6 +47,8 @@ namespace TicketVerkoopVoetbal.Controllers
                 return HttpNotFound();
             }
 
+            ViewBag.wedstrijd = wedstrijdService.GetWedStrijdPerPloeg(Convert.ToInt32(id));
+
             return View(clubs);
         }
 
@@ -57,16 +62,11 @@ namespace TicketVerkoopVoetbal.Controllers
         // POST: Club/Create
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Clubs club)
         {
             try
             {
                 clubService = new ClubService();
-                Clubs club = new Clubs();
-
-                club.naam = collection["naam"];
-                club.Stadionid = Convert.ToInt32(collection["StadionId"]);
-                club.logo = collection["logo"];
 
                 clubService.Add(club);
 
