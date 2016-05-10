@@ -1,7 +1,9 @@
 ﻿@model IEnumerable<Ticket.Model.Clubs>
 
+@Styles.Render("~/Content/Tabel")
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Overzicht clubs";
 }
 
 <h2>Index</h2>
@@ -12,44 +14,18 @@
         @Html.ActionLink("Create New", "Create")
     </p>
 }
-<table class="table">
-    <tr>
-        <th>
-            @Html.Label("Club")
-        </th>
-        <th>
-            @Html.Label("Stadion")
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.logo)
-        </th>
-        <th></th>
-    </tr>
 
+<div class="tabel">
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.naam)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Stadion.naam)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.logo)
-            </td>
-            <td>
-
-                @Html.ActionLink("Details", "Details", new { id = item.id })
-                @if (ViewContext.HttpContext.User.IsInRole("Admin"))
-                {
-                    <text> | </text>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.id })
-                    <text> | </text>
-                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
-                }
-            </td>
-        </tr>
+        <a href="@Url.Action("Details", "Details", new { id = item.id })">
+            <div class="cel">
+                <img src="~/@Url.Content(item.logo)" alt="Logo" class="logo" width="200" />
+                <hr />
+                <div class="naam">
+                    @Html.DisplayFor(modelItem => item.naam)
+                </div>
+            </div>
+        </a>
     }
-
-</table>
+</div>
