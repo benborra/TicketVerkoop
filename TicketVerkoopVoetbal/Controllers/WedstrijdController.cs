@@ -34,6 +34,9 @@ namespace TicketVerkoopVoetbal.Controllers
         public ActionResult Details(int id)
         {
             Wedstrijd w = wedstrijdService.Get(id);
+            //aantal aanwezigen
+            //hoeveel tickets zijn er nog te verkrijgen? 
+            
 
             return View(w);
         }
