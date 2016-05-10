@@ -35,10 +35,7 @@ textarea {
         font-size: 28px;
         padding: 15px;
     }
-    .matchView .score{
-        float:left;
-        padding: 20px;
-    }
+
     .matchView .clubVerplaatsing {
         font-size: 28px;
          padding: 15px;
@@ -50,4 +47,7 @@ textarea {
     
     clear:right;
     
+}
+.matchInfo {
+    clear:left;
 }

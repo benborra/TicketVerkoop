@@ -1,5 +1,5 @@
 ﻿@model Ticket.Model.Wedstrijd
-
+@Styles.Render("~/Content/Reservatie")
 @{
     ViewBag.Title = "Details";
 }
@@ -15,39 +15,66 @@
         }
     </p>
    <div class="matchView">
-       <div class="clubThuis">
-           @* add club logo*@
-           <img src="~/@Url.Content(Model.Clubs.logo)" alt="Logo" class="image"/>
-           @Html.DisplayFor(model => model.Clubs.naam)
-       </div>
-       <div class="score">
-          
-          @if (Model.scoreThuis == null)
-          {
-              @Html.Label("°°°")
-          }
-           @Html.DisplayFor(model => model.scoreThuis) - 
-           
-           @if (Model.scoreBezoekers == null)
-           {
-               @Html.Label("°°°")
-           }
 
-               @Html.DisplayFor(model => model.scoreBezoekers)
+       <table>
+           <tr>
+               <th>
+                   <img src="~/@Url.Content(Model.Clubs.logo)" alt="Logo" class="logo" />
+               </th>
+               <th>
+                   @if (Model.scoreThuis == null)
+                   {
+                       @Html.Label("°°°")
+                   }
+                   @Html.DisplayFor(model => model.scoreThuis) -
 
-           </div>
-           <div class="clubVerplaatsing">
-           @*add club logo*@
-               
-           @Html.DisplayFor(model => model.Clubs1.naam)
-               <img src="~/@Url.Content(Model.Clubs1.logo)" alt="Logo" class="image" />
+                   @if (Model.scoreBezoekers == null)
+                   {
+                       @Html.Label("°°°")
+                   }
+
+                   @Html.DisplayFor(model => model.scoreBezoekers)
+               </th>
+               <th>
+                   <img src="~/@Url.Content(Model.Clubs1.logo)" alt="Logo" class="logo" />
+               </th>
+           </tr>
+           <tr>
+               <th>
+                   @Html.DisplayFor(model => model.Clubs.naam)
+               </th>
+               <th></th>
+               <th>
+                   @Html.DisplayFor(model => model.Clubs1.naam)
+               </th>
+           </tr>
+       </table>
+
+
+     
        </div>
    </div>
     <div class="matchInfo">
-        <p> Hier komt randinfo over de wedstrijd, aantal tickets verkocht, een link om tickets te kopen, of hoeveel bezoekers geweest waren</p>
+        <p>
+            @* Als de score nog null is , dan is de wedstrijd nog niet gespeeld, anders is het het getal 0 *@
+          
+             @if (Model.scoreThuis == null)
+            {
+                @Html.DisplayName("Er zijn momenteel " + (string)ViewBag.AantalTickets +" tickets verkocht voor deze wedstrijd")
+                 <br />
+                @Html.DisplayName("En er zijn nog x aantal tickets beschikbaar")
+                 <br />
+                <button type="button" onclick="location.href='@Url.Action("Index", "Reservatie", new { id = Model.id })'">Tickets bestellen</button>
+             }
+           @if (Model.scoreThuis != null)
+           {
+              @Html.Label("Deze wedstrijd had " + (string)ViewBag.AantalTickets + " bezoekers");
+           }
+        </p>
+        
     </div>
-</div>
+
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
+    
+    @Html.ActionLink("Terug naar wedstrijden", "Index")
 </p>

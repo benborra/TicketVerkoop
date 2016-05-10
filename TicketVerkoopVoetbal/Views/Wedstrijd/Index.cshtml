@@ -8,9 +8,12 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+@if (ViewContext.HttpContext.User.IsInRole("Admin"))
+{
+    @Html.ActionLink("Maak een nieuwe wedstrijd", "New")
+}
 </p>
-@using (Html.BeginForm("Filter", "Wedstrijd"))
+@using (Html.BeginForm("FilterPloeg", "Wedstrijd"))
 {
     @Html.AntiForgeryToken()
 

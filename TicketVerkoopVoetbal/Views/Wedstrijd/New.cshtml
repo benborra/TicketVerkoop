@@ -1,0 +1,73 @@
+﻿@model Ticket.Model.Wedstrijd
+
+@{
+
+       ViewBag.Title = "Nieuwe wedstrijd toevoegen";
+}
+<h2>Nieuwe wedstrijd toevoegen</h2>
+
+@using (Html.BeginForm("Create","Wedstrijd")) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Vul het formulier aan</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.thuisPloeg, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("TPloegen", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.thuisPloeg, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.bezoekersPloeg, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("BPloegen", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.bezoekersPloeg, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.stadionId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Stadion", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.stadionId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="input-group date">
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                    @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                </div>
+             </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section scripts
+{
+    <script>
+        $('.datepicker').datetimepicker(
+            {
+                minDate: moment()
+            });
+    </script>
+    }

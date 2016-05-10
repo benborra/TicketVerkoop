@@ -13,10 +13,15 @@ namespace TicketVerkoopVoetbal.Controllers
     {
         WedstrijdService wedstrijdService;
         ClubService clubService;
+        TicketService ticketService;
+        StadionService stadionService;
+        
         public WedstrijdController()
         {
             wedstrijdService = new WedstrijdService();
             clubService = new ClubService();
+            ticketService = new TicketService();
+            stadionService = new StadionService();
         }
 
         // GET: Wedstrijd
@@ -34,11 +39,51 @@ namespace TicketVerkoopVoetbal.Controllers
         public ActionResult Details(int id)
         {
             Wedstrijd w = wedstrijdService.Get(id);
+            //aantal aanwezigen
+            ViewBag.AantalTickets = Convert.ToString(ticketService.getTicketsPerWedstrijd(w).Count());
+
+            Stadion stad = stadionService.Get(w.stadionId);
+            //TODO meegeven hoeveel tickets er nog te verkrijgen zijn
 
             return View(w);
         }
 
+        
 
+        public ActionResult New()
+        {
+            ViewBag.TPloegen =
+                new SelectList(clubService.All(), "id", "naam");
+            ViewBag.BPloegen =
+               new SelectList(clubService.All(), "id", "naam");
+
+            ViewBag.Stadion =
+                new SelectList(stadionService.All(), "id", "naam");
+            return View();
+        }
+        // TODO: datepicker layout niet optimaal
+        // TODO: Controle of de ploegen gelijk zijn
+        [HttpPost]
+        public ActionResult Create(FormCollection collection)
+        {
+            try
+            {
+                
+                Wedstrijd wedstrd = new Wedstrijd();
+
+                wedstrd.stadionId = Convert.ToInt32(collection["Stadion"]);
+                wedstrd.thuisPloeg = Convert.ToInt32(collection["TPloegen"]);
+                wedstrd.bezoekersPloeg = Convert.ToInt32(collection["BPloegen"]);
+                wedstrd.Date = Convert.ToDateTime(collection["Date"]);
+                wedstrijdService.AddWedstrijd(wedstrd);
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return RedirectToAction("Index");
+            }
+        }
         [HttpPost]
         public ActionResult FilterDate(DateTime date)
         {
