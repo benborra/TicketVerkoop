@@ -3,9 +3,16 @@
     ViewBag.Title = "Alle stadions in Belgie";
 }
 <h2>Index</h2>
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
+
+@if (ViewContext.HttpContext.User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
+
+
 <table class="table">
     <tr>
         <th>
@@ -26,9 +33,14 @@
                 @Html.DisplayFor(modelItem => item.adres)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                @Html.ActionLink("Details", "Details", new { id = item.id })
+                @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+                {
+                    <text> | </text>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id })
+                    <text> | </text>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                }
             </td>
         </tr>
     }
