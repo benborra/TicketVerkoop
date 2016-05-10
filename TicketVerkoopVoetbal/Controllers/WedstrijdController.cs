@@ -52,22 +52,37 @@ namespace TicketVerkoopVoetbal.Controllers
 
         public ActionResult New()
         {
-            ViewBag.Ploegen =
+            ViewBag.TPloegen =
                 new SelectList(clubService.All(), "id", "naam");
+            ViewBag.BPloegen =
+               new SelectList(clubService.All(), "id", "naam");
 
             ViewBag.Stadion =
                 new SelectList(stadionService.All(), "id", "naam");
             return View();
         }
         // TODO: datepicker layout niet optimaal
-        // TODO: fix de create
+        // TODO: Controle of de ploegen gelijk zijn
         [HttpPost]
-        public ActionResult Create(Wedstrijd wed)
+        public ActionResult Create(FormCollection collection)
         {
-                Wedstrijd w = new Wedstrijd();
-            wedstrijdService.AddWedstrijd(w);
-            
-            return RedirectToAction("Index");
+            try
+            {
+                
+                Wedstrijd wedstrd = new Wedstrijd();
+
+                wedstrd.stadionId = Convert.ToInt32(collection["Stadion"]);
+                wedstrd.thuisPloeg = Convert.ToInt32(collection["TPloegen"]);
+                wedstrd.bezoekersPloeg = Convert.ToInt32(collection["BPloegen"]);
+                wedstrd.Date = Convert.ToDateTime(collection["Date"]);
+                wedstrijdService.AddWedstrijd(wedstrd);
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return RedirectToAction("Index");
+            }
         }
         [HttpPost]
         public ActionResult FilterDate(DateTime date)

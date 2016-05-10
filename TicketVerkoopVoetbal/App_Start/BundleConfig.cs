@@ -29,6 +29,7 @@ namespace TicketVerkoopVoetbal
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap-datetimepicker.less",
+                      "~/Content/bootstrap-datetimepicker-build.less",
                       "~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/Reservatie").Include(
