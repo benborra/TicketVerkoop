@@ -19,5 +19,10 @@ namespace Ticket.DAO
                 return db.Vak.ToList();
             }
         }
+
+        public int getAantalZitplaatsenPerStadion()
+        {
+            return 0;
+        }
     }
 }

@@ -46,6 +46,11 @@ namespace Ticket.Service
         {
             return wedstrijdDAO.GespeeldeWedstrijden();
         }
+        public void AddWedstrijd(Wedstrijd w)
+        {
+            wedstrijdDAO.AddWedstrijd(w);
+        }
+
 
         public IEnumerable<Wedstrijd> All()
         {

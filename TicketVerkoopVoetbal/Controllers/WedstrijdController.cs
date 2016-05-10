@@ -13,10 +13,15 @@ namespace TicketVerkoopVoetbal.Controllers
     {
         WedstrijdService wedstrijdService;
         ClubService clubService;
+        TicketService ticketService;
+        StadionService stadionService;
+        
         public WedstrijdController()
         {
             wedstrijdService = new WedstrijdService();
             clubService = new ClubService();
+            ticketService = new TicketService();
+            stadionService = new StadionService();
         }
 
         // GET: Wedstrijd
@@ -35,13 +40,35 @@ namespace TicketVerkoopVoetbal.Controllers
         {
             Wedstrijd w = wedstrijdService.Get(id);
             //aantal aanwezigen
-            //hoeveel tickets zijn er nog te verkrijgen? 
-            
+            ViewBag.AantalTickets = Convert.ToString(ticketService.getTicketsPerWedstrijd(w).Count());
+
+            Stadion stad = stadionService.Get(w.stadionId);
+            //TODO meegeven hoeveel tickets er nog te verkrijgen zijn
 
             return View(w);
         }
 
+        
 
+        public ActionResult New()
+        {
+            ViewBag.Ploegen =
+                new SelectList(clubService.All(), "id", "naam");
+
+            ViewBag.Stadion =
+                new SelectList(stadionService.All(), "id", "naam");
+            return View();
+        }
+        // TODO: datepicker layout niet optimaal
+        // TODO: fix de create
+        [HttpPost]
+        public ActionResult Create(Wedstrijd wed)
+        {
+                Wedstrijd w = new Wedstrijd();
+            wedstrijdService.AddWedstrijd(w);
+            
+            return RedirectToAction("Index");
+        }
         [HttpPost]
         public ActionResult FilterDate(DateTime date)
         {

@@ -11,7 +11,7 @@ namespace Ticket.Model
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
     public partial class Wedstrijd
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,6 +24,7 @@ namespace Ticket.Model
         public int thuisPloeg { get; set; }
         public int bezoekersPloeg { get; set; }
         public int stadionId { get; set; }
+        
         public System.DateTime Date { get; set; }
         public Nullable<int> scoreThuis { get; set; }
         public Nullable<int> scoreBezoekers { get; set; }

@@ -3,12 +3,12 @@
 @Styles.Render("~/Content/Reservatie")
 
 @{
-    ViewBag.Title = "Best tickets";
+    ViewBag.Title = "Bestel tickets";
 }
 
 <h2>Ticket bestellen</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("", ""))
 {
     @Html.AntiForgeryToken()
 

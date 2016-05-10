@@ -55,10 +55,26 @@
        </div>
    </div>
     <div class="matchInfo">
-        <p> Hier komt randinfo over de wedstrijd, aantal tickets verkocht, een link om tickets te kopen, of hoeveel bezoekers geweest waren</p>
+        <p>
+            @* Als de score nog null is , dan is de wedstrijd nog niet gespeeld, anders is het het getal 0 *@
+          
+             @if (Model.scoreThuis == null)
+            {
+                @Html.DisplayName("Er zijn momenteel " + (string)ViewBag.AantalTickets +" tickets verkocht voor deze wedstrijd")
+                 <br />
+                @Html.DisplayName("En er zijn nog x aantal tickets beschikbaar")
+                 <br />
+                <button type="button" onclick="location.href='@Url.Action("Index", "Reservatie", new { id = Model.id })'">Tickets bestellen</button>
+             }
+           @if (Model.scoreThuis != null)
+           {
+              @Html.Label("Deze wedstrijd had " + (string)ViewBag.AantalTickets + " bezoekers");
+           }
+        </p>
+        
     </div>
 
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
+    
+    @Html.ActionLink("Terug naar wedstrijden", "Index")
 </p>
