@@ -1,5 +1,7 @@
 ﻿@model Ticket.Model.Clubs
 
+@Styles.Render("~/Content/ClubDetail")
+
 @{
     ViewBag.Title = "Details";
 }
@@ -7,40 +9,65 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Clubs</h4>
+    <h4>@Html.DisplayFor(model => model.naam)</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.naam)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.naam)
-        </dd>
+    <div class="content">
+        <img src="~/@Url.Content(Model.logo)" alt="logo" width="200" />
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Stadionid)
-        </dt>
+    <div class="content">
+        <table>
+            <tr>
+                <td>
+                    @Html.Label("Thuis stadion: ")
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.Stadion.naam)
+                </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.Stadionid)
-        </dd>
+            </tr>
+            <tr>
+                <th>
+                    @Html.Label("Plaats:")
+                </th>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.logo)
-        </dt>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.Stadion.adres)
+                </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.logo)
-        </dd>
+            </tr>
+        </table>
+    </div>
 
-    </dl>
+    <div class="content">
+        <table>
+            @foreach (var item in ViewBag.wedstrijd)
+            {
+                <tr>
+                    <td>
+                        @item.Date
+                    </td>                    
+                </tr>
+            }
+        </table>
+    </div>
 </div>
-<p>
+
+<footer>
+    <br />
+    @Html.ActionLink("Back to List", "Index")
+
     @if (ViewContext.HttpContext.User.IsInRole("Admin"))
     {
+
+        <text> | </text>
         @Html.ActionLink("Edit", "Edit", new { area = "Admin", id = Model.id })
         <text> | </text>
+        @Html.ActionLink("Delete", "Delete", new { area = "Admin", id = Model.id })
     }
-    @Html.ActionLink("Back to List", "Index")
-</p>
+</footer>

@@ -25,7 +25,7 @@ namespace Ticket.DAO
             {
                 using (var db = new TicketEntities())
                 {
-                    return db.Clubs.Where(c => c.id == id).First();
+                    return db.Clubs.Where(c => c.id == id).Include(s => s.Stadion).Include(w => w.Wedstrijd).First();
                 }
             }
             catch (InvalidOperationException ex)

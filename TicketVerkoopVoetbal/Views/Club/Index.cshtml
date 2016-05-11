@@ -18,7 +18,7 @@
 <div class="tabel">
     @foreach (var item in Model)
     {
-        <a href="@Url.Action("Details", "Details", new { id = item.id })">
+        <a href="@Url.Action("Details", "Club", new { id = item.id })">
             <div class="cel">
                 <img src="~/@Url.Content(item.logo)" alt="Logo" class="logo" width="200" />
                 <hr />
