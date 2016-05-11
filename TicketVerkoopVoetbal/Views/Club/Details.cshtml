@@ -48,7 +48,11 @@
         <table>
             @foreach (var item in ViewBag.wedstrijd)
             {
-                <text>Voeg hier een lijst toe met nog te spelen wedstrijden van deze ploeg</text>
+                <tr>
+                    <td>
+                        @item.Date
+                    </td>                    
+                </tr>
             }
         </table>
     </div>
@@ -57,10 +61,11 @@
 <footer>
     <br />
     @Html.ActionLink("Back to List", "Index")
-    <text> | </text>
 
     @if (ViewContext.HttpContext.User.IsInRole("Admin"))
     {
+
+        <text> | </text>
         @Html.ActionLink("Edit", "Edit", new { area = "Admin", id = Model.id })
         <text> | </text>
         @Html.ActionLink("Delete", "Delete", new { area = "Admin", id = Model.id })
