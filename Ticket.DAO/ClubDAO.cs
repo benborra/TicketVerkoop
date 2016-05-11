@@ -65,7 +65,5 @@ namespace Ticket.DAO
                 db.SaveChanges();
             }
         }
-
-    
     }
 }

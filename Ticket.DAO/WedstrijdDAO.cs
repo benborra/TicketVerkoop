@@ -60,7 +60,7 @@ namespace Ticket.DAO
         {
             using (var db = new TicketEntities())
             {
-                return db.Wedstrijd.Where(r => r.thuisPloeg == id || r.bezoekersPloeg == id).ToList();
+                return db.Wedstrijd.Where(r => r.thuisPloeg == id || r.bezoekersPloeg == id).Include(c => c.Clubs).ToList();
             }
         }
         // get wedstrijd per datum

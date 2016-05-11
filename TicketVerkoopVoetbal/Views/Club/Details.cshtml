@@ -42,14 +42,53 @@
 
             </tr>
         </table>
+        <br />
+        <br />
     </div>
 
-    <div class="content">
+    <div class="content" style="margin-right: 0px">
         <table>
-            @foreach (var item in ViewBag.wedstrijd)
+            @if (ViewBag.wedstrijd != null)
             {
-                <text>Voeg hier een lijst toe met nog te spelen wedstrijden van deze ploeg</text>
-            }
+                <tr>
+                    <td>
+                        @Html.Label("Toekomstige wedstrijden:")
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class"list-group">
+                            @foreach (var item in ViewBag.wedstrijd)
+                            {
+                                DateTime date = Convert.ToDateTime(item.Date);
+
+                                <div class="list-group-item hover" onclick="location.href='@Url.Action("Details", "Wedstrijd", new { id = item.id })'">
+
+                                    @date.ToString("d")
+                                    @date.ToString("t")
+
+                                    <text>  |  </text>
+
+                                    <img src="~/@Url.Content(ViewBag.clubs[item.thuisPloeg].logo)" alt="logo" style="max-height: 35px; max-width: 35px" />
+                                    <text>  -  </text>
+                                    <img src="~/@Url.Content(ViewBag.clubs[item.bezoekersPloeg].logo)" alt="logo" style="max-height: 35px; max-width: 35px" />
+
+                                    <button type="button" class="btn btn-primary btn-xs" onclick="location.href='@Url.Action("Index", "Reservatie", new { id = item.id })'">Koop tickets</button>
+                                </div>
+
+                            } @* end foreach *@
+                        </div>
+                    </td>
+                </tr>
+            } // end first if
+            else
+            {
+                <tr>
+                    <td>
+                        <div class="alert alert-info">Ploeg heeft nog geen wedstrijden in de nabije toekomst.</div>
+                    </td>
+                </tr>
+            } @* end else if *@
         </table>
     </div>
 </div>
@@ -57,10 +96,11 @@
 <footer>
     <br />
     @Html.ActionLink("Back to List", "Index")
-    <text> | </text>
 
     @if (ViewContext.HttpContext.User.IsInRole("Admin"))
     {
+
+        <text> | </text>
         @Html.ActionLink("Edit", "Edit", new { area = "Admin", id = Model.id })
         <text> | </text>
         @Html.ActionLink("Delete", "Delete", new { area = "Admin", id = Model.id })
