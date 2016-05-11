@@ -1,14 +1,23 @@
 ﻿@model System.Web.Mvc.HandleErrorInfo
 
 @{
-    Layout = "_Layout.cshtml";
     ViewBag.Title = "Error";
 }
 
-
 <div class="list-sfs-holder">
     <div class="alert alert-error">
-        Er is een fout gebeurd, gelieve contact op te nemen met de administrator.
+        <h2>Error</h2>
+        <hr />
+        <p>
+            Er is een fout gebeurd, de pagina die u wilt bezoeken bestaat niet, moet nog bestaan of heeft nooit bestaan.
+        </p>
+        <br />
+        <br />
+        <br />
+        <div style="text-align: center;">
+            <button type="button" class="btn btn-primary btn-xl" onclick="location.href='@Url.Action("Index", "Home")'">Keer terug</button>
+        </div>
+
     </div>
     @if (Model != null && HttpContext.Current.IsDebuggingEnabled)
     {
