@@ -367,6 +367,7 @@
     <Content Include="Views\Wedstrijd\Geschiedenis.cshtml" />
     <Content Include="Views\Profile\View.cshtml" />
     <Content Include="Views\Reservatie\Index.cshtml" />
+    <Content Include="Views\Wedstrijd\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

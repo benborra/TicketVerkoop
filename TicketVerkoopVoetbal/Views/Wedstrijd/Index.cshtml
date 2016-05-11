@@ -52,6 +52,7 @@
             @Html.Label("Datum")
         </th>
         <th></th>
+        <th></th>
     </tr>
 
     @if (Model != null)
@@ -73,7 +74,7 @@
             </td>
             <td>
                 @*TODO verbergen indien de user niet ingelogd is *@
-                <button type="button" onclick="location.href='@Url.Action("Index", "Reservatie", new { id = item.id })'">Tickets bestellen</button>
+                <button type="button" class="btn btn-info btn-sm" onclick="location.href='@Url.Action("Index", "Reservatie", new { id = item.id })'">Tickets bestellen</button>
             </td>
             <td>
                 @Html.ActionLink("Details", "Details", new { id = item.id })
