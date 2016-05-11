@@ -1,7 +1,4 @@
 ﻿
-div {
-    
-}
 
 .content {
     float: left;
@@ -11,4 +8,9 @@ div {
 footer, p {
     float: left;
     width: 100%;
+}
+
+.hover:hover {
+    background-color: #F2F2F2;
+    cursor:pointer;
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
@@ -47,8 +48,28 @@ namespace TicketVerkoopVoetbal.Controllers
                 return HttpNotFound();
             }
 
-            ViewBag.wedstrijd = wedstrijdService.GetWedStrijdPerPloeg(Convert.ToInt32(id));
+            var weds = wedstrijdService.GetWedStrijdPerPloeg(Convert.ToInt32(id));
+            int wedsC = weds.Count();
 
+            if (wedsC != 0)
+            {
+                ViewBag.wedstrijd = wedstrijdService.GetWedStrijdPerPloeg(Convert.ToInt32(id));
+
+
+                // Enkel clubs toevoegen die wedstrijden spelen die in bovenstaandelijst zitten (thuisPloeg en bezoekersPloeg)
+                Dictionary<int, Clubs> c = new Dictionary<int, Clubs>();
+
+                foreach (var item in weds)
+                {
+                    // Eerst controle of ploeg al toegevoegd is aan Dictionary
+                    if (!c.ContainsKey(item.thuisPloeg)) c.Add(Convert.ToInt32(item.thuisPloeg), clubService.Get(Convert.ToInt32(item.thuisPloeg)));
+                    if (!c.ContainsKey(item.bezoekersPloeg)) c.Add(Convert.ToInt32(item.bezoekersPloeg), clubService.Get(Convert.ToInt32(item.bezoekersPloeg)));
+                }
+
+                ViewBag.clubs = c;
+
+            }
+            
             return View(clubs);
         }
 
