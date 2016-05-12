@@ -54,6 +54,18 @@ namespace Ticket.DAO
             }
         }
 
+        public int getTicketsPerWedstrijdPerVak(Wedstrijd w, int PlaatsID)
+        {
+
+            int wedId = w.id;
+            using (var db = new TicketEntities())
+            {
+               
+                var list = db.Tickets.Where(q => q.Wedstrijdid == wedId).Where(p => p.plaatsId == PlaatsID).ToList();
+                return list.Count() ;
+            }
+        }
+
         public void Add(Tickets ticket)
         {
             using (var db = new TicketEntities())

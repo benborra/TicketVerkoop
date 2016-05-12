@@ -93,8 +93,11 @@ namespace Ticket.DAO
                 return db.Wedstrijd.Include(s => s.Stadion).Include(c => c.Clubs).Include(p => p.Clubs1).Where(r => r.Date < now).ToList();
             }
         }
-        
-        
+
+        public int aantalTicketsPerWedstrijd()
+        {
+            return 1;
+        }
         
          
     }

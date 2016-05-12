@@ -13,15 +13,6 @@ namespace TicketVerkoopVoetbal.Controllers
             return View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Ticket verkoop voetbal.";
-
-            throw new ApplicationException("testing");
-
-            return View();
-        }
-
         public ActionResult Stadions()
         {
             ViewBag.Message = "Hier komen , dynamisch geladen weliswaar, alle stadions";

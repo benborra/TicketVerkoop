@@ -86,6 +86,7 @@ warning 6002: The table/view 'DB_9FC047_ASPVoe.dbo.AspNetUserRoles' does not hav
           <Property Name="Stadionid" Type="int" Nullable="false" />
           <Property Name="Vakid" Type="int" Nullable="false" />
           <Property Name="prijs" Type="real" Nullable="false" />
+          <Property Name="aantal" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Seizoen">
           <Key>
@@ -112,6 +113,7 @@ warning 6002: The table/view 'DB_9FC047_ASPVoe.dbo.AspNetUserRoles' does not hav
           <Property Name="Wedstrijdid" Type="int" Nullable="false" />
           <Property Name="Persoonid" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="plaatsId" Type="int" Nullable="false" />
+          <Property Name="Betaald" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Vak">
           <Key>
@@ -465,6 +467,7 @@ warning 6002: The table/view 'DB_9FC047_ASPVoe.dbo.AspNetUserRoles' does not hav
           <NavigationProperty Name="Vak" Relationship="Self.FKPlaats402282" FromRole="Plaats" ToRole="Vak" />
           <NavigationProperty Name="Stadion" Relationship="Self.FKPlaats620177" FromRole="Plaats" ToRole="Stadion" />
           <NavigationProperty Name="Tickets" Relationship="Self.FKTickets327836" FromRole="Plaats" ToRole="Tickets" />
+          <Property Name="aantal" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Seizoen">
           <Key>
@@ -498,6 +501,7 @@ warning 6002: The table/view 'DB_9FC047_ASPVoe.dbo.AspNetUserRoles' does not hav
           <NavigationProperty Name="AspNetUsers" Relationship="Self.FKTickets323226" FromRole="Tickets" ToRole="AspNetUsers" />
           <NavigationProperty Name="Plaats" Relationship="Self.FKTickets327836" FromRole="Tickets" ToRole="Plaats" />
           <NavigationProperty Name="Wedstrijd" Relationship="Self.FKTickets280003" FromRole="Tickets" ToRole="Wedstrijd" />
+          <Property Name="Betaald" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Vak">
           <Key>
@@ -850,6 +854,7 @@ warning 6002: The table/view 'DB_9FC047_ASPVoe.dbo.AspNetUserRoles' does not hav
           <EntitySetMapping Name="Plaats">
             <EntityTypeMapping TypeName="TicketModel.Plaats">
               <MappingFragment StoreEntitySet="Plaats">
+                <ScalarProperty Name="aantal" ColumnName="aantal" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Stadionid" ColumnName="Stadionid" />
                 <ScalarProperty Name="Vakid" ColumnName="Vakid" />
@@ -878,6 +883,7 @@ warning 6002: The table/view 'DB_9FC047_ASPVoe.dbo.AspNetUserRoles' does not hav
           <EntitySetMapping Name="Tickets">
             <EntityTypeMapping TypeName="TicketModel.Tickets">
               <MappingFragment StoreEntitySet="Tickets">
+                <ScalarProperty Name="Betaald" ColumnName="Betaald" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="barcode" ColumnName="barcode" />
                 <ScalarProperty Name="Wedstrijdid" ColumnName="Wedstrijdid" />
