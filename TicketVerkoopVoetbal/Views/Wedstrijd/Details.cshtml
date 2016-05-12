@@ -9,7 +9,7 @@
 <div>
     <h4>Wedstrijd</h4>
     <p>
-        @if (Model.Date < DateTime.Now)
+        @if (Model.Date > DateTime.Now)
         {
             @Html.Label("Deze wedstrijd moet nog gespeeld worden en zal doorgaan op "+ Convert.ToString(Model.Date) +" in het stadion " + Model.Stadion.naam )
         }
