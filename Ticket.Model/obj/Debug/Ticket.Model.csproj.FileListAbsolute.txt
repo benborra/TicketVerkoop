@@ -8,16 +8,6 @@ E:\School\ASPDOTNET\Ticket.Model\bin\Debug\EntityFramework.SqlServer.xml
 E:\School\ASPDOTNET\Ticket.Model\obj\Debug\Ticket.Model.csprojResolveAssemblyReference.cache
 E:\School\ASPDOTNET\Ticket.Model\obj\Debug\Ticket.Model.dll
 E:\School\ASPDOTNET\Ticket.Model\obj\Debug\Ticket.Model.pdb
-C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\Ticket.Model\bin\Debug\Ticket.Model.dll.config
-C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\Ticket.Model\bin\Debug\Ticket.Model.dll
-C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\Ticket.Model\bin\Debug\Ticket.Model.pdb
-C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\Ticket.Model\bin\Debug\EntityFramework.dll
-C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\Ticket.Model\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\Ticket.Model\bin\Debug\EntityFramework.xml
-C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\Ticket.Model\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\Ticket.Model\obj\Debug\Ticket.Model.csprojResolveAssemblyReference.cache
-C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\Ticket.Model\obj\Debug\Ticket.Model.dll
-C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\Ticket.Model\obj\Debug\Ticket.Model.pdb
 C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\TicketVerkoop\Ticket.Model\bin\Debug\Ticket.Model.dll.config
 C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\TicketVerkoop\Ticket.Model\bin\Debug\Ticket.Model.dll
 C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\TicketVerkoop\Ticket.Model\bin\Debug\Ticket.Model.pdb
@@ -47,3 +37,12 @@ C:\Users\Arno\School\2015-1016\Webprogrammeren\EINDOPDRACHT MF'ER\Ticket.Model\b
 C:\Users\Arno\School\2015-1016\Webprogrammeren\EINDOPDRACHT MF'ER\Ticket.Model\obj\Debug\Ticket.Model.csprojResolveAssemblyReference.cache
 C:\Users\Arno\School\2015-1016\Webprogrammeren\EINDOPDRACHT MF'ER\Ticket.Model\obj\Debug\Ticket.Model.dll
 C:\Users\Arno\School\2015-1016\Webprogrammeren\EINDOPDRACHT MF'ER\Ticket.Model\obj\Debug\Ticket.Model.pdb
+C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\Ticket.Model\bin\Debug\Ticket.Model.dll.config
+C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\Ticket.Model\bin\Debug\Ticket.Model.dll
+C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\Ticket.Model\bin\Debug\Ticket.Model.pdb
+C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\Ticket.Model\bin\Debug\EntityFramework.dll
+C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\Ticket.Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\Ticket.Model\bin\Debug\EntityFramework.xml
+C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\Ticket.Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\Ticket.Model\obj\Debug\Ticket.Model.dll
+C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\Ticket.Model\obj\Debug\Ticket.Model.pdb
