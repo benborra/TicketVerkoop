@@ -60,7 +60,7 @@ namespace Ticket.DAO
         {
             using (var db = new TicketEntities())
             {
-                return db.Wedstrijd.Where(r => r.thuisPloeg == id || r.bezoekersPloeg == id).ToList();
+                return db.Wedstrijd.Where(r => r.thuisPloeg == id || r.bezoekersPloeg == id).Include(c => c.Clubs).ToList();
             }
         }
         // get wedstrijd per datum
@@ -93,9 +93,16 @@ namespace Ticket.DAO
                 return db.Wedstrijd.Include(s => s.Stadion).Include(c => c.Clubs).Include(p => p.Clubs1).Where(r => r.Date < now).ToList();
             }
         }
-        
-        
-        
-         
+
+
+
+        // get wedstrijdPerPloeg die nog gespeeld moeten worden
+        public IEnumerable<Wedstrijd> GetWedStrijdPerPloegToekomst(int id)
+        {
+            using (var db = new TicketEntities())
+            {
+                return db.Wedstrijd.Where(r => r.thuisPloeg == id || r.bezoekersPloeg == id).Where(d => d.Date > DateTime.Now).Include(c => c.Clubs).ToList();
+            }
+        }
     }
 }

@@ -1,0 +1,37 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "Error";
+}
+
+<div class="list-sfs-holder">
+    <div class="alert alert-error">
+        <h2>Error</h2>
+        <hr />
+        <p>
+            Er is een fout gebeurd, de pagina die u wilt bezoeken bestaat niet, moet nog bestaan of heeft nooit bestaan.
+        </p>
+        <br />
+        <br />
+        <br />
+        <div style="text-align: center;">
+            <button type="button" class="btn btn-primary btn-xl" onclick="location.href='@Url.Action("Index", "Home")'">Keer terug</button>
+        </div>
+
+    </div>
+    @if (Model != null && HttpContext.Current.IsDebuggingEnabled)
+    {
+        <div>
+            <p>
+                <b>Exception:</b> @Model.Exception.Message<br />
+                <b>Controller:</b> @Model.ControllerName<br />
+                <b>Action:</b> @Model.ActionName
+            </p>
+            <div style="overflow:scroll">
+                <pre>
+                    @Model.Exception.StackTrace
+                </pre>
+            </div>
+        </div>
+    }
+</div>

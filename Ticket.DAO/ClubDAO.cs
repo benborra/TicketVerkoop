@@ -21,17 +21,9 @@ namespace Ticket.DAO
 
         public Clubs Get(int id)
         {
-            try
+            using (var db = new TicketEntities())
             {
-                using (var db = new TicketEntities())
-                {
-                    return db.Clubs.Where(c => c.id == id).Include(s => s.Stadion).Include(w => w.Wedstrijd).First();
-                }
-            }
-            catch (InvalidOperationException ex)
-            {
-                Console.WriteLine(ex);
-                return null;
+                return db.Clubs.Where(c => c.id == id).Include(s => s.Stadion).Include(w => w.Wedstrijd).First();
             }
         }
 
@@ -43,7 +35,7 @@ namespace Ticket.DAO
                 db.SaveChanges();
             }
 
-                throw new NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public IEnumerable<Clubs> Update(Clubs entity)
@@ -65,7 +57,5 @@ namespace Ticket.DAO
                 db.SaveChanges();
             }
         }
-
-    
     }
 }

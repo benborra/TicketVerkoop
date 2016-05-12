@@ -32,7 +32,6 @@ namespace TicketVerkoopVoetbal.Controllers
             ViewBag.stadions =
                    new SelectList(stadionService.All(), "naam", "adres");
             return View(stadions);
-
         }
 
         public ActionResult Edit(int? id)

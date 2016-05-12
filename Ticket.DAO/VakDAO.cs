@@ -20,9 +20,35 @@ namespace Ticket.DAO
             }
         }
 
-        public int getAantalZitplaatsenPerStadion()
+        public int getAantalZitplaatsenPerStadionPerVak(Stadion s, int vakId)
         {
-            return 0;
+           
+            int stadId = s.id;
+
+            using (var db = new TicketEntities())
+            {
+                return Convert.ToInt32(db.Plaats.Where(q => q.Stadionid == stadId).Where(a => a.Vakid == vakId).Select(d => d.aantal).First());
+            }           
+            
         }
+
+        public int getAantalZitPlaatsenPerStadion(Stadion s)
+        {
+
+            int stadId = s.id;
+
+            using (var db = new TicketEntities())
+            {
+                int aantalPlaatsen = 0;
+                var list = db.Plaats.Where(q => q.Stadionid == stadId).ToList();
+                foreach (Plaats plaats in list)
+                {
+                    aantalPlaatsen += plaats.aantal;
+                }
+
+                return aantalPlaatsen;
+            }
+        }
+
     }
 }

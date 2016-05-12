@@ -81,6 +81,7 @@ warning 6002: The table/view 'DB_9FC047_ASPVoe.dbo.AspNetUserRoles' does not hav
     <Property Name="Stadionid" Type="int" Nullable="false" />
     <Property Name="Vakid" Type="int" Nullable="false" />
     <Property Name="prijs" Type="real" Nullable="false" />
+    <Property Name="aantal" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Seizoen">
     <Key>
@@ -107,6 +108,7 @@ warning 6002: The table/view 'DB_9FC047_ASPVoe.dbo.AspNetUserRoles' does not hav
     <Property Name="Wedstrijdid" Type="int" Nullable="false" />
     <Property Name="Persoonid" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="plaatsId" Type="int" Nullable="false" />
+    <Property Name="Betaald" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Vak">
     <Key>

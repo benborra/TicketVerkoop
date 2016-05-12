@@ -73,6 +73,7 @@
     <EntitySetMapping Name="Plaats">
       <EntityTypeMapping TypeName="TicketModel.Plaats">
         <MappingFragment StoreEntitySet="Plaats">
+          <ScalarProperty Name="aantal" ColumnName="aantal" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="Stadionid" ColumnName="Stadionid" />
           <ScalarProperty Name="Vakid" ColumnName="Vakid" />
@@ -101,6 +102,7 @@
     <EntitySetMapping Name="Tickets">
       <EntityTypeMapping TypeName="TicketModel.Tickets">
         <MappingFragment StoreEntitySet="Tickets">
+          <ScalarProperty Name="Betaald" ColumnName="Betaald" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="barcode" ColumnName="barcode" />
           <ScalarProperty Name="Wedstrijdid" ColumnName="Wedstrijdid" />

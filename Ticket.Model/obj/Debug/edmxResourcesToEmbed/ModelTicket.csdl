@@ -85,6 +85,7 @@
     <NavigationProperty Name="Vak" Relationship="Self.FKPlaats402282" FromRole="Plaats" ToRole="Vak" />
     <NavigationProperty Name="Stadion" Relationship="Self.FKPlaats620177" FromRole="Plaats" ToRole="Stadion" />
     <NavigationProperty Name="Tickets" Relationship="Self.FKTickets327836" FromRole="Plaats" ToRole="Tickets" />
+    <Property Name="aantal" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="Seizoen">
     <Key>
@@ -118,6 +119,7 @@
     <NavigationProperty Name="AspNetUsers" Relationship="Self.FKTickets323226" FromRole="Tickets" ToRole="AspNetUsers" />
     <NavigationProperty Name="Plaats" Relationship="Self.FKTickets327836" FromRole="Tickets" ToRole="Plaats" />
     <NavigationProperty Name="Wedstrijd" Relationship="Self.FKTickets280003" FromRole="Tickets" ToRole="Wedstrijd" />
+    <Property Name="Betaald" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="Vak">
     <Key>

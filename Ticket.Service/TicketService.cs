@@ -21,7 +21,7 @@ namespace Ticket.Service
             return ticketDao.All();
         }
 
-       
+
         public Tickets GetById(int id)
         {
             return ticketDao.GetById(id);
@@ -41,7 +41,10 @@ namespace Ticket.Service
         {
             return ticketDao.getTicketsPerWedstrijd(wedstrijd);
         }
-
+        public int getTicketsPerWedstrijdPerVak(Wedstrijd w, int PlaatsID)
+        {
+            return ticketDao.getTicketsPerWedstrijdPerVak(w, PlaatsID);
+        } 
         public void Add(Tickets ticket)
         {
              ticketDao.Add(ticket);

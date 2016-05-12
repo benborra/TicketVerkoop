@@ -53,6 +53,9 @@ namespace TicketVerkoopVoetbal.Controllers
             // redirect naar ... ?
             return RedirectToAction("Index");
         }
+        
+       
 
     }
+    //TODO : annuleer tickets
 }
