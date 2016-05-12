@@ -62,13 +62,13 @@
             {
                 @Html.DisplayName("Er zijn momenteel " + (string)ViewBag.AantalTickets +" tickets verkocht voor deze wedstrijd")
                  <br />
-                @Html.DisplayName("En er zijn nog x aantal tickets beschikbaar")
+                @Html.DisplayName("En er zijn nog "+(string) ViewBag.AantalTicketsBeschikbaar +" aantal tickets beschikbaar")
                  <br />
                 <button type="button" class="btn btn-info" onclick="location.href='@Url.Action("Index", "Reservatie", new { id = Model.id })'">Tickets bestellen</button>
              }
            @if (Model.Date < DateTime.Now)
            {
-              @Html.Label("Deze wedstrijd had " + (string)ViewBag.AantalTickets + " bezoekers");
+              @Html.Label("Deze wedstrijd had " + (string)ViewBag.AantalTicketsBeschikbaar + " bezoekers");
            }
         </p>
         

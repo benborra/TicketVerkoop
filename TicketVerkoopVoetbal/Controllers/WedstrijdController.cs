@@ -15,6 +15,7 @@ namespace TicketVerkoopVoetbal.Controllers
         ClubService clubService;
         TicketService ticketService;
         StadionService stadionService;
+        VakService vakService;
         
         public WedstrijdController()
         {
@@ -22,6 +23,7 @@ namespace TicketVerkoopVoetbal.Controllers
             clubService = new ClubService();
             ticketService = new TicketService();
             stadionService = new StadionService();
+            vakService = new VakService();
         }
 
         // GET: Wedstrijd
@@ -40,22 +42,22 @@ namespace TicketVerkoopVoetbal.Controllers
         {
             Wedstrijd w = wedstrijdService.Get(id);
             //aantal aanwezigen
-            ViewBag.AantalTickets = Convert.ToString(ticketService.getTicketsPerWedstrijd(w).Count());
-
+            int numberOfTickets = ticketService.getTicketsPerWedstrijd(w).Count();
+            ViewBag.AantalTickets = Convert.ToString(numberOfTickets);
+            // meegeven hoeveel tickets er nog te verkrijgen zijn
             Stadion stad = stadionService.Get(w.stadionId);
-            //TODO meegeven hoeveel tickets er nog te verkrijgen zijn
+            ViewBag.AantalTicketsBeschikbaar = Convert.ToString(vakService.getAantalZitPlaatsenPerStadion(stad) - numberOfTickets);
+
 
             return View(w);
         }
 
-        
-
         public ActionResult New()
         {
             ViewBag.TPloegen =
-                new SelectList(clubService.All(), "id", "naam");
+                new SelectList(clubService.All(), "id", "naam", 1 );
             ViewBag.BPloegen =
-               new SelectList(clubService.All(), "id", "naam");
+               new SelectList(clubService.All(), "id", "naam", 2);
 
             ViewBag.Stadion =
                 new SelectList(stadionService.All(), "id", "naam");
@@ -101,10 +103,11 @@ namespace TicketVerkoopVoetbal.Controllers
         }
 
         [HttpPost]
-        public ActionResult FilterPloeg(int? ploegId)
+        public ActionResult FilterPloeg(FormCollection collection)
         {
 
-            if (ploegId == null)
+            int ploegId = Convert.ToInt32(collection["Ploegen"]);
+            if (ploegId < 1)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
