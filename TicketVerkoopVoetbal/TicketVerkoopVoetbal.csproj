@@ -224,6 +224,7 @@
     <Compile Include="Controllers\ReservatieController.cs" />
     <Compile Include="Controllers\StadionController.cs" />
     <Compile Include="Controllers\WedstrijdController.cs" />
+    <Compile Include="Controllers\WinkelwagenController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -271,6 +272,7 @@
     <Content Include="images\clubs\StandardLuik.jpg" />
     <Content Include="images\clubs\URLaLouvièreCentre.jpg" />
     <Content Include="images\clubs\WSBruxelles.jpg" />
+    <Content Include="images\shared\ball.svg" />
     <Content Include="images\shared\veld.png" />
     <Content Include="images\shared\vs.bmp" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
@@ -376,6 +378,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Views\Winkelwagen\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

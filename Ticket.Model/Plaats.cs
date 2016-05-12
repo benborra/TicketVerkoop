@@ -24,6 +24,7 @@ namespace Ticket.Model
         public int Stadionid { get; set; }
         public int Vakid { get; set; }
         public float prijs { get; set; }
+        public int aantal { get; set; }
     
         public virtual Vak Vak { get; set; }
         public virtual Stadion Stadion { get; set; }

@@ -48,12 +48,12 @@ namespace TicketVerkoopVoetbal.Controllers
                 return HttpNotFound();
             }
 
-            var weds = wedstrijdService.GetWedStrijdPerPloeg(Convert.ToInt32(id));
+            var weds = wedstrijdService.GetWedStrijdPerPloegToekomst(Convert.ToInt32(id));
             int wedsC = weds.Count();
 
             if (wedsC != 0)
             {
-                ViewBag.wedstrijd = wedstrijdService.GetWedStrijdPerPloeg(Convert.ToInt32(id));
+                ViewBag.wedstrijd = weds;
 
 
                 // Enkel clubs toevoegen die wedstrijden spelen die in bovenstaandelijst zitten (thuisPloeg en bezoekersPloeg)
