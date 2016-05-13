@@ -46,3 +46,4 @@ C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\Ticket.Model\bin\Debug\E
 C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\Ticket.Model\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\Ticket.Model\obj\Debug\Ticket.Model.dll
 C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\Ticket.Model\obj\Debug\Ticket.Model.pdb
+C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.Model\obj\Debug\Ticket.Model.csprojResolveAssemblyReference.cache
