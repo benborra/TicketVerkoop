@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Ticket.Service;
 using Ticket.Model;
 using System.Net;
+using System.Globalization;
 
 namespace TicketVerkoopVoetbal.Controllers
 {
@@ -16,7 +17,7 @@ namespace TicketVerkoopVoetbal.Controllers
         TicketService ticketService;
         StadionService stadionService;
         VakService vakService;
-        
+
         public WedstrijdController()
         {
             wedstrijdService = new WedstrijdService();
@@ -55,7 +56,7 @@ namespace TicketVerkoopVoetbal.Controllers
         public ActionResult New()
         {
             ViewBag.TPloegen =
-                new SelectList(clubService.All(), "id", "naam", 1 );
+                new SelectList(clubService.All(), "id", "naam", 1);
             ViewBag.BPloegen =
                new SelectList(clubService.All(), "id", "naam", 2);
 
@@ -68,24 +69,20 @@ namespace TicketVerkoopVoetbal.Controllers
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
-            try
-            {
-                
-                Wedstrijd wedstrd = new Wedstrijd();
 
-                wedstrd.stadionId = Convert.ToInt32(collection["Stadion"]);
-                wedstrd.thuisPloeg = Convert.ToInt32(collection["TPloegen"]);
-                wedstrd.bezoekersPloeg = Convert.ToInt32(collection["BPloegen"]);
-                wedstrd.Date = Convert.ToDateTime(collection["Date"]);
-                wedstrijdService.AddWedstrijd(wedstrd);
+            Wedstrijd wedstrd = new Wedstrijd();
+            CultureInfo us = new CultureInfo("en-US");
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return RedirectToAction("Index");
-            }
+            wedstrd.stadionId = Convert.ToInt32(collection["Stadion"]);
+            wedstrd.thuisPloeg = Convert.ToInt32(collection["TPloegen"]);
+            wedstrd.bezoekersPloeg = Convert.ToInt32(collection["BPloegen"]);
+            wedstrd.Date = DateTime.Parse(collection["Date"], us, System.Globalization.DateTimeStyles.AssumeLocal); 
+
+            wedstrijdService.AddWedstrijd(wedstrd);
+
+            return RedirectToAction("Index");
         }
+
         [HttpPost]
         public ActionResult FilterDate(DateTime date)
         {
@@ -124,6 +121,6 @@ namespace TicketVerkoopVoetbal.Controllers
             var gespeeld = wedstrijdService.GespeeldeWedstrijden();
             return View(gespeeld);
         }
-       
+
     }
 }

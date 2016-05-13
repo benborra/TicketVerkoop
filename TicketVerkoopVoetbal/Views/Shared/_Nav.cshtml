@@ -20,6 +20,13 @@
                     </ul>
                 </li>
 
+                <li>
+                    <a href="@Url.Action("Index", "Shoppingcart")">
+                        <img src='@Url.Content("~/images/shared/shop_cart.png")' alt="cart" height="20" />
+                    </a>
+                </li>
+
+
                 @if (ViewContext.HttpContext.User.IsInRole("Admin"))
                 {
                     <li>@Html.ActionLink("Admin", "Index", "Admin", new { area = "Admin" }, null)</li>

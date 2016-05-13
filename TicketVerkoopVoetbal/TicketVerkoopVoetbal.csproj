@@ -222,6 +222,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\ReservatieController.cs" />
+    <Compile Include="Controllers\ShoppingcartController.cs" />
     <Compile Include="Controllers\StadionController.cs" />
     <Compile Include="Controllers\WedstrijdController.cs" />
     <Compile Include="Controllers\WinkelwagenController.cs" />
@@ -229,9 +230,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CartViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MailFormViewModel.cs" />
+    <Compile Include="Models\ShoppingCartViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -276,6 +279,7 @@
     <Content Include="images\clubs\URLaLouvièreCentre.jpg" />
     <Content Include="images\clubs\WSBruxelles.jpg" />
     <Content Include="images\shared\ball.svg" />
+    <Content Include="images\shared\shop_cart.png" />
     <Content Include="images\shared\veld.png" />
     <Content Include="images\shared\vs.bmp" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
@@ -449,6 +453,7 @@
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Error\Error.cshtml" />
     <Content Include="Views\Wedstrijd\New.cshtml" />
+    <Content Include="Views\Shoppingcart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
