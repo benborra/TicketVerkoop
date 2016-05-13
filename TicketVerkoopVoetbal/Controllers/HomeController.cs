@@ -17,8 +17,6 @@ namespace TicketVerkoopVoetbal.Controllers
         {
             ViewBag.Message = "Ticket verkoop voetbal.";
 
-            throw new ApplicationException("testing");
-
             return View();
         }
 
