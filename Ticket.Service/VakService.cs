@@ -21,5 +21,16 @@ namespace Ticket.Service
         {
             return vakDao.All();
         }
+
+        public int getAantalZitplaatsenPerStadionPerVak(Stadion s, int vakId)
+        {
+            return vakDao.getAantalZitplaatsenPerStadionPerVak(s, vakId);
+        }
+
+
+        public int getAantalZitPlaatsenPerStadion(Stadion s)
+        {
+            return vakDao.getAantalZitPlaatsenPerStadion(s);
+        }
     }
 }
