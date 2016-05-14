@@ -72,7 +72,7 @@ namespace TicketVerkoopVoetbal.Controllers
             {
                 
                 Wedstrijd wedstrd = new Wedstrijd();
-
+                var tijd = collection["Date"];
                 wedstrd.stadionId = Convert.ToInt32(collection["Stadion"]);
                 wedstrd.thuisPloeg = Convert.ToInt32(collection["TPloegen"]);
                 wedstrd.bezoekersPloeg = Convert.ToInt32(collection["BPloegen"]);
