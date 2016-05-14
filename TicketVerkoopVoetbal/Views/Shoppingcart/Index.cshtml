@@ -1,0 +1,96 @@
+﻿@model TicketVerkoopVoetbal.Models.ShoppingCartViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@if (Model != null)
+{
+    using (Html.BeginForm("Payment", "ShoppingCart"))
+    {
+        <table>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cart[0].ThuisPloeg)
+
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cart[0].BezoekersPloeg)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cart[0].Stadion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cart[0].Datum)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cart[0].Aantal)
+                </th>
+                <th>
+                    Subtotaal
+                </th>
+            </tr>
+            @{ float total = 0;}
+
+
+
+            @for (var i = 0; i < Model.Cart.Count; i++)
+            {
+                @Html.HiddenFor(m => Model.Cart[i].WedstrijdId)
+                <tr>
+                    <td>
+                        @Html.LabelFor(m => Model.Cart[i].ThuisPloeg)
+                    </td>
+                    <td>
+                        @Html.LabelFor(m => Model.Cart[i].BezoekersPloeg)
+                    </td>
+                    <td>
+                        @Html.LabelFor(m => Model.Cart[i].Stadion)
+                    </td>
+                    <td>
+                        @{
+                            var subtotaal = Model.Cart[i].Prijs * Model.Cart[i].Aantal;
+                            total += subtotaal;
+
+                        }
+                        @subtotaal
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Remove from cart", "Delete", "ShoppingCart", new { id = Model.Cart[i].WedstrijdId }, null)
+
+                    </td>
+                </tr>
+
+                            } @* End For *@
+
+                            <tr>
+                                <td>
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <input type="submit" value="Checkout" class="btn btn-default" />
+                                        </div>
+                                    </div>
+
+                            <tr>
+                                <td>
+                                    Total
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td id="cart-total">
+                                    @total
+                                </td>
+                            </tr>
+
+
+
+                        </table>
+                                }
+                            }
+                            else
+                            { @Html.Raw("Your shoppingcart is empty at the moment")  }
+
+@Html.ActionLink("Continue", "index", "beer")

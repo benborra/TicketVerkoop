@@ -56,5 +56,11 @@ namespace Ticket.Service
         {
             return wedstrijdDAO.All();
         }
+
+        // get wedstrijdPerPloeg die nog gespeeld moeten worden
+        public IEnumerable<Wedstrijd> GetWedStrijdPerPloegToekomst(int id)
+        {
+            return wedstrijdDAO.GetWedStrijdPerPloegToekomst(id);
+        }
     }
 }

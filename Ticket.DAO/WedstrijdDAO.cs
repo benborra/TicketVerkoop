@@ -94,11 +94,15 @@ namespace Ticket.DAO
             }
         }
 
-        public int aantalTicketsPerWedstrijd()
+
+
+        // get wedstrijdPerPloeg die nog gespeeld moeten worden
+        public IEnumerable<Wedstrijd> GetWedStrijdPerPloegToekomst(int id)
         {
-            return 1;
+            using (var db = new TicketEntities())
+            {
+                return db.Wedstrijd.Where(r => r.thuisPloeg == id || r.bezoekersPloeg == id).Where(d => d.Date > DateTime.Now).Include(c => c.Clubs).ToList();
+            }
         }
-        
-         
     }
 }
