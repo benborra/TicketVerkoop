@@ -74,7 +74,6 @@
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
-
     </div>
 </div>
 
@@ -83,6 +82,7 @@
     <script>
         $('.datepicker').datetimepicker(
             {
+                format: 'D/M/YYYY h:mm A',
                 minDate: moment()
             });
         $('#Tploegen').change(function () {

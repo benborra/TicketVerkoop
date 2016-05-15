@@ -9,7 +9,7 @@ using Ticket.Model;
 
 namespace Ticket.Service
 {
-    class AbonnementService
+    public class AbonnementService
     {
         private AbonnementDAO abonnementDao;
 

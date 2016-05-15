@@ -171,35 +171,20 @@ namespace TicketVerkoopVoetbal.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    /*
-                    MailMessage mail = new MailMessage("benborra@gmail.com", user.Email);
-                    SmtpClient client = new SmtpClient();
-                    client.Port = 587;
-                    client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                    client.UseDefaultCredentials = false;
-                    client.Host = "smtp.gmail.com";
-                    mail.Subject = "Bevestig account op Voetbalticket.be";
-                    mail.Body = "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>";
-                    client.Send(mail);
-                    */
+                    ConfirmationEmail accountinfo = new ConfirmationEmail();
+                    accountinfo.FromEmail = user.Email;
+                    accountinfo.FromName = user.FirstName;
+                    
+                    await SendConfirmationMail(accountinfo, callbackUrl);
 
-                    MailService.SendConfirmationMail(user.FirstName, user.Email, callbackUrl);
+                    //MailService.SendConfirmationMail(user.FirstName, user.Email, callbackUrl);
 
-                    // Uncomment to debug locally 
-                    // TempData["ViewBagLink"] = callbackUrl;
+                    ViewBag.Message = "Een bevestigingsmail werd gestuurd naar het gegeven email adres. U account moet bevestigd zijn voor u verder kan gaan.";
 
-                    ViewBag.Message = "Check your email and confirm your account, you must be confirmed "
-                                    + "before you can log in.";
-
-                    return View("Info");
+                    return View("info");
                     //return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
@@ -252,7 +237,11 @@ namespace TicketVerkoopVoetbal.Controllers
                 var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                 // await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                MailService.sendPasswordResetMail(user.FirstName, user.Email, callbackUrl);
+                ResetPasswordEmail accountInfo = new ResetPasswordEmail();
+                accountInfo.FromName = user.FirstName;
+                accountInfo.FromEmail = user.Email;
+
+                await SendPasswordResetMail(accountInfo, callbackUrl);
 
                 return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
@@ -522,5 +511,43 @@ namespace TicketVerkoopVoetbal.Controllers
             }
         }
         #endregion
+
+        
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> SendConfirmationMail(ConfirmationEmail model, string callbackUrl)
+        {
+            var message = new MailMessage();
+            message.To.Add(new MailAddress(model.FromEmail));
+            message.Subject = "VoetbalTickets - Registratie bevestiging";
+            message.Body = "</p>Beste " + model.FromName + System.Environment.NewLine + "</p><p>Er werd een account voor u aangemaakt op VoetbalTickets.</p>";
+            message.Body += "</p>Gelieve uw account te bevestigen door op onderstaande link te drukken <br/><a href =\"" + callbackUrl + "\"><img class='transparent' alt='Link' src='http://zeldawiki.org/images/thumb/8/8a/LoZ_ST_Link.png/170px-LoZ_ST_Link.png'></a>";
+            message.Body += "<p>Met vriendelijke groet</p>" + System.Environment.NewLine + "<p>Het VoetbalTickets-team</p>";
+            message.IsBodyHtml = true;
+
+            using (var smtp = new SmtpClient())
+            {
+                await smtp.SendMailAsync(message);
+                return null;
+            }
+        }
+
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> SendPasswordResetMail(ResetPasswordEmail model, string callbackUrl)
+        {
+            var message = new MailMessage();
+            message.To.Add(new MailAddress(model.FromEmail));
+            message.Subject = "VoetbalTickets - Paswoord herstellen";
+            message.Body = "</p>Beste " + model.FromName + System.Environment.NewLine + "</p><p>Er werd een paswoordherstel gevraagd voor uw account.</p>";
+            message.Body += "</p>Gelieve op onderstaande link te drukken <br/><a href =\"" + callbackUrl + "\"><img class='transparent' alt='http://zeldawiki.org/images/thumb/8/8a/LoZ_ST_Link.png/170px-LoZ_ST_Link.png' src='http://zeldawiki.org/images/thumb/8/8a/LoZ_ST_Link.png/170px-LoZ_ST_Link.png'></a>";
+            message.Body += "<br /><p>Indien u geen paswoordherstel hebt aangevraagd gelieve deze mail dan te negeren.</p><br /><br />";
+            message.Body += "<p>Met vriendelijke groet</p>" + System.Environment.NewLine + "<p>Het VoetbalTickets-team</p>";
+            message.IsBodyHtml = true;
+
+            using (var smtp = new SmtpClient())
+            {
+                await smtp.SendMailAsync(message);
+                return null;
+            }
+        }
     }
 }
