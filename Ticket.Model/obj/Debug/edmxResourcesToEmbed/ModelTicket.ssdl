@@ -8,6 +8,7 @@
     <Property Name="Seizoenid" Type="int" Nullable="false" />
     <Property Name="Clubsid" Type="int" Nullable="false" />
     <Property Name="Persoonid" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="PlaatsId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="AspNetRoles">
     <Key>
@@ -150,6 +151,18 @@ warning 6002: The table/view 'DB_9FC047_ASPVoe.dbo.AspNetUserRoles' does not hav
       </Principal>
       <Dependent Role="Abonnement">
         <PropertyRef Name="Clubsid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKAbonnement945192">
+    <End Role="Plaats" Type="Self.Plaats" Multiplicity="1" />
+    <End Role="Abonnement" Type="Self.Abonnement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Plaats">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Abonnement">
+        <PropertyRef Name="PlaatsId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -322,6 +335,10 @@ warning 6002: The table/view 'DB_9FC047_ASPVoe.dbo.AspNetUserRoles' does not hav
     </AssociationSet>
     <AssociationSet Name="FKAbonnement465404" Association="Self.FKAbonnement465404">
       <End Role="Clubs" EntitySet="Clubs" />
+      <End Role="Abonnement" EntitySet="Abonnement" />
+    </AssociationSet>
+    <AssociationSet Name="FKAbonnement945192" Association="Self.FKAbonnement945192">
+      <End Role="Plaats" EntitySet="Plaats" />
       <End Role="Abonnement" EntitySet="Abonnement" />
     </AssociationSet>
     <AssociationSet Name="FKAbonnement949791" Association="Self.FKAbonnement949791">

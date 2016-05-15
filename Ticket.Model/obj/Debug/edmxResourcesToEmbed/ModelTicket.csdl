@@ -11,6 +11,8 @@
     <NavigationProperty Name="AspNetUsers" Relationship="Self.FKAbonnement271256" FromRole="Abonnement" ToRole="AspNetUsers" />
     <NavigationProperty Name="Clubs" Relationship="Self.FKAbonnement465404" FromRole="Abonnement" ToRole="Clubs" />
     <NavigationProperty Name="Seizoen" Relationship="Self.FKAbonnement949791" FromRole="Abonnement" ToRole="Seizoen" />
+    <Property Name="PlaatsId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Plaats" Relationship="TicketModel.FKAbonnement945192" FromRole="Abonnement" ToRole="Plaats" />
   </EntityType>
   <EntityType Name="AspNetRoles">
     <Key>
@@ -86,6 +88,7 @@
     <NavigationProperty Name="Stadion" Relationship="Self.FKPlaats620177" FromRole="Plaats" ToRole="Stadion" />
     <NavigationProperty Name="Tickets" Relationship="Self.FKTickets327836" FromRole="Plaats" ToRole="Tickets" />
     <Property Name="aantal" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Abonnement" Relationship="TicketModel.FKAbonnement945192" FromRole="Plaats" ToRole="Abonnement" />
   </EntityType>
   <EntityType Name="Seizoen">
     <Key>
@@ -393,5 +396,21 @@
       <End Role="Wedstrijd" EntitySet="Wedstrijd" />
       <End Role="Tickets" EntitySet="Tickets" />
     </AssociationSet>
+    <AssociationSet Name="FKAbonnement945192" Association="TicketModel.FKAbonnement945192">
+      <End Role="Plaats" EntitySet="Plaats" />
+      <End Role="Abonnement" EntitySet="Abonnement" />
+    </AssociationSet>
   </EntityContainer>
+  <Association Name="FKAbonnement945192">
+    <End Type="TicketModel.Plaats" Role="Plaats" Multiplicity="1" />
+    <End Type="TicketModel.Abonnement" Role="Abonnement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Plaats">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Abonnement">
+        <PropertyRef Name="PlaatsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Abonnement">
       <EntityTypeMapping TypeName="TicketModel.Abonnement">
         <MappingFragment StoreEntitySet="Abonnement">
+          <ScalarProperty Name="PlaatsId" ColumnName="PlaatsId" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="Seizoenid" ColumnName="Seizoenid" />
           <ScalarProperty Name="Clubsid" ColumnName="Clubsid" />

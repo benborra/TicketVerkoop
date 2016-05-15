@@ -10,7 +10,7 @@
 {
     using (Html.BeginForm("Payment", "ShoppingCart"))
     {
-        <table>
+        <table class="table">
             <tr>
                 <th>
                     @Html.DisplayNameFor(model => model.Cart[0].ThuisPloeg)
@@ -31,6 +31,7 @@
                 <th>
                     Subtotaal
                 </th>
+                <th></th>
             </tr>
             @{ float total = 0;}
 
@@ -41,13 +42,19 @@
                 @Html.HiddenFor(m => Model.Cart[i].WedstrijdId)
                 <tr>
                     <td>
-                        @Html.LabelFor(m => Model.Cart[i].ThuisPloeg)
+                        @Html.DisplayFor(m => Model.Cart[i].ThuisPloeg)
                     </td>
                     <td>
-                        @Html.LabelFor(m => Model.Cart[i].BezoekersPloeg)
+                        @Html.DisplayFor(m => Model.Cart[i].BezoekersPloeg)
                     </td>
                     <td>
-                        @Html.LabelFor(m => Model.Cart[i].Stadion)
+                        @Html.DisplayFor(m => Model.Cart[i].Stadion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => Model.Cart[i].Datum)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => Model.Cart[i].Aantal)
                     </td>
                     <td>
                         @{
@@ -59,30 +66,29 @@
                     </td>
 
                     <td>
-                        @Html.ActionLink("Remove from cart", "Delete", "ShoppingCart", new { id = Model.Cart[i].WedstrijdId }, null)
-
+                        <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("Delete", "ShoppingCart", new { id = Model.Cart[i].WedstrijdId })'"> Verwijder uit kar</button>
                     </td>
                 </tr>
 
                             } @* End For *@
-
                             <tr>
-                                <td>
+                                <th>
+                                    Total
+                                </th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th id="cart-total">
+                                    @total
+                                </th>
+                                <th>
                                     <div class="form-group">
                                         <div class="col-md-offset-2 col-md-10">
                                             <input type="submit" value="Checkout" class="btn btn-default" />
                                         </div>
                                     </div>
-
-                            <tr>
-                                <td>
-                                    Total
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td id="cart-total">
-                                    @total
-                                </td>
+                                </th>
                             </tr>
 
 
@@ -91,6 +97,6 @@
                                 }
                             }
                             else
-                            { @Html.Raw("Your shoppingcart is empty at the moment")  }
+                            { @Html.Raw("Uw winkelkar is momenteel leeg")  }
 
-@Html.ActionLink("Continue", "index", "beer")
+@Html.ActionLink("Keer terug", "index", "Wedstrijd")

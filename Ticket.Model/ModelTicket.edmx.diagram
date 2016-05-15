@@ -6,18 +6,18 @@
     <edmx:Diagrams>
       <Diagram DiagramId="3258e4359f3246e5beb4a1c205a4e6ec" Name="Diagram1">
         <EntityTypeShape EntityType="TicketModel.Abonnement" Width="1.5" PointX="3.5" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="TicketModel.AspNetRoles" Width="1.5" PointX="6.125" PointY="17.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="TicketModel.AspNetUserClaims" Width="1.5" PointX="1.625" PointY="13.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="TicketModel.AspNetUserLogins" Width="1.5" PointX="3.625" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TicketModel.AspNetRoles" Width="1.5" PointX="6.25" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TicketModel.AspNetUserClaims" Width="1.5" PointX="1.125" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TicketModel.AspNetUserLogins" Width="1.5" PointX="0.875" PointY="16" IsExpanded="true" />
         <EntityTypeShape EntityType="TicketModel.AspNetUsers" Width="1.5" PointX="6.125" PointY="8.625" IsExpanded="true" />
         <EntityTypeShape EntityType="TicketModel.Clubs" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="TicketModel.Plaats" Width="1.5" PointX="12.375" PointY="9.25" IsExpanded="true" />
         <EntityTypeShape EntityType="TicketModel.Seizoen" Width="1.5" PointX="0.875" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TicketModel.Stadion" Width="1.5" PointX="12.75" PointY="4.125" IsExpanded="true" />
         <EntityTypeShape EntityType="TicketModel.Tickets" Width="1.5" PointX="9.5" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TicketModel.Vak" Width="1.5" PointX="12.25" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TicketModel.Vak" Width="1.5" PointX="15.625" PointY="10" IsExpanded="true" />
         <EntityTypeShape EntityType="TicketModel.Wedstrijd" Width="1.5" PointX="9.5" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="TicketModel.AspNetUserRoles" Width="1.5" PointX="6" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TicketModel.AspNetUserRoles" Width="1.5" PointX="9" PointY="12.125" IsExpanded="true" />
         <AssociationConnector Association="TicketModel.FKAbonnement271256" ManuallyRouted="false" />
         <AssociationConnector Association="TicketModel.FKAbonnement465404" ManuallyRouted="false" />
         <AssociationConnector Association="TicketModel.FKAbonnement949791" ManuallyRouted="false" />
@@ -32,6 +32,12 @@
         <AssociationConnector Association="TicketModel.FKTickets327836" ManuallyRouted="false" />
         <AssociationConnector Association="TicketModel.FKWedstrijd63892" ManuallyRouted="false" />
         <AssociationConnector Association="TicketModel.FKTickets280003" ManuallyRouted="false" />
+        <AssociationConnector Association="TicketModel.FKAbonnement945192" ManuallyRouted="true" >
+          <ConnectorPoint PointX="13.197822474848843" PointY="11.9994921875" />
+          <ConnectorPoint PointX="13.197822474848843" PointY="16.485006510416667" />
+          <ConnectorPoint PointX="4.0699998419128178" PointY="16.485006510416667" />
+          <ConnectorPoint PointX="4.0699998419128178" PointY="11.9994921875" />
+        </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

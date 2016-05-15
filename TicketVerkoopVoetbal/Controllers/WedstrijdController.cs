@@ -64,8 +64,7 @@ namespace TicketVerkoopVoetbal.Controllers
                 new SelectList(stadionService.All(), "id", "naam");
             return View();
         }
-        // TODO: datepicker layout niet optimaal
-        // TODO: Controle of de ploegen gelijk zijn
+
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {

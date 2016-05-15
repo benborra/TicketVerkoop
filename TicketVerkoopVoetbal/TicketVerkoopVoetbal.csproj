@@ -225,7 +225,6 @@
     <Compile Include="Controllers\ShoppingcartController.cs" />
     <Compile Include="Controllers\StadionController.cs" />
     <Compile Include="Controllers\WedstrijdController.cs" />
-    <Compile Include="Controllers\WinkelwagenController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -458,7 +457,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Views\Winkelwagen\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Ben\Documents\GithubVisualStudio\TicketVerkoop\Ticket.Model\ModelTicket.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.Model\ModelTicket.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
