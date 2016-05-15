@@ -9,7 +9,7 @@ using Ticket.Model;
 
 namespace Ticket.Service
 {
-    class SeizoenService
+   public class SeizoenService
     {
         private SeizoenDAO seizoenDao;
 

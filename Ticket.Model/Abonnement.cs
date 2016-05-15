@@ -18,9 +18,11 @@ namespace Ticket.Model
         public int Seizoenid { get; set; }
         public int Clubsid { get; set; }
         public string Persoonid { get; set; }
+        public int PlaatsId { get; set; }
     
         public virtual AspNetUsers AspNetUsers { get; set; }
         public virtual Clubs Clubs { get; set; }
         public virtual Seizoen Seizoen { get; set; }
+        public virtual Plaats Plaats { get; set; }
     }
 }

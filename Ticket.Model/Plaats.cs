@@ -18,6 +18,7 @@ namespace Ticket.Model
         public Plaats()
         {
             this.Tickets = new HashSet<Tickets>();
+            this.Abonnement = new HashSet<Abonnement>();
         }
     
         public int id { get; set; }
@@ -30,5 +31,7 @@ namespace Ticket.Model
         public virtual Stadion Stadion { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tickets> Tickets { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Abonnement> Abonnement { get; set; }
     }
 }

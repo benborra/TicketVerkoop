@@ -23,7 +23,8 @@ namespace Ticket.Model
         public int id { get; set; }
         public int jaar { get; set; }
         public float prijs { get; set; }
-    
+        public string seizoenString { get { return jaar + "-" + ++jaar; } }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Abonnement> Abonnement { get; set; }
     }

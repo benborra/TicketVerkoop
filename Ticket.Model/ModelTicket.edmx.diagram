@@ -32,6 +32,7 @@
         <AssociationConnector Association="TicketModel.FKTickets327836" ManuallyRouted="false" />
         <AssociationConnector Association="TicketModel.FKWedstrijd63892" ManuallyRouted="false" />
         <AssociationConnector Association="TicketModel.FKTickets280003" ManuallyRouted="false" />
+        <AssociationConnector Association="TicketModel.FKAbonnement945192" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
