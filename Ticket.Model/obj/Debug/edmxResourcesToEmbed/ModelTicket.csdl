@@ -115,7 +115,7 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="barcode" Type="Int32" Nullable="false" />
+    <Property Name="barcode" Type="Int64" Nullable="false" />
     <Property Name="Wedstrijdid" Type="Int32" Nullable="false" />
     <Property Name="Persoonid" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="plaatsId" Type="Int32" Nullable="false" />
@@ -123,6 +123,7 @@
     <NavigationProperty Name="Plaats" Relationship="Self.FKTickets327836" FromRole="Tickets" ToRole="Plaats" />
     <NavigationProperty Name="Wedstrijd" Relationship="Self.FKTickets280003" FromRole="Tickets" ToRole="Wedstrijd" />
     <Property Name="Betaald" Type="Boolean" Nullable="false" />
+    <Property Name="Geactiveerd" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="Vak">
     <Key>

@@ -10,104 +10,143 @@
 {
     using (Html.BeginForm("Payment", "ShoppingCart"))
     {
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.Label("Thuis ploeg")
-                </th>
-                <th>
-                    @Html.Label("Bezoekers ploeg")
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Cart[0].Stadion)
-                </th>
-                <th>
-                    @Html.Label("Vak")
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Cart[0].Datum)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Cart[0].Aantal)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Cart[0].Prijs)
-                </th>
-                <th>
-                    Subtotaal
-                </th>
-                <th></th>
-            </tr>
-            @{ float total = 0;}
+        if (TempData["Tickets"] != null)
+        {
+            <div class="alert alert-danger">
+                <strong>Opgelet!</strong> U hebt het maximum aantal tickets voor een wedstrijd overschreden. <br />
+
+                @{
+                    int tick = Convert.ToInt16(TempData["Tickets"]);
+                    int max = Convert.ToInt16(System.Configuration.ConfigurationManager.AppSettings["maxTicket"]);
+                    int t = max - tick;
+                }
+
+                Wij hebben een maximum van @max tickets per persoon en u hebt voor deze wedstrijd reeds @tick tickets gekocht. <br />
+                U kan nog maximum @t tickets kopen voor de wedstrijd van @TempData["Thuis"] tegen @TempData["Bezoek"]
+                
+                @{
+                    TempData["Tickets"] = null;
+                    TempData["Thuis"] = null;
+                    TempData["Bezoek"] = null;
+                }
+
+            </div>
+                    } // End if (TempData["Tickets"] != null) ==> Maximum tickets overschreden
+
+
+                    if (TempData["Tickets2"] != null)
+                    {
+                        <div class="alert alert-danger">
+                            <strong>Opgelet!</strong> De wedstrijd van @TempData["Thuis"] tegen @TempData["Bezoek"] is uitverkocht en kan u dus geen tickets meer voor kopen voor deze plaats. <br />
+                            Gelieve deze wedstrijd te verwijderen uit uw winkelwagen en een ander vak te kiezen.
+                            
+                            @{
+                                TempData["Tickets2"] = null;
+                                TempData["Thuis"] = null;
+                                TempData["Bezoek"] = null;
+                            }
+
+                        </div>
+                                } // End if (TempData["Tickets2"] != null) ==> Vak uitverkocht
+
+                    <table class="table">
+                        <tr>
+                            <th>
+                                @Html.Label("Thuis ploeg")
+                            </th>
+                            <th>
+                                @Html.Label("Bezoekers ploeg")
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Cart[0].Stadion)
+                            </th>
+                            <th>
+                                @Html.Label("Vak")
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Cart[0].Datum)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Cart[0].Aantal)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Cart[0].Prijs)
+                            </th>
+                            <th>
+                                Subtotaal
+                            </th>
+                            <th></th>
+                        </tr>
+                        @{ float total = 0;}
 
 
 
-            @for (var i = 0; i < Model.Cart.Count; i++)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(m => Model.Cart[i].ThuisPloegNaam)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(m => Model.Cart[i].BezoekersPloegNaam)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(m => Model.Cart[i].StadionNaam)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(m => Model.Cart[i].PlaatsNaam)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(m => Model.Cart[i].Datum)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(m => Model.Cart[i].Aantal)
-                    </td>
-                    <td>
-                        @string.Format("{0:n2}", Model.Cart[i].Prijs)
-                    </td>
-                    <td>
-                        @{
-                            var subtotaal = Model.Cart[i].Prijs * Model.Cart[i].Aantal;
-                            total += subtotaal;
-
-                        }
-                        @string.Format("{0:n2}", subtotaal)
-                    </td>
-
-                    <td>
-                        <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("Delete", "ShoppingCart", new { id = Model.Cart[i].WedstrijdId })'">Verwijderen</button>
-                    </td>
-                </tr>
-
-                            } @* End For *@
+                        @for (var i = 0; i < Model.Cart.Count; i++)
+                        {
                             <tr>
-                                <th>
-                                </th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th>Total</th>
-                                <th id="cart-total">
-                                    @string.Format("{0:n2}", total)
-                                </th>
-                                <th>
-                                    <div class="form-group">
-                                        <div class="col-md-offset-2 col-md-10">
-                                            <input type="submit" value="Checkout" class="btn btn-default" onclick="location.href='@Url.Action("Payment", "ShoppingCart")'"/>
-                                        </div>
-                                    </div>
-                                </th>
+                                <td>
+                                    @Html.DisplayFor(m => Model.Cart[i].ThuisPloegNaam)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(m => Model.Cart[i].BezoekersPloegNaam)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(m => Model.Cart[i].StadionNaam)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(m => Model.Cart[i].PlaatsNaam)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(m => Model.Cart[i].Datum)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(m => Model.Cart[i].Aantal)
+                                </td>
+                                <td>
+                                    @string.Format("{0:n2}", Model.Cart[i].Prijs)
+                                </td>
+                                <td>
+                                    @{
+                                        var subtotaal = Model.Cart[i].Prijs * Model.Cart[i].Aantal;
+                                        total += subtotaal;
+
+                                    }
+                                    @string.Format("{0:n2}", subtotaal)
+                                </td>
+
+                                <td>
+                                    <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("Delete", "ShoppingCart", new { id = Model.Cart[i].WedstrijdId })'">Verwijderen</button>
+                                </td>
                             </tr>
 
+                                        } @* End For *@
+                                        <tr>
+                                            <th>
+                                            </th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th>Total</th>
+                                            <th id="cart-total">
+                                                @string.Format("{0:n2}", total)
+                                            </th>
+                                            <th>
+                                                <div class="form-group">
+                                                    <div class="col-md-offset-2 col-md-10">
+                                                        <input type="submit" value="Checkout" class="btn btn-default" onclick="location.href='@Url.Action("Payment", "ShoppingCart")'" />
+                                                    </div>
+                                                </div>
+                                            </th>
+                                        </tr>
 
 
-                        </table>
-                                }
-                            }
-                            else
-                            { @Html.Raw("Uw winkelkar is momenteel leeg")  }
+
+                                    </table>
+                                            }
+                                        }
+                                        else
+                                        { @Html.Raw("Uw winkelkar is momenteel leeg")  }
 
 @Html.ActionLink("Keer terug", "index", "Wedstrijd")

@@ -15,11 +15,12 @@ namespace Ticket.Model
     public partial class Tickets
     {
         public int id { get; set; }
-        public int barcode { get; set; }
+        public long barcode { get; set; }
         public int Wedstrijdid { get; set; }
         public string Persoonid { get; set; }
         public int plaatsId { get; set; }
         public bool Betaald { get; set; }
+        public bool Geactiveerd { get; set; }
     
         public virtual AspNetUsers AspNetUsers { get; set; }
         public virtual Plaats Plaats { get; set; }

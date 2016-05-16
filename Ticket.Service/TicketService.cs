@@ -27,14 +27,14 @@ namespace Ticket.Service
             return ticketDao.GetById(id);
         }
         // TE TESTEN
-        public IEnumerable<Tickets> getTicketsperPersoon(int persoonId)
+        public IEnumerable<Tickets> getTicketsperPersoon(string persoonId)
         {
             return ticketDao.getTicketsperPersoon(persoonId);
         }
         // TE TESTEN
-        public IEnumerable<Tickets> GetTicketsPerPersoonPerWedstrijd(int persId, Wedstrijd wedstrijd)
+        public IEnumerable<Tickets> GetTicketsPerPersoonPerWedstrijd(string persId, int id)
         {
-            return ticketDao.GetTicketsPerPersoonPerWedstrijd(persId, wedstrijd);
+            return ticketDao.GetTicketsPerPersoonPerWedstrijd(persId, id);
         }
 
         public IEnumerable<Tickets> getTicketsPerWedstrijd(int id)
@@ -48,6 +48,11 @@ namespace Ticket.Service
         public void Add(Tickets ticket)
         {
              ticketDao.Add(ticket);
+        }
+
+        public int ZoekTicketBarcode(long barcode)
+        {
+            return ticketDao.ZoekTicketsBarcode(barcode);
         }
     }
 }
