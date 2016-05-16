@@ -455,6 +455,7 @@
     <Content Include="Views\Wedstrijd\New.cshtml" />
     <Content Include="Views\Shoppingcart\Index.cshtml" />
     <Content Include="Views\Abonnement\Index.cshtml" />
+    <Content Include="Views\Shoppingcart\Payment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

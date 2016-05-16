@@ -11,11 +11,15 @@ namespace TicketVerkoopVoetbal.Models
     {
         public int WedstrijdId { get; set; }
         public int ThuisPloeg { get; set; }
+        public string ThuisPloegNaam{ get; set; }
         public int BezoekersPloeg { get; set; }
+        public string BezoekersPloegNaam { get; set; }
         public int Stadion { get; set; }
+        public string StadionNaam { get; set; }
         public System.DateTime Datum { get; set; }
         public int Aantal { get; set; }
         public float Prijs { get; set; }
         public int Plaats { get; set; }
+        public string PlaatsNaam { get; set; }
     }
 }

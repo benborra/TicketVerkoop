@@ -37,11 +37,11 @@ namespace Ticket.Service
             return ticketDao.GetTicketsPerPersoonPerWedstrijd(persId, wedstrijd);
         }
 
-        public IEnumerable<Tickets> getTicketsPerWedstrijd(Wedstrijd wedstrijd)
+        public IEnumerable<Tickets> getTicketsPerWedstrijd(int id)
         {
-            return ticketDao.getTicketsPerWedstrijd(wedstrijd);
+            return ticketDao.getTicketsPerWedstrijd(id);
         }
-        public int getTicketsPerWedstrijdPerVak(Wedstrijd w, int PlaatsID)
+        public int getTicketsPerWedstrijdPerVak(int w, int PlaatsID)
         {
             return ticketDao.getTicketsPerWedstrijdPerVak(w, PlaatsID);
         } 

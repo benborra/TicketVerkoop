@@ -17,5 +17,13 @@ namespace Ticket.DAO
                 return db.Plaats.Where(p => p.id == id).First();
             }
         }
+
+        public Plaats GetPlaatsPerVakAndStadion(int vak, int stadion)
+        {
+            using (var db = new TicketEntities())
+            {
+                return db.Plaats.Where(p => p.Vak.id == vak).Where(pl => pl.Stadion.id == stadion).First();
+            }
+        }
     }
 }

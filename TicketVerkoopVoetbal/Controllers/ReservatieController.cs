@@ -52,28 +52,38 @@ namespace TicketVerkoopVoetbal.Controllers
         [Authorize]
         public ActionResult Selected(int? id, FormCollection collection)
         {
+            // todo: Controle toevoegen of nog tickets beschikbaar zijn
+
             int aantalTickets = Convert.ToInt32(collection["AantalTickets"]);
 
             if (id != null && aantalTickets >= 1 && aantalTickets <= 10)
             {
-                int plaatsId = Convert.ToInt32(collection["vakNummer"]);
-
-                wedstrijdService = new WedstrijdService();
-                Wedstrijd wedstrijd = wedstrijdService.Get(Convert.ToInt16(id));
                 Plaats plaats = new Plaats();
                 PlaatsService plaatService = new PlaatsService();
-                plaats = plaatService.GetPlaats(plaatsId);
-                
+                StadionService stadionService = new StadionService();
+                ClubService clubService = new ClubService();
+                wedstrijdService = new WedstrijdService();
+                vakService = new VakService();
+
+                int VakId = Convert.ToInt32(collection["vakNummer"]);
+
+                Wedstrijd wedstrijd = wedstrijdService.Get(Convert.ToInt16(id));
+                plaats = plaatService.GetPlaatsPerVakAndStadion(Convert.ToInt32(collection["vakNummer"]), wedstrijd.stadionId);
+
                 CartViewModel item = new CartViewModel
                 {
                     WedstrijdId = wedstrijd.id,
                     ThuisPloeg = wedstrijd.thuisPloeg,
+                    ThuisPloegNaam = clubService.Get(wedstrijd.thuisPloeg).naam,
                     BezoekersPloeg = wedstrijd.bezoekersPloeg,
+                    BezoekersPloegNaam = clubService.Get(wedstrijd.bezoekersPloeg).naam,
                     Stadion = wedstrijd.stadionId,
+                    StadionNaam = stadionService.Get(wedstrijd.stadionId).naam,
                     Datum = wedstrijd.Date,
                     Aantal = Convert.ToInt32(collection["AantalTickets"]),
                     Prijs = plaats.prijs,
-                    Plaats = Convert.ToInt32(collection["vakNummer"])
+                    Plaats = Convert.ToInt32(collection["vakNummer"]),
+                    PlaatsNaam = vakService.getVak(plaats.Vakid).naam
                 };
 
                 ShoppingCartViewModel shopping;

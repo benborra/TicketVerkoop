@@ -10,18 +10,6 @@ C:\Users\Terror Byte\Desktop\TicketVerkoop-LastWorking\Ticket.DAO\bin\Debug\Tick
 C:\Users\Terror Byte\Desktop\TicketVerkoop-LastWorking\Ticket.DAO\bin\Debug\Ticket.Model.pdb
 C:\Users\Terror Byte\Desktop\TicketVerkoop-LastWorking\Ticket.DAO\bin\Debug\EntityFramework.xml
 C:\Users\Terror Byte\Desktop\TicketVerkoop-LastWorking\Ticket.DAO\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.DAO\bin\Debug\Ticket.DAO.dll.config
-C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.DAO\bin\Debug\Ticket.DAO.dll
-C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.DAO\bin\Debug\Ticket.DAO.pdb
-C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.DAO\bin\Debug\EntityFramework.dll
-C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.DAO\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.DAO\bin\Debug\Ticket.Model.dll
-C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.DAO\bin\Debug\Ticket.Model.pdb
-C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.DAO\bin\Debug\EntityFramework.xml
-C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.DAO\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.DAO\obj\Debug\Ticket.DAO.csprojResolveAssemblyReference.cache
-C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.DAO\obj\Debug\Ticket.DAO.dll
-C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.DAO\obj\Debug\Ticket.DAO.pdb
 E:\School\ASPDOTNET\Ticket.DAO\bin\Debug\Ticket.DAO.dll.config
 E:\School\ASPDOTNET\Ticket.DAO\bin\Debug\Ticket.DAO.dll
 E:\School\ASPDOTNET\Ticket.DAO\bin\Debug\Ticket.DAO.pdb
@@ -70,3 +58,15 @@ C:\Users\Arno\School\2015-1016\Webprogrammeren\EINDOPDRACHT MF'ER\Ticket.DAO\bin
 C:\Users\Arno\School\2015-1016\Webprogrammeren\EINDOPDRACHT MF'ER\Ticket.DAO\obj\Debug\Ticket.DAO.csprojResolveAssemblyReference.cache
 C:\Users\Arno\School\2015-1016\Webprogrammeren\EINDOPDRACHT MF'ER\Ticket.DAO\obj\Debug\Ticket.DAO.dll
 C:\Users\Arno\School\2015-1016\Webprogrammeren\EINDOPDRACHT MF'ER\Ticket.DAO\obj\Debug\Ticket.DAO.pdb
+C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.DAO\bin\Debug\Ticket.DAO.dll.config
+C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.DAO\bin\Debug\Ticket.DAO.dll
+C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.DAO\bin\Debug\Ticket.DAO.pdb
+C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.DAO\bin\Debug\EntityFramework.dll
+C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.DAO\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.DAO\bin\Debug\Ticket.Model.dll
+C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.DAO\bin\Debug\Ticket.Model.pdb
+C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.DAO\bin\Debug\EntityFramework.xml
+C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.DAO\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.DAO\obj\Debug\Ticket.DAO.csprojResolveAssemblyReference.cache
+C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.DAO\obj\Debug\Ticket.DAO.dll
+C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.DAO\obj\Debug\Ticket.DAO.pdb

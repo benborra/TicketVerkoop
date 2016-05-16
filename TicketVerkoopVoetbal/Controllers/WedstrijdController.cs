@@ -43,7 +43,7 @@ namespace TicketVerkoopVoetbal.Controllers
         {
             Wedstrijd w = wedstrijdService.Get(id);
             //aantal aanwezigen
-            int numberOfTickets = ticketService.getTicketsPerWedstrijd(w).Count();
+            int numberOfTickets = ticketService.getTicketsPerWedstrijd(id).Count();
             ViewBag.AantalTickets = Convert.ToString(numberOfTickets);
             // meegeven hoeveel tickets er nog te verkrijgen zijn
             Stadion stad = stadionService.Get(w.stadionId);

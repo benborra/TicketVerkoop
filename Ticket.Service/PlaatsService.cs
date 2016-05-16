@@ -24,5 +24,10 @@ namespace Ticket.Service
             return plaatsDao.GetPlaats(id);
         }
 
+        public Plaats GetPlaatsPerVakAndStadion(int vak, int stadion)
+        {
+            return plaatsDao.GetPlaatsPerVakAndStadion(vak, stadion);
+        }
+
     }
 }
