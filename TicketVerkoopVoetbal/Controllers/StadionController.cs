@@ -59,8 +59,6 @@ namespace TicketVerkoopVoetbal.Controllers
         public ActionResult Details(int? id)
         {
             Stadion s = stadionService.Get(Convert.ToInt32(id));
-            // opzoeken van welk team dit stadion is
-            // om mee te geven 
             
             return View(s);
         }

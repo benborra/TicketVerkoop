@@ -36,7 +36,7 @@ namespace Ticket.DAO
             {
                 // returned eerste gevonden stadion met dit id, 
                 // to test
-                return db.Stadion.Where(s => s.id == id).First();
+                return db.Stadion.Where(s => s.id == id).Include(q => q.Clubs).FirstOrDefault();
             }
         }
 

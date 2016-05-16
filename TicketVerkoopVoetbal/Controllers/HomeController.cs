@@ -10,6 +10,8 @@ namespace TicketVerkoopVoetbal.Controllers
     {
         public ActionResult Index()
         {
+            // eerste 5 weedstrijden ophalen
+            
             return View();
         }
 

@@ -27,7 +27,10 @@ namespace Ticket.Service
         {
             return clubDao.Get(id);
         }
-
+        public Clubs GetFromStadion(int id)
+        {
+            return clubDao.GetFromStadion(id);
+        }
         public void Update(Clubs entity)
         {
             clubDao.Update(entity);

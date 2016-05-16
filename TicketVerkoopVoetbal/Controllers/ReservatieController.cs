@@ -124,7 +124,6 @@ namespace TicketVerkoopVoetbal.Controllers
                     newlist.Cart.Add(cartview);
                 }
             }
-
             Session["ShoppingCart"] = newlist;
             return RedirectToAction("index", "ShoppingCart");
         }
