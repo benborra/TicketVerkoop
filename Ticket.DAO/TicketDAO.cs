@@ -67,6 +67,7 @@ namespace Ticket.DAO
         {
             using (var db = new TicketEntities())
             {
+                // TODO : verwijder of verander Unique Constraint key in DB
                 db.Tickets.Add(ticket);
                 db.SaveChanges();
             }

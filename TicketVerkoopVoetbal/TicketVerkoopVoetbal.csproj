@@ -278,6 +278,9 @@
     <Content Include="images\clubs\StandardLuik.jpg" />
     <Content Include="images\clubs\URLaLouvièreCentre.jpg" />
     <Content Include="images\clubs\WSBruxelles.jpg" />
+    <Content Include="images\reclameDuivels.jpg" />
+    <Content Include="images\reclameEK.jpg" />
+    <Content Include="images\reclameUnibet.jpg" />
     <Content Include="images\shared\ball.svg" />
     <Content Include="images\shared\shop_cart.png" />
     <Content Include="images\shared\veld.png" />
@@ -440,7 +443,6 @@
     <Content Include="Views\Shared\_Nav.cshtml" />
     <Content Include="Views\Club\Index.cshtml" />
     <Content Include="Views\Stadion\Create.cshtml" />
-    <Content Include="Views\Stadion\Details.cshtml" />
     <Content Include="Views\Club\Details.cshtml" />
     <Content Include="Views\Club\Edit.cshtml" />
     <Content Include="Views\Club\Delete.cshtml" />
@@ -456,6 +458,7 @@
     <Content Include="Views\Shoppingcart\Index.cshtml" />
     <Content Include="Views\Abonnement\Index.cshtml" />
     <Content Include="Views\Shoppingcart\Payment.cshtml" />
+    <Content Include="Views\Stadion\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -37,7 +37,7 @@ namespace TicketVerkoopVoetbal.Controllers
             return View();
         }
 
-
+        [Authorize]
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {

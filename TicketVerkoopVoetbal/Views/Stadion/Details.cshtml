@@ -6,22 +6,12 @@
 
 <h2>Details</h2>
 
-<div>
-    <h4>@Html.DisplayNameFor(model => Model.naam)</h4>
+<div> 
+    <h4>@Html.DisplayFor(Model =>Model.naam)</h4>
     <hr />
-    @*  IMAGE TONEN *@
-    
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.naam)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.naam)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.adres)
+            @Html.Label("Adres: ")
         </dt>
 
         <dd>
@@ -31,15 +21,10 @@
     </dl>
 </div>
 <p>
-
+@if (ViewContext.HttpContext.User.IsInRole("Admin"))
+{
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id })
+    @Html.Label("|")
+}
     @Html.ActionLink("Back to List", "Index")
-
-    @if (ViewContext.HttpContext.User.IsInRole("Admin"))
-    {
-
-        <text> | </text>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.id })
-        <text> | </text>
-        @Html.ActionLink("Delete", "Delete", new { id = Model.id })
-    }
 </p>

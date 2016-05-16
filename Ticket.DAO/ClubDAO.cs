@@ -26,6 +26,13 @@ namespace Ticket.DAO
                 return db.Clubs.Where(c => c.id == id).Include(s => s.Stadion).Include(w => w.Wedstrijd).First();
             }
         }
+        public Clubs GetFromStadion(int id)
+        {
+            using (var db = new TicketEntities())
+            {
+                return db.Clubs.Where(c => c.Stadionid == id).Include(s => s.Stadion).First();
+            }
+        }
 
         public void Add(Clubs club)
         {
