@@ -103,6 +103,7 @@
     <EntitySetMapping Name="Tickets">
       <EntityTypeMapping TypeName="TicketModel.Tickets">
         <MappingFragment StoreEntitySet="Tickets">
+          <ScalarProperty Name="Geactiveerd" ColumnName="Geactiveerd" />
           <ScalarProperty Name="Betaald" ColumnName="Betaald" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="barcode" ColumnName="barcode" />

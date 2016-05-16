@@ -110,11 +110,12 @@ warning 6002: The table/view 'DB_9FC047_ASPVoe.dbo.AspNetUserRoles' does not hav
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="barcode" Type="int" Nullable="false" />
+          <Property Name="barcode" Type="bigint" Nullable="false" />
           <Property Name="Wedstrijdid" Type="int" Nullable="false" />
           <Property Name="Persoonid" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="plaatsId" Type="int" Nullable="false" />
           <Property Name="Betaald" Type="bit" Nullable="false" />
+          <Property Name="Geactiveerd" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Vak">
           <Key>
@@ -514,7 +515,7 @@ warning 6002: The table/view 'DB_9FC047_ASPVoe.dbo.AspNetUserRoles' does not hav
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="barcode" Type="Int32" Nullable="false" />
+          <Property Name="barcode" Type="Int64" Nullable="false" />
           <Property Name="Wedstrijdid" Type="Int32" Nullable="false" />
           <Property Name="Persoonid" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="plaatsId" Type="Int32" Nullable="false" />
@@ -522,6 +523,7 @@ warning 6002: The table/view 'DB_9FC047_ASPVoe.dbo.AspNetUserRoles' does not hav
           <NavigationProperty Name="Plaats" Relationship="Self.FKTickets327836" FromRole="Tickets" ToRole="Plaats" />
           <NavigationProperty Name="Wedstrijd" Relationship="Self.FKTickets280003" FromRole="Tickets" ToRole="Wedstrijd" />
           <Property Name="Betaald" Type="Boolean" Nullable="false" />
+          <Property Name="Geactiveerd" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Vak">
           <Key>
@@ -920,6 +922,7 @@ warning 6002: The table/view 'DB_9FC047_ASPVoe.dbo.AspNetUserRoles' does not hav
           <EntitySetMapping Name="Tickets">
             <EntityTypeMapping TypeName="TicketModel.Tickets">
               <MappingFragment StoreEntitySet="Tickets">
+                <ScalarProperty Name="Geactiveerd" ColumnName="Geactiveerd" />
                 <ScalarProperty Name="Betaald" ColumnName="Betaald" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="barcode" ColumnName="barcode" />

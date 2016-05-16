@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -52,43 +53,77 @@ namespace TicketVerkoopVoetbal.Controllers
         {
             UserService userService = new UserService();
             var user = userService.Get(User.Identity.Name);
+            int maxTickets = Convert.ToInt32(ConfigurationManager.AppSettings["maxTicket"]);
+
 
             //try
             //{
-                ShoppingCartViewModel shopping = (ShoppingCartViewModel)Session["ShoppingCart"];
-                CartViewModel cart = new CartViewModel();
+            ShoppingCartViewModel shopping = (ShoppingCartViewModel)Session["ShoppingCart"];
+            CartViewModel cart = new CartViewModel();
+            WedstrijdService wedstrijdService = new WedstrijdService();
+            PlaatsService plaatsService = new PlaatsService();
+            StadionService stadionService = new StadionService();
+            TicketService ticketService = new TicketService();
+            List<int> tickets = new List<int>();
+            Tickets ticket = new Tickets();
 
-                WedstrijdService wedstrijdService = new WedstrijdService();
-                PlaatsService plaatsService = new PlaatsService();
-                StadionService stadionService = new StadionService();
-                TicketService ticketService = new TicketService();
-                List<int> tickets = new List<int>();
-                Tickets ticket = new Tickets();
+            for (int i = 0; i < shopping.Cart.Count; i++)
+            {
+                cart = shopping.Cart[i];
+                int ticketsBeschikbaar = plaatsService.GetPlaats(cart.Plaats).aantal - ticketService.getTicketsPerWedstrijdPerVak(cart.WedstrijdId, cart.Plaats);
+                int countTicket = ticketService.GetTicketsPerPersoonPerWedstrijd(user.Id, cart.WedstrijdId).Count();
 
-                for (int i = 0; i < shopping.Cart.Count; i++)
+                if (ticketsBeschikbaar >= cart.Aantal)
                 {
-                    cart = shopping.Cart[i];
-                    int ticketsBeschikbaar = plaatsService.GetPlaats(cart.Plaats).aantal - ticketService.getTicketsPerWedstrijdPerVak(cart.WedstrijdId, cart.Plaats);
-
-                    if (ticketsBeschikbaar >= cart.Aantal)
+                    if ((countTicket + cart.Aantal) <= maxTickets)
                     {
-                        ticket.Persoonid = user.Id;
-                        ticket.Wedstrijdid = cart.WedstrijdId;
-                        ticket.plaatsId = cart.Plaats;
-                        ticket.Betaald = true;
-                    
-                        // Ticket toevoegen aan db
-                        ticketService.Add(ticket);
+                        for (int j = 0; j < cart.Aantal; j++)
+                        {
+                            ticket.Persoonid = user.Id;
+                            ticket.Wedstrijdid = cart.WedstrijdId;
+                            ticket.plaatsId = cart.Plaats;
+                            ticket.Betaald = true;
 
-                        // Ticket ID in lijst stoppen zodanig deze later terug opgehaald kan worden om aan mail toe te voegen
-                        tickets.Add(ticket.id);
+                            Boolean unique = false;
+                            long barcode = -1;
+
+                            while (!unique)
+                            {
+                                Random r = new Random();
+                                int bar = r.Next(100000000, 999999999);
+
+                                barcode = Convert.ToInt64(bar.ToString() + ticket.Wedstrijdid.ToString() + ticket.plaatsId.ToString());
+
+                                if (ticketService.ZoekTicketBarcode(barcode) == 0) unique = true;
+                            }
+
+                            ticket.barcode = barcode;
+
+                            // Ticket toevoegen aan db
+                            ticketService.Add(ticket);
+
+                            // Ticket ID in lijst stoppen zodanig deze later terug opgehaald kan worden om aan mail toe te voegen
+                            tickets.Add(ticket.id);
+                        }
                     }
                     else
                     {
-                        // todo: Wanneer laatste moment iets uitverkocht graakt terwijl bestelling afgerond wordt
+                        TempData["Tickets"] = countTicket;
+                        TempData["Thuis"] = cart.ThuisPloegNaam;
+                        TempData["Bezoek"] = cart.BezoekersPloegNaam;
                         return RedirectToAction("index", "ShoppingCart");
                     }
                 }
+                else
+                {
+                    
+
+                    TempData["Tickets2"] = countTicket;
+                    TempData["Thuis"] = cart.ThuisPloegNaam;
+                    TempData["Bezoek"] = cart.BezoekersPloegNaam;
+                    return RedirectToAction("index", "ShoppingCart");
+                }
+            }
             //}
             //catch (Exception ex)
             //{

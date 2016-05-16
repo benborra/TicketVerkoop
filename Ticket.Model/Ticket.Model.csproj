@@ -87,6 +87,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelTicket.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ModelTicket1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelTicket.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Plaats.cs">
       <DependentUpon>ModelTicket.tt</DependentUpon>
     </Compile>
@@ -110,7 +115,7 @@
   <ItemGroup>
     <EntityDeploy Include="ModelTicket.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelTicket.Designer.cs</LastGenOutput>
+      <LastGenOutput>ModelTicket1.Designer.cs</LastGenOutput>
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>

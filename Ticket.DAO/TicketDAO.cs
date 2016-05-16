@@ -28,20 +28,19 @@ namespace Ticket.DAO
             }
         }
         // TE TESTEN
-        public IEnumerable<Tickets> getTicketsperPersoon(int persoonId)
+        public IEnumerable<Tickets> getTicketsperPersoon(string persoonId)
         {
             using (var db = new TicketEntities())
             {
-                return db.Tickets.Where(t => Convert.ToInt32(t.Persoonid) == persoonId).ToList();
+                return db.Tickets.Where(t => t.Persoonid.Equals(persoonId)).ToList();
             }
         }
         // TE TESTEN
-        public IEnumerable<Tickets> GetTicketsPerPersoonPerWedstrijd(int persId , Wedstrijd wedstrijd )
+        public IEnumerable<Tickets> GetTicketsPerPersoonPerWedstrijd(string persId , int id)
         {
-            var wedstrijdId = wedstrijd.id;
             using (var db = new TicketEntities())
             {
-                return db.Tickets.Where(t => Convert.ToInt32(t.Persoonid) == persId && t.Wedstrijdid == wedstrijdId).ToList();
+                return db.Tickets.Where(t => t.Persoonid.Equals(persId) && t.Wedstrijdid == id).ToList();
             }
         }
 
@@ -70,6 +69,14 @@ namespace Ticket.DAO
                 // TODO : verwijder of verander Unique Constraint key in DB
                 db.Tickets.Add(ticket);
                 db.SaveChanges();
+            }
+        }
+
+        public int ZoekTicketsBarcode(long barcode)
+        {
+            using (var db = new TicketEntities())
+            {
+                return db.Tickets.Where(t => t.barcode == barcode).Count();
             }
         }
     }

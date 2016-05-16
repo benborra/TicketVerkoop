@@ -105,11 +105,12 @@ warning 6002: The table/view 'DB_9FC047_ASPVoe.dbo.AspNetUserRoles' does not hav
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="barcode" Type="int" Nullable="false" />
+    <Property Name="barcode" Type="bigint" Nullable="false" />
     <Property Name="Wedstrijdid" Type="int" Nullable="false" />
     <Property Name="Persoonid" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="plaatsId" Type="int" Nullable="false" />
     <Property Name="Betaald" Type="bit" Nullable="false" />
+    <Property Name="Geactiveerd" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Vak">
     <Key>
