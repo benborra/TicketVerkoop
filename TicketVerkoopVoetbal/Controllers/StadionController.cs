@@ -33,7 +33,7 @@ namespace TicketVerkoopVoetbal.Controllers
                    new SelectList(stadionService.All(), "naam", "adres");
             return View(stadions);
         }
-
+        [Authorize (Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -65,7 +65,7 @@ namespace TicketVerkoopVoetbal.Controllers
             return View(s);
         }
 
-        [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult UpdateStadion(Stadion stadion)
         {
             if (stadion == null)
@@ -85,14 +85,14 @@ namespace TicketVerkoopVoetbal.Controllers
 
             return RedirectToAction("Index");
         }
-
+        [Authorize(Roles = "Admin")]
         // klikt actionLink
         public ActionResult Create()
         {
             return View();
         }
 
-        [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Add(Stadion stadion)
         {
             stadionService.AddStadion(stadion);

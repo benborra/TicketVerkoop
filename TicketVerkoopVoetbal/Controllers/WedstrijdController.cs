@@ -52,7 +52,7 @@ namespace TicketVerkoopVoetbal.Controllers
 
             return View(w);
         }
-
+        [Authorize(Roles = "Admin")]
         public ActionResult New()
         {
             ViewBag.TPloegen =
@@ -65,7 +65,7 @@ namespace TicketVerkoopVoetbal.Controllers
             return View();
         }
 
-        [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create(FormCollection collection)
         {
 
@@ -82,22 +82,7 @@ namespace TicketVerkoopVoetbal.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpPost]
-        public ActionResult FilterDate(DateTime date)
-        {
-
-            if (date == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ViewBag.WedstrijdDatum =
-                    new SelectList(wedstrijdService.NogTeSpelenWedstrijden(), "Date", "Date");
-            ViewBag.Ploegen =
-                new SelectList(clubService.All(), "id", "naam");
-            var list = wedstrijdService.WedstrijdPerDatum(date);
-            return View(list);
-        }
-
+        // TODO fix diz shat
         [HttpPost]
         public ActionResult FilterPloeg(FormCollection collection)
         {

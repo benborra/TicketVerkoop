@@ -33,6 +33,7 @@ namespace TicketVerkoopVoetbal.Controllers
         }
 
         // GET: Club/Details/5
+        
         public ActionResult Details(int? id)
         {
             if (id == null)

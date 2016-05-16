@@ -278,6 +278,9 @@
     <Content Include="images\clubs\StandardLuik.jpg" />
     <Content Include="images\clubs\URLaLouvièreCentre.jpg" />
     <Content Include="images\clubs\WSBruxelles.jpg" />
+    <Content Include="images\reclameDuivels.jpg" />
+    <Content Include="images\reclameEK.jpg" />
+    <Content Include="images\reclameUnibet.jpg" />
     <Content Include="images\shared\ball.svg" />
     <Content Include="images\shared\shop_cart.png" />
     <Content Include="images\shared\veld.png" />

@@ -76,7 +76,7 @@ namespace TicketVerkoopVoetbal.Controllers
                         ticket.Wedstrijdid = cart.WedstrijdId;
                         ticket.plaatsId = cart.Plaats;
                         ticket.Betaald = true;
-
+                    
                         // Ticket toevoegen aan db
                         ticketService.Add(ticket);
 

@@ -52,7 +52,6 @@ namespace TicketVerkoopVoetbal.Controllers
         [Authorize]
         public ActionResult Selected(int? id, FormCollection collection)
         {
-            // todo: Controle toevoegen of nog tickets beschikbaar zijn
 
             int aantalTickets = Convert.ToInt32(collection["AantalTickets"]);
 
@@ -101,14 +100,34 @@ namespace TicketVerkoopVoetbal.Controllers
 
                 Session["ShoppingCart"] = shopping;
 
-                return RedirectToAction("index","ShoppingCart");
+                return RedirectToAction("index", "ShoppingCart");
             }
 
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         }
+        [HttpPost]
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
 
+            ShoppingCartViewModel shopping = (ShoppingCartViewModel)Session["ShoppingCart"];
+            ShoppingCartViewModel newlist = new ShoppingCartViewModel();
+            newlist.Cart = new List<CartViewModel>();
+            List<CartViewModel> cartList = shopping.Cart;
+            foreach (CartViewModel cartview in cartList)
+            {
+                if (cartview.WedstrijdId != id)
+                {
+                    newlist.Cart.Add(cartview);
+                }
+            }
 
-
+            Session["ShoppingCart"] = newlist;
+            return RedirectToAction("index", "ShoppingCart");
+        }
+        
     }
-    //TODO : annuleer tickets
 }
