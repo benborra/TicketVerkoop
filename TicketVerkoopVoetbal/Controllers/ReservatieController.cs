@@ -88,11 +88,22 @@ namespace TicketVerkoopVoetbal.Controllers
                 ShoppingCartViewModel shopping;
                 if (Session["ShoppingCart"] != null)
                 {
+                    
                     shopping = (ShoppingCartViewModel)Session["ShoppingCart"];
-                    shopping.Cart.Add(item);
+                    if (shopping.Cart != null)
+                    {
+                        shopping.Cart.Add(item);
+                    }
+                    else
+                    {
+                        shopping.Cart = new List<CartViewModel>();
+                        shopping.Cart.Add(item);
+                    }
+
                 }
                 else
                 {
+
                     shopping = new ShoppingCartViewModel();
                     shopping.Cart = new List<CartViewModel>();
                     shopping.Cart.Add(item);

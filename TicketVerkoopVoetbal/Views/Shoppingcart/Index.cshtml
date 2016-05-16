@@ -120,6 +120,28 @@
                             </tr>
 
                                         } @* End For *@
+                        @* Abonnementen If*@
+                        @if ((int)ViewBag.Prijs > 0)
+                        {
+                            <tr>
+                                <td>Abonnement voor:</td>
+                                <td>@Html.Raw((string)ViewBag.Ploeg)</td>
+                                <td></td>
+                                <td>Op plaats:</td>
+                                <td>@Html.Raw((string)ViewBag.Plaats)</td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    @Html.Raw((string)Convert.ToString(ViewBag.Prijs))
+                                    @{
+
+                                        total += (int)ViewBag.Prijs ;
+
+                                    }
+                                </td>
+                                <td><button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("DeleteAbbo", "ShoppingCart")'">Verwijderen</button></td>
+                            </tr>
+                        }
                                         <tr>
                                             <th>
                                             </th>
@@ -149,4 +171,4 @@
                                         else
                                         { @Html.Raw("Uw winkelkar is momenteel leeg")  }
 
-@Html.ActionLink("Keer terug", "index", "Wedstrijd")
+@Html.ActionLink("Keer terug", "Index", "Wedstrijd")
