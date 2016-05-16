@@ -45,23 +45,20 @@ namespace Ticket.DAO
             }
         }
 
-        public IEnumerable<Tickets> getTicketsPerWedstrijd(Wedstrijd wedstrijd)
+        public IEnumerable<Tickets> getTicketsPerWedstrijd(int id)
         {
-            var wedstrijdId = wedstrijd.id;
             using (var db = new TicketEntities())
             {
-                return db.Tickets.Where(t => t.Wedstrijdid == wedstrijdId).ToList();
+                return db.Tickets.Where(t => t.Wedstrijdid == id).ToList();
             }
         }
 
-        public int getTicketsPerWedstrijdPerVak(Wedstrijd w, int PlaatsID)
+        public int getTicketsPerWedstrijdPerVak(int w, int PlaatsID)
         {
-
-            int wedId = w.id;
             using (var db = new TicketEntities())
             {
                
-                var list = db.Tickets.Where(q => q.Wedstrijdid == wedId).Where(p => p.plaatsId == PlaatsID).ToList();
+                var list = db.Tickets.Where(q => q.Wedstrijdid == w).Where(p => p.plaatsId == PlaatsID).ToList();
                 return list.Count() ;
             }
         }

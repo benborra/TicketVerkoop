@@ -32,6 +32,14 @@ namespace Ticket.DAO
             
         }
 
+        public Vak GetVak(int id)
+        {
+            using (var db = new TicketEntities())
+            {
+                return db.Vak.Where(v => v.id == id).First();
+            }
+        }
+
         public int getAantalZitPlaatsenPerStadion(Stadion s)
         {
 

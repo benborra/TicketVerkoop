@@ -15,8 +15,6 @@ namespace TicketVerkoopVoetbal.Controllers
 
         public ActionResult Stadions()
         {
-            ViewBag.Message = "Hier komen , dynamisch geladen weliswaar, alle stadions";
-
             return View();
         }
     }

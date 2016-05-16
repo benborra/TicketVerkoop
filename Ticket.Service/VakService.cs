@@ -32,5 +32,10 @@ namespace Ticket.Service
         {
             return vakDao.getAantalZitPlaatsenPerStadion(s);
         }
+
+        public Vak getVak(int id)
+        {
+            return vakDao.GetVak(id);
+        }
     }
 }

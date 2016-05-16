@@ -10,17 +10,19 @@
 {
     using (Html.BeginForm("Payment", "ShoppingCart"))
     {
-        <table>
+        <table class="table">
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Cart[0].ThuisPloeg)
-
+                    @Html.Label("Thuis ploeg")
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Cart[0].BezoekersPloeg)
+                    @Html.Label("Bezoekers ploeg")
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Cart[0].Stadion)
+                </th>
+                <th>
+                    @Html.Label("Vak")
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Cart[0].Datum)
@@ -29,8 +31,12 @@
                     @Html.DisplayNameFor(model => model.Cart[0].Aantal)
                 </th>
                 <th>
+                    @Html.DisplayNameFor(model => model.Cart[0].Prijs)
+                </th>
+                <th>
                     Subtotaal
                 </th>
+                <th></th>
             </tr>
             @{ float total = 0;}
 
@@ -38,16 +44,27 @@
 
             @for (var i = 0; i < Model.Cart.Count; i++)
             {
-                @Html.HiddenFor(m => Model.Cart[i].WedstrijdId)
                 <tr>
                     <td>
-                        @Html.LabelFor(m => Model.Cart[i].ThuisPloeg)
+                        @Html.DisplayFor(m => Model.Cart[i].ThuisPloegNaam)
                     </td>
                     <td>
-                        @Html.LabelFor(m => Model.Cart[i].BezoekersPloeg)
+                        @Html.DisplayFor(m => Model.Cart[i].BezoekersPloegNaam)
                     </td>
                     <td>
-                        @Html.LabelFor(m => Model.Cart[i].Stadion)
+                        @Html.DisplayFor(m => Model.Cart[i].StadionNaam)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => Model.Cart[i].PlaatsNaam)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => Model.Cart[i].Datum)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => Model.Cart[i].Aantal)
+                    </td>
+                    <td>
+                        @string.Format("{0:n2}", Model.Cart[i].Prijs)
                     </td>
                     <td>
                         @{
@@ -55,34 +72,34 @@
                             total += subtotaal;
 
                         }
-                        @subtotaal
+                        @string.Format("{0:n2}", subtotaal)
                     </td>
 
                     <td>
-                        @Html.ActionLink("Remove from cart", "Delete", "ShoppingCart", new { id = Model.Cart[i].WedstrijdId }, null)
-
+                        <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("Delete", "ShoppingCart", new { id = Model.Cart[i].WedstrijdId })'">Verwijderen</button>
                     </td>
                 </tr>
 
                             } @* End For *@
-
                             <tr>
-                                <td>
+                                <th>
+                                </th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th>Total</th>
+                                <th id="cart-total">
+                                    @string.Format("{0:n2}", total)
+                                </th>
+                                <th>
                                     <div class="form-group">
                                         <div class="col-md-offset-2 col-md-10">
-                                            <input type="submit" value="Checkout" class="btn btn-default" />
+                                            <input type="submit" value="Checkout" class="btn btn-default" onclick="location.href='@Url.Action("Payment", "ShoppingCart")'"/>
                                         </div>
                                     </div>
-
-                            <tr>
-                                <td>
-                                    Total
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td id="cart-total">
-                                    @total
-                                </td>
+                                </th>
                             </tr>
 
 
@@ -91,6 +108,6 @@
                                 }
                             }
                             else
-                            { @Html.Raw("Your shoppingcart is empty at the moment")  }
+                            { @Html.Raw("Uw winkelkar is momenteel leeg")  }
 
-@Html.ActionLink("Continue", "index", "beer")
+@Html.ActionLink("Keer terug", "index", "Wedstrijd")
