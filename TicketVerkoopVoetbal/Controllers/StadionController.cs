@@ -48,9 +48,7 @@ namespace TicketVerkoopVoetbal.Controllers
                 return HttpNotFound();
             }
 
-
-            ViewBag.StadionNr =
-                    new SelectList(stadionService.All(), "Brouwernr", "Naam");
+            // TODO: wat doet deze ddl?
 
             return View(stadion);
         }
