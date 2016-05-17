@@ -192,24 +192,38 @@ namespace TicketVerkoopVoetbal.Controllers
                         {
                             pdfDoc.Open();
 
+                            TicketService ticketService = new TicketService();
+                            UserService userService = new UserService();
+                            WedstrijdService wedstrijdService = new WedstrijdService();
+                            ClubService clubService = new ClubService();
+                            StadionService stadionService = new StadionService();
+                            VakService vakService = new VakService();
+
+                            AspNetUsers user = null;
+                            Wedstrijd wedstrijd = null;
+                            Clubs clubThuis = null;
+                            Clubs clubBez = null;
+                            Stadion stadion = null;
+                            Vak vak = null;
 
                             for (int i = 0; i < tickets.Count; i++)
                             {
                                 pdfDoc.NewPage();
 
-                                TicketService ticketService = new TicketService();
                                 Tickets ticket = ticketService.GetById(tickets[i]);
-                                UserService userService = new UserService();
-                                AspNetUsers user = userService.GetUser(ticket.Persoonid);
-                                WedstrijdService wedstrijdService = new WedstrijdService();
-                                Wedstrijd wedstrijd = wedstrijdService.Get(ticket.Wedstrijdid);
-                                ClubService clubService = new ClubService();
-                                Clubs clubThuis = clubService.Get(wedstrijd.thuisPloeg);
-                                Clubs clubBez = clubService.Get(wedstrijd.bezoekersPloeg);
-                                StadionService stadionService = new StadionService();
-                                Stadion stadion = stadionService.Get(wedstrijd.stadionId);
-                                VakService vakService = new VakService();
-                                Vak vak = vakService.getVak(ticket.plaatsId);
+                                Tickets ticketOld = null;
+
+                                if (i > 0) ticketOld = ticketService.GetById(tickets[i - 1]);
+
+                                if ((i == 0) || (ticket.Wedstrijdid != ticketOld.Wedstrijdid) || (ticket.plaatsId != ticketOld.plaatsId))
+                                {
+                                    user = userService.GetUser(ticket.Persoonid);
+                                    wedstrijd = wedstrijdService.Get(ticket.Wedstrijdid);
+                                    clubThuis = clubService.Get(wedstrijd.thuisPloeg);
+                                    clubBez = clubService.Get(wedstrijd.bezoekersPloeg);
+                                    stadion = stadionService.Get(wedstrijd.stadionId);
+                                    vak = vakService.getVak(ticket.plaatsId);
+                                }
 
                                 //System.Drawing.Image imgT = System.Drawing.Image.FromFile(clubThuis.logo);
                                 //iTextSharp.text.Image imgT = iTextSharp.text.Image.GetInstance(clubThuis.logo);
@@ -230,7 +244,7 @@ namespace TicketVerkoopVoetbal.Controllers
                                 sb.AppendLine("<h4 style=\"font-weight: bold\">Dit is uw ticket</h4>");
                                 sb.AppendLine("<p style=\"float: left;\"><b>" + user.FirstName + " " + user.Name + " </b></p>");
                                 sb.AppendLine("<br /><br />");
-                                sb.AppendLine("<h2 style=\"font-weight: bold\">" + clubBez.naam + "  vs  " + clubThuis.naam + "</h2></div>");
+                                sb.AppendLine("<h2 style=\"font-weight: bold\">" + clubThuis.naam + "  vs  " + clubBez.naam + "</h2></div>");
                                 sb.AppendLine("<table style=\"width: 100%\" cellspacing='0' cellpadding='2'>");
                                 sb.AppendLine("<tr><th><br /><br /></th></tr>");
                                 sb.AppendLine("<tr><th>Aanvang wedstrijd: " + wedstrijd.Date);
