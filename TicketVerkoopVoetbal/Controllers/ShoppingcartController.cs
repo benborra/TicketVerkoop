@@ -28,9 +28,17 @@ namespace TicketVerkoopVoetbal.Controllers
         public ActionResult Index()
         {
 
-            ShoppingCartViewModel cartList = (ShoppingCartViewModel)Session["shoppingCart"];
-
-            return View(cartList);
+            ShoppingCartViewModel cartListAll = (ShoppingCartViewModel)Session["shoppingCart"];
+            //TODO error fixxen 
+            AbonnementViewModel m = (AbonnementViewModel)cartListAll.abbo;
+            if (m != null)
+            {
+                ViewBag.Ploeg = m.Club;
+                ViewBag.Plaats = m.Plaats;
+                ViewBag.Prijs = m.Prijs;
+                
+            }
+            return View(cartListAll);
         }
 
 
@@ -52,6 +60,15 @@ namespace TicketVerkoopVoetbal.Controllers
 
 
             return View("index", cartList);
+        }
+
+        public ActionResult DeleteAbbo()
+        {
+
+            ShoppingCartViewModel cartList = (ShoppingCartViewModel)Session["shoppingCart"];
+            cartList.abbo = null;
+            Session["ShoppingCart"] = cartList;
+            return RedirectToAction("index", "ShoppingCart");
         }
 
 

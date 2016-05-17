@@ -53,14 +53,3 @@ C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.Service\b
 C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.Service\obj\Debug\Ticket.Service.csprojResolveAssemblyReference.cache
 C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.Service\obj\Debug\Ticket.Service.dll
 C:\Users\Terror Byte\Documents\GitHubVisualStudio\TicketVerkoop\Ticket.Service\obj\Debug\Ticket.Service.pdb
-E:\School\ASPDOTNET\Ticket.Service\bin\Debug\Ticket.Service.dll
-E:\School\ASPDOTNET\Ticket.Service\bin\Debug\Ticket.Service.pdb
-E:\School\ASPDOTNET\Ticket.Service\bin\Debug\Ticket.DAO.dll
-E:\School\ASPDOTNET\Ticket.Service\bin\Debug\Ticket.Model.dll
-E:\School\ASPDOTNET\Ticket.Service\bin\Debug\EntityFramework.dll
-E:\School\ASPDOTNET\Ticket.Service\bin\Debug\Ticket.DAO.pdb
-E:\School\ASPDOTNET\Ticket.Service\bin\Debug\Ticket.Model.pdb
-E:\School\ASPDOTNET\Ticket.Service\bin\Debug\EntityFramework.xml
-E:\School\ASPDOTNET\Ticket.Service\obj\Debug\Ticket.Service.csprojResolveAssemblyReference.cache
-E:\School\ASPDOTNET\Ticket.Service\obj\Debug\Ticket.Service.dll
-E:\School\ASPDOTNET\Ticket.Service\obj\Debug\Ticket.Service.pdb

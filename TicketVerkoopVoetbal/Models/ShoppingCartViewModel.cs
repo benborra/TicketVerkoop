@@ -9,5 +9,6 @@ namespace TicketVerkoopVoetbal.Models
     public class ShoppingCartViewModel
     {
         public List<CartViewModel> Cart { get; set; }
+        public AbonnementViewModel abbo { get; set; }
     }
 }
