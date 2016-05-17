@@ -70,6 +70,10 @@ namespace TicketVerkoopVoetbal.Controllers
                 // indien de dag hetzelfde is throwen we een fout
                 if (c.Date.Day == wedstrijd.Date.Day )
                 {
+                    // TODO: wanneer wedstrijd vandaag valt wordt geen pagina geladen, page blijft blanco. Of mogen dan geen tickets meer gekocht worden?
+
+
+
                     // indien zelfde wedstrijd is id gelijk
                     if (c.id != wedstrijd.id)
                     {
