@@ -30,13 +30,17 @@ namespace TicketVerkoopVoetbal.Controllers
 
             ShoppingCartViewModel cartListAll = (ShoppingCartViewModel)Session["shoppingCart"];
             //TODO error fixxen 
-            AbonnementViewModel m = (AbonnementViewModel)cartListAll.abbo;
-            if (m != null)
+            AbonnementViewModel m = new AbonnementViewModel();
+            
+            if (cartListAll != null)
             {
-                ViewBag.Ploeg = m.Club;
-                ViewBag.Plaats = m.Plaats;
-                ViewBag.Prijs = m.Prijs;
-                
+                if (cartListAll.abbo !=  null)
+                {
+                    m = cartListAll.abbo;
+                    ViewBag.Ploeg = m.Club;
+                    ViewBag.Plaats = m.Plaats;
+                    ViewBag.Prijs = m.Prijs;
+                }
             }
             return View(cartListAll);
         }
