@@ -21,7 +21,9 @@ namespace Ticket.DAO
         {
             using (var db = new TicketEntities())
             {
-                return db.Wedstrijd.ToList();
+                var list = db.Wedstrijd.ToList();
+                var sorted = list.OrderByDescending(d => d.Date).Reverse().ToList();
+                return sorted;
             }
         }
 
@@ -82,7 +84,9 @@ namespace Ticket.DAO
             using (var db = new TicketEntities())
             {
                 // geen datetime om op te filteren!
-                return db.Wedstrijd.Include(s => s.Stadion).Include(q => q.Clubs).Include(p => p.Clubs1).Where(r => r.Date > now).ToList();
+                var list =  db.Wedstrijd.Include(s => s.Stadion).Include(q => q.Clubs).Include(p => p.Clubs1).Where(r => r.Date > now).ToList();
+                var sorted = list.OrderByDescending(d => d.Date).Reverse().ToList();
+                return sorted;
             }
         }
         public IEnumerable<Wedstrijd> GespeeldeWedstrijden()
@@ -90,7 +94,9 @@ namespace Ticket.DAO
             using (var db = new TicketEntities())
             {
                 // geen datetime om op te filteren!
-                return db.Wedstrijd.Include(s => s.Stadion).Include(c => c.Clubs).Include(p => p.Clubs1).Where(r => r.Date < now).ToList();
+                var list = db.Wedstrijd.Include(s => s.Stadion).Include(c => c.Clubs).Include(p => p.Clubs1).Where(r => r.Date < now).ToList();
+                var sorted = list.OrderByDescending(d => d.Date).Reverse().ToList();
+                return sorted;
             }
         }
 

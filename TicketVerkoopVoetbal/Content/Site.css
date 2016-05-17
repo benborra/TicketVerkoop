@@ -60,3 +60,10 @@ textarea {
       width: 70%;
       margin: auto;
   }
+.homeInfo {
+    text-align:center;
+}
+.homeIcons {
+    align-self:center;
+    margin-top:20px;    
+}
