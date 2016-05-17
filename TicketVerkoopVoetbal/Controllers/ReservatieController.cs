@@ -8,6 +8,7 @@ using Ticket.Service;
 using Ticket.Model;
 using System.Net;
 using TicketVerkoopVoetbal.Models;
+using Microsoft.AspNet.Identity;
 
 namespace TicketVerkoopVoetbal.Controllers
 {
@@ -27,7 +28,7 @@ namespace TicketVerkoopVoetbal.Controllers
             vakService = new VakService();
         }
         // GET: Reservatie
-
+        [Authorize]
         public ActionResult Index(int? id)
         {
             if (id == null)
@@ -41,7 +42,9 @@ namespace TicketVerkoopVoetbal.Controllers
             {
                 return HttpNotFound();
             }
-
+            // current id persoon
+           
+            
             ViewBag.stadionNr = new SelectList(stadionService.All(), "StadionId", "stadionNaam");
             ViewBag.vakNummer = new SelectList(vakService.All(), "id", "naam");
             ViewBag.id = id;
@@ -54,6 +57,28 @@ namespace TicketVerkoopVoetbal.Controllers
         {
 
             int aantalTickets = Convert.ToInt32(collection["AantalTickets"]);
+            // controle of de persoon al een ticket heeft voor deze datum
+            wedstrijdService = new WedstrijdService();
+            Wedstrijd wedstrijd = wedstrijdService.Get(Convert.ToInt16(id));
+            var userid = User.Identity.GetUserId();
+
+            IEnumerable<Tickets> ticketLijst = ticketService.getTicketsperPersoon(userid);
+            Wedstrijd c;
+            foreach (Tickets tick in ticketLijst)
+            {
+                c = wedstrijdService.Get(tick.Wedstrijdid);
+                // indien de dag hetzelfde is throwen we een fout
+                if (c.Date.Day == wedstrijd.Date.Day )
+                {
+                    // indien zelfde wedstrijd is id gelijk
+                    if (c.id != wedstrijd.id)
+                    {
+                        // TODO: wil ik gelijk oplossen me een error pagina
+                        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                    }
+                }
+            }
+
 
             if (id != null && aantalTickets >= 1 && aantalTickets <= 10)
             {
@@ -61,12 +86,12 @@ namespace TicketVerkoopVoetbal.Controllers
                 PlaatsService plaatService = new PlaatsService();
                 StadionService stadionService = new StadionService();
                 ClubService clubService = new ClubService();
-                wedstrijdService = new WedstrijdService();
+               
                 vakService = new VakService();
 
                 int VakId = Convert.ToInt32(collection["vakNummer"]);
 
-                Wedstrijd wedstrijd = wedstrijdService.Get(Convert.ToInt16(id));
+                
                 plaats = plaatService.GetPlaatsPerVakAndStadion(Convert.ToInt32(collection["vakNummer"]), wedstrijd.stadionId);
 
                 CartViewModel item = new CartViewModel

@@ -41,6 +41,16 @@ namespace TicketVerkoopVoetbal
 
             bundles.Add(new StyleBundle("~/Content/ClubDetail").Include(
                       "~/Content/ClubDetail.css"));
+
+            // datatbles
+            bundles.Add(new ScriptBundle("~/bundles/datatables").Include("~/Scripts/DataTables/jquery.dataTables.min.js",
+                    "~/Scripts/DataTables/dataTables.bootstrap.min.js",
+                    "~/Scripts/DataTables/dataTables.responsive.min.js"
+                ));
+
+            bundles.Add(new StyleBundle("~/Content/dataTables").Include("~/Content/DataTables/css/dataTables.bootstrap.min.css",
+                "~/Content/DataTables/css/responsive.bootstrap.min.css"
+                ));
         }
     }
 }

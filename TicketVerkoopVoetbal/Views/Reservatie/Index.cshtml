@@ -14,7 +14,8 @@
     @Html.AntiForgeryToken()
 
     <hr />
-
+    if (Model.Date < DateTime.Now.AddDays(30))
+    {
     <table>
         <tr>
             <th>
@@ -45,7 +46,7 @@
 
 
         <div class="form-group">
-            @Html.Label("Hoeveel tickets wil u bestellen?", htmlAttributes: new { @class = "control-label col-md-2", @style="padding-top: 0;" })
+            @Html.Label("Hoeveel tickets wil u bestellen?", htmlAttributes: new { @class = "control-label col-md-2", @style = "padding-top: 0;" })
             <div class="col-md-10">
                 @Html.DropDownList("AantalTickets", new SelectListItem[]{
                 new SelectListItem() {Text = "1", Value="1"},
@@ -80,6 +81,11 @@
             </div>
         </div>
     </div>
+    }
+    else
+    {
+        <h4>Er kunnen pas tickets voor de wedstrijd gekocht worden één maand voor de wedsrijd zelf.</h4>
+    }
 }
 
 <div>

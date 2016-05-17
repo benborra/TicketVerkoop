@@ -74,6 +74,7 @@
                                     <img src="~/@Url.Content(ViewBag.clubs[item.bezoekersPloeg].logo)" alt="logo" style="max-height: 35px; max-width: 35px" />
 
                                     <button type="button" class="btn btn-primary btn-xs" onclick="location.href='@Url.Action("Index", "Reservatie", new { id = item.id })'">Koop tickets</button>
+                                    <button type="button" class="btn btn-primary btn-xs" onclick="location.href='@Url.Action("Index", "Abonnement")'">Koop Abonnement</button>
                                 </div>
 
                             } @* end foreach *@
