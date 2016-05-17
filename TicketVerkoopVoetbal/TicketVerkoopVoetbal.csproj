@@ -388,6 +388,8 @@
     <Content Include="images\clubs\StandardLuik.jpg" />
     <Content Include="images\clubs\URLaLouvièreCentre.jpg" />
     <Content Include="images\clubs\WSBruxelles.jpg" />
+    <Content Include="images\icons\ball.png" />
+    <Content Include="images\icons\schild.png" />
     <Content Include="images\icons\ticket.png" />
     <Content Include="images\reclameDuivels.jpg" />
     <Content Include="images\reclameEK.jpg" />

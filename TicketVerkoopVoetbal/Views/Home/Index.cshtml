@@ -46,16 +46,22 @@
         <p>
             Steun uw favoriet team en koop een abonnement!
         </p>
-        <p><a class="btn btn-default" href="@Url.Action("Index","Abonnement")">Abonnement kiezen</a></p>
+        <p><a class="btn btn-default" href="@Url.Action("Index","Abonnement")">Abonnement kiezen  &raquo;</a></p>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    <div class="col-md-4 homeInfo" >
+        <img src="~/images/icons/ball.png" alt="iconSub" class="homeIcons" />
+        <h2>Wedstrijden</h2>
+        <p>
+            Klik hier om de aankomende wedstrijden te zien.
+        </p>
+        <p><a class="btn btn-default" href="@Url.Action("Index","Wedstrijd")">Wedstrijden &raquo;</a></p>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    <div class="col-md-4 homeInfo">
+        <img src="~/images/icons/schild.png" alt="iconSub" class="homeIcons" />
+        <h2>Ploegen</h2>
+        <p>
+           Speelt jouw team ook mee in de Vives-liga?
+        </p>
+        <p><a class="btn btn-default" href="@Url.Action("Index","Club")">Bekijk Clubs &raquo;</a></p>
     </div>
 </div>
