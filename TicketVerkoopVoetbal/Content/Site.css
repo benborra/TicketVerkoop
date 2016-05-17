@@ -65,5 +65,6 @@ textarea {
 }
 .homeIcons {
     align-self:center;
-    margin-top:20px;    
+    margin-top:40px; 
+    height: 100px;   
 }
