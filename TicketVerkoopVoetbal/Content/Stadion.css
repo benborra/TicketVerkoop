@@ -1,0 +1,16 @@
+﻿#stadionView{
+    height: 220px;
+    border: solid 2px;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+#stadionView > img {
+    height:180px;
+    float: left;
+    margin-bottom:20px;
+    
+}
+    #stadionView > div {
+        margin-left: 200px;
+    }

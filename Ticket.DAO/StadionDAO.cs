@@ -26,7 +26,7 @@ namespace Ticket.DAO
                 // include steekt ook deze resultaten in de lijst
                 // Gecontroleerd, werkt
 
-                return db.Stadion.ToList();
+                return db.Stadion.Include(p => p.Clubs).ToList();
             }
         }
 
