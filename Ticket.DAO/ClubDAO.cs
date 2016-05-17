@@ -45,6 +45,14 @@ namespace Ticket.DAO
             throw new NotImplementedException();
         }
 
+        public string GetClubLogo(int id)
+        {
+            using (var db = new TicketEntities())
+            {
+                return db.Clubs.Where(c => c.id == id).Select(c => c.logo).First();
+            }
+        }
+
         public IEnumerable<Clubs> Update(Clubs entity)
         {
             using (var db = new TicketEntities())
