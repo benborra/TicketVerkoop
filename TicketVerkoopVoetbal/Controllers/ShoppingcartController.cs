@@ -211,32 +211,36 @@ namespace TicketVerkoopVoetbal.Controllers
                                 VakService vakService = new VakService();
                                 Vak vak = vakService.getVak(ticket.plaatsId);
 
+                                //System.Drawing.Image imgT = System.Drawing.Image.FromFile(clubThuis.logo);
                                 //iTextSharp.text.Image imgT = iTextSharp.text.Image.GetInstance(clubThuis.logo);
                                 //imgT.SetAbsolutePosition(100f, 200f);
+
+
+                                var imgBar = iTextSharp.text.Image.GetInstance(CreateBarcode(ticket.barcode.ToString()), System.Drawing.Imaging.ImageFormat.Jpeg);
+                                //imgThuis.ScaleAbsoluteHeight(200);
+                                //imgBez.ScaleAbsoluteHeight(200);
+                                //imgThuis.SetAbsolutePosition((pdfDoc.PageSize.Width / 4), 200);
+                                //imgBez.SetAbsolutePosition((pdfDoc.PageSize.Width * 3 / 4), 200);
 
                                 StringBuilder sb = new StringBuilder();
                                 sb.AppendLine("<!DOCTYPE html><html><head><title></title><meta charset=\"utf-8\" />");
                                 sb.AppendLine("</head><body style=\"margin: 0;font-family: Arial;\">");
-                                sb.AppendLine("<div style=\"margin: 20px;\">");
-                                sb.AppendLine("<h2>VoetbalTicketVerkoop.be</h2>");
+                                sb.AppendLine("<div style=\"margin: 20px;\"><div>");
+                                sb.AppendLine("<div style=\"padding: 10px; color:darkgreen; font-weight: bold; background-color: grey;\"><h2>VoetbalTicketVerkoop.be</h2></div>");
                                 sb.AppendLine("<h4 style=\"font-weight: bold\">Dit is uw ticket</h4>");
-                                sb.AppendLine("<table cellspacing='0' cellpadding='2'>");
-                                sb.AppendLine("<tr><th>" + user.FirstName + " " + user.Name + "</th><th></th><th>Datum van wedstrijd</th>");
-                                sb.AppendLine("</tr><tr><th><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></th></tr>");
-                                //sb.AppendLine("<tr><th><img src=\"~/" + clubThuis.logo + "\" style=\"max-height: 200px; max-width: 200px\" /></th>");
-                                //sb.AppendLine("<th><h3>  vs  </h3></th>");
-                                //sb.AppendLine("<th><img src=\"~/" + clubBez.logo + "\" style=\"max-height: 200px; max-width: 200px\" /></th></tr>");
-                                sb.AppendLine("<tr><td style=\"text-align:center\">" + clubThuis.naam + "</td><td></td>");
-                                sb.AppendLine("<td style=\"text-align:center\">" + clubBez.naam + "</td></tr>");
+                                sb.AppendLine("<p style=\"float: left;\"><b>" + user.FirstName + " " + user.Name + " </b></p>");
+                                sb.AppendLine("<br /><br />");
+                                sb.AppendLine("<h2 style=\"font-weight: bold\">" + clubBez.naam + "  vs  " + clubThuis.naam + "</h2></div>");
+                                sb.AppendLine("<table style=\"width: 100%\" cellspacing='0' cellpadding='2'>");
                                 sb.AppendLine("<tr><th><br /><br /></th></tr>");
-                                sb.AppendLine("<tr><th>Aanvang wedstrijd:");
-                                sb.AppendLine("</th><th></th><th>Plaats:</th></tr>");
-                                sb.AppendLine("<tr><td style=\"text-align:center\">" + wedstrijd.Date + "</td><td></td>");
-                                sb.AppendLine("<td style=\"text-align:center\">" + stadion.naam + "</td> </tr>");
-                                sb.AppendLine("<tr><td></td><td></td><td style=\"text-align:center\">" + stadion.adres + "</td></tr>");
-                                sb.AppendLine("<tr><td>Vaknaam:</td></tr>");
-                                sb.AppendLine("<tr><th>" + vak.naam + "</th></tr>");
-                                sb.AppendLine("</table>");
+                                sb.AppendLine("<tr><th>Aanvang wedstrijd: " + wedstrijd.Date);
+                                sb.AppendLine("</th><td style=\"text-align:center\"></td></tr><tr><td sty:e=\"font-weight: bold\">Plaats:</td></tr>");
+                                sb.AppendLine("<tr><td></td>");
+                                sb.AppendLine("<td >" + stadion.naam + "</td> </tr>");
+                                sb.AppendLine("<tr><td></td><td>" + stadion.adres + "</td><td></td></tr>");
+                                sb.AppendLine("<tr></tr><tr><td style=\"font-weight: bold\">Vaknaam: " + vak.naam + "</td></tr>");
+                                sb.AppendLine("<tr><th></th></tr></table>");
+                                sb.AppendLine("<br />");
                                 sb.AppendLine("<p STYLE=\"text-align: justify;\">");
                                 sb.AppendLine("Beste <br /> <br />Dit is het ticket die recht geeft tot u toegang zal geven tot het stadion en het door u gekozen vak.");
                                 sb.AppendLine("Het ticket is enkel geldig voor de speel datum en tijdstip dat hierboven vermeld staat en in het stadion dat hierboven vermeld staat.");
@@ -249,7 +253,6 @@ namespace TicketVerkoopVoetbal.Controllers
                                 sb.AppendLine("<br /><br />");
                                 sb.AppendLine("Zorg ervoor dat onderstaande barcode goed leesbaar is.");
                                 sb.AppendLine("<br /><br />");
-                                //sb.AppendLine("<img src=\"~/images/shared/barcodeTemplate.png\" />");
                                 sb.AppendLine("</p></div></body></html>");
 
                                 List<IElement> htmlarraylist = iTextSharp.text.html.simpleparser.HTMLWorker.ParseToList(new StringReader(sb.ToString()), null);
@@ -260,7 +263,7 @@ namespace TicketVerkoopVoetbal.Controllers
                                     pdfDoc.Add((IElement)htmlarraylist[k]);
                                 }
 
-                                //pdfDoc.Add(imgT);
+                                pdfDoc.Add(imgBar);
 
                             }
 
@@ -296,78 +299,15 @@ namespace TicketVerkoopVoetbal.Controllers
             }
         }
 
-        private static Bitmap CreateBarcode(string code)
+        private static System.Drawing.Image CreateBarcode(string code)
         {
-            var myBitmap = new Bitmap(500, 50);
-            var g = Graphics.FromImage(myBitmap);
-            var jgpEncoder = GetEncoder(ImageFormat.Jpeg);
-
-            g.Clear(Color.White);
-
-            var strFormat = new StringFormat { Alignment = StringAlignment.Center };
-            g.DrawString(code, new System.Drawing.Font("Free 3 of 9", 50), Brushes.Black, new RectangleF(0, 0, 500, 50), strFormat);
-
-            var myEncoder = System.Drawing.Imaging.Encoder.Quality;
-            var myEncoderParameters = new EncoderParameters(1);
-
-            var myEncoderParameter = new EncoderParameter(myEncoder, 100L);
-            myEncoderParameters.Param[0] = myEncoderParameter;
-            return myBitmap;
-        }
-
-        private static ImageCodecInfo GetEncoder(ImageFormat format)
-        {
-
-            var codecs = ImageCodecInfo.GetImageDecoders();
-
-            foreach (var codec in codecs)
-            {
-                if (codec.FormatID == format.Guid)
-                {
-                    return codec;
-                }
-            }
-            return null;
+            // Doormiddel van iTextSharp
+            Barcode39 barcode = new Barcode39();
+            barcode.Code = code;
+            barcode.ChecksumText = true;
+            barcode.GenerateChecksum = true;
+            barcode.StartStopText = true;
+            return barcode.CreateDrawingImage(System.Drawing.Color.Black, System.Drawing.Color.White);
         }
     }
 }
-
-
-
-//sb.AppendLine("<!DOCTYPE html><html><head><title></title><meta charset=\"utf-8\" />");
-//sb.AppendLine("<style>* {margin: 0;font-family: Arial;}");
-//sb.AppendLine("</style></head><body>");
-//sb.AppendLine("<div style=\"margin: 20px;\">");
-//sb.AppendLine("<h2>VoetbalTicketVerkoop.be</h2>");
-//sb.AppendLine("<h4 style=\"font-weight: bold\">Dit is uw ticket</h4>");
-//sb.AppendLine("<table width=\"100%\" cellspacing='0' cellpadding='2'>");
-//sb.AppendLine("<tr><th>" + user.FirstName + " " + user.Name + "</th><th></th><th>Datum van wedstrijd</th>");
-//sb.AppendLine("</tr><tr><th><br /><br /></th></tr>");
-////sb.AppendLine("<tr><th><img src=\"~/" + clubThuis.logo + "\" style=\"max-height: 200px; max-width: 200px\" /></th>");
-////sb.AppendLine("<th><h3>  vs  </h3></th>");
-////sb.AppendLine("<th><img src=\"~/" + clubBez.logo + "\" style=\"max-height: 200px; max-width: 200px\" /></th></tr>");
-//sb.AppendLine("<tr><td style=\"text-align:center\">" + clubThuis.naam + "</td><td></td>");
-//sb.AppendLine("<td style=\"text-align:center\">" + clubBez.naam + "</td></tr>");
-//sb.AppendLine("<tr><th><br /><br /></th></tr>");
-//sb.AppendLine("<tr><th>Aanvang wedstrijd:");
-//sb.AppendLine("</th><th></th><th>Plaats:</th></tr>");
-//sb.AppendLine("<tr><td style=\"text-align:center\">" + wedstrijd.Date + "</td><td></td>");
-//sb.AppendLine("<td style=\"text-align:center\">" + stadion.naam + "</td> </tr>");
-//sb.AppendLine("<tr><td></td><td></td><td style=\"text-align:center\">" + stadion.adres + "</td></tr>");
-//sb.AppendLine("<tr><td>Vaknaam:</td></tr>");
-//sb.AppendLine("<tr><th>" + vak.naam + "</th></tr>");
-//sb.AppendLine("</table>");
-//sb.AppendLine("<p STYLE=\"text-align: justify;\">");
-//sb.AppendLine("Beste <br /> <br />Dit is het ticket die recht geeft tot u toegang zal geven tot het stadion en het door u gekozen vak.");
-//sb.AppendLine("Het ticket is enkel geldig voor de speel datum en tijdstip dat hierboven vermeld staat en in het stadion dat hierboven vermeld staat.");
-//sb.AppendLine("Het is niet toegelaten om het ticket door te verkopen. <br />");
-//sb.AppendLine("Tickets zijn ook enkel geldig wanneer deze bij voetbaltickets.be zijn aangekocht. ");
-//sb.AppendLine("Wanneer u deze van een andere persoon of website hebt gekocht kunnen wij geen garantie geven dat u toegang zult krijgen tot het stadion.");
-//sb.AppendLine("Wanneer enige twijfel mogelijk is heeft het stadion ook altijd het recht u de toegang te ontzeggen.<br />");
-//sb.AppendLine("Tickets kunnen ook slechts 1 keer gescanned worden. Wanneer een ticket meerdere keren gescanned wordt zal slechts het eerste toegelaten worden tot het stadion.<br /> <br />");
-//sb.AppendLine("Indien u wenst uw ticket te annuleren kan u dit doen tot 1 week voor de wedstrijd.");
-//sb.AppendLine("<br /><br />");
-//sb.AppendLine("Zorg ervoor dat onderstaande barcode goed leesbaar is.");
-//sb.AppendLine("<br /><br />");
-////sb.AppendLine("<img src=\"~/images/shared/barcodeTemplate.png\" />");
-//sb.AppendLine("</p></div></body></html>");
