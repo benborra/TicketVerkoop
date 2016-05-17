@@ -25,7 +25,7 @@ namespace Ticket.Model
         public int id { get; set; }
         public string naam { get; set; }
         public string adres { get; set; }
-    
+       
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Clubs> Clubs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

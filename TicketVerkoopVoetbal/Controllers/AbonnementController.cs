@@ -35,7 +35,7 @@ namespace TicketVerkoopVoetbal.Controllers
             // Welke plaats hij wil 
             ViewBag.Plaatsen = new SelectList(vakService.All(), "id", "naam");
             
-            ViewBag.Seizoen = new SelectList(seizoenService.All(), "id", "jaar");
+            ViewBag.Seizoen = new SelectList(seizoenService.All(), "id", "SeizoenString");
 
             return View();
         }
