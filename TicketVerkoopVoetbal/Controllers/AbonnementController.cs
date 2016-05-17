@@ -35,7 +35,7 @@ namespace TicketVerkoopVoetbal.Controllers
             // Welke plaats hij wil 
             ViewBag.Plaatsen = new SelectList(vakService.All(), "id", "naam");
             
-            ViewBag.Seizoen = new SelectList(seizoenService.All(), "id", "jaar");
+            ViewBag.Seizoen = new SelectList(seizoenService.All(), "id", "SeizoenString");
 
             return View();
         }
@@ -48,10 +48,10 @@ namespace TicketVerkoopVoetbal.Controllers
             //// geeft 2015, 2016,.. terug
             // TODO: heeft deze persoon al een abonnement?
             // month is september, dan is de competitie al gestart, in september kunnen ze nog kopen
-            //if (Convert.ToInt32(collection["Seizoen"]) <= DateTime.Now.Year && DateTime.Now.Month > 9)
-            //{
-            //    return RedirectToAction("Index");
-            //}
+            if (Convert.ToInt32(collection["Seizoen"]) <= DateTime.Now.Year && DateTime.Now.Month > 9)
+            {
+                return RedirectToAction("Index");
+            }
             Clubs c = clubService.Get(Convert.ToInt32(collection["Ploegen"]));
             Plaats p = plaatsService.GetPlaats(Convert.ToInt32(collection["Plaatsen"]));
             int prijs = Convert.ToInt32(p.prijs * 15);

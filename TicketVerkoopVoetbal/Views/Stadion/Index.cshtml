@@ -1,10 +1,10 @@
-﻿@model IEnumerable<Ticket.Model.Stadion>
+﻿@model IEnumerable<Ticket.Model.Clubs>
 @{
     ViewBag.Title = "Alle stadions in Belgie";
 }
 <h2>Index</h2>
 
-
+@Styles.Render("~/Content/Stadion.css")
 @if (ViewContext.HttpContext.User.IsInRole("Admin"))
 {
     <p>
@@ -13,35 +13,33 @@
 }
 
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.naam)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.adres)
-        </th>
-        <th></th>
-    </tr>
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.naam)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.adres)
-            </td>
-            <td>
-                @Html.ActionLink("Details", "Details", new { id = item.id })
-                @if (ViewContext.HttpContext.User.IsInRole("Admin"))
-                {
-                    <text> | </text>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.id })
-                    <text> | </text>
-                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
-                }
-            </td>
-        </tr>
+      
+        <div id="stadionView">
+            <img src="~/@Url.Content(item.logo)" alt="logo" />
+            <div>
+                <h4>@Html.Raw(item.Stadion.naam)</h4>
+                <p>
+                    Dit is het stadion van @Html.Raw(item.naam)
+                    <br />Adres: @Html.Raw(item.Stadion.adres) 
+                    <br />
+                    
+                    <br />
+                    <br />
+                    @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+                    {
+                        @Html.ActionLink("Edit", "Edit", new { area = "Admin", id = item.Stadion.id })
+                        <text> | </text>
+                        @Html.ActionLink("Delete", "Delete", new { area = "Admin", id = item.Stadion.id })
+                    }
+                </p>
+            </div>
+        </div>
+
     }
-</table>
+    
+  
+
+     
+

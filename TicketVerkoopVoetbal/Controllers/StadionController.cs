@@ -21,16 +21,14 @@ namespace TicketVerkoopVoetbal.Controllers
         }
         public ActionResult Index()
         {
-            
-            var stadions = stadionService.All();
+            clubService = new ClubService();
+            var stadions = clubService.All();
             if (stadions == null)
             {
                 return HttpNotFound();
             }
             // in Beers staat dit zo , maar in de view wordt er gelijk niets mee gedaan
             // wat is het verschil tussen model.Naam en de viewbag?
-            ViewBag.stadions =
-                   new SelectList(stadionService.All(), "naam", "adres");
             return View(stadions);
         }
         [Authorize (Roles = "Admin")]
