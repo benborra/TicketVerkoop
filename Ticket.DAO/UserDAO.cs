@@ -46,6 +46,14 @@ namespace Ticket.DAO
             throw new NotImplementedException();
         }
 
+        public AspNetUsers GetUser(string id)
+        {
+            using (var db = new TicketEntities())
+            {
+                return db.AspNetUsers.Where(u => u.Id.Equals(id)).First();
+            }
+        }
+
         public IEnumerable<AspNetUsers> Update(AspNetUsers entity)
         {
             using (var db = new TicketEntities())

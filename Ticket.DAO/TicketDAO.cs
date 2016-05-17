@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -77,6 +78,14 @@ namespace Ticket.DAO
             using (var db = new TicketEntities())
             {
                 return db.Tickets.Where(t => t.barcode == barcode).Count();
+            }
+        }
+
+        public Tickets GetTicketAll(int id)
+        {
+            using (var db = new TicketEntities())
+            {
+                return db.Tickets.Where(t => t.id.Equals(id)).Include(u => u.AspNetUsers).Include(w => w.Wedstrijd).Include(p => p.Plaats).First();
             }
         }
     }

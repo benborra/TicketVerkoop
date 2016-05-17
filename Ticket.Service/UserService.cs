@@ -42,5 +42,10 @@ namespace Ticket.Service
         {
             userDao.Add(user);
         }
+
+        public AspNetUsers GetUser(string id)
+        {
+            return userDao.GetUser(id);
+        }
     }
 }

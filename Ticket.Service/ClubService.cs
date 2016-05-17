@@ -45,5 +45,10 @@ namespace Ticket.Service
         {
             clubDao.Add(club);
         }
+
+        public string GetClubLogo(int id)
+        {
+            return clubDao.GetClubLogo(id);
+        }
     }
 }
