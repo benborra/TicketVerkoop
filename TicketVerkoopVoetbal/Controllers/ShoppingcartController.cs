@@ -253,7 +253,7 @@ namespace TicketVerkoopVoetbal.Controllers
                             var userid = User.Identity.GetUserId();
                             user = userService.GetUser(userid);
                             clubThuis = clubService.Get(abboView.ClubsId);
-                            stadion = stadionService.Get(wedstrijd.stadionId);
+                            //stadion = stadionService.Get(wedstrijd.stadionId);
                             vak = vakService.getVak(abboView.PlaatsId);
 
                             StringBuilder sb = new StringBuilder();
@@ -280,8 +280,6 @@ namespace TicketVerkoopVoetbal.Controllers
                             sb.AppendLine("Tickerverkoop");
                             sb.AppendLine("</p></div>");
                             sb.AppendLine("</body>");
-
-
 
                             List<IElement> htmlarraylist = iTextSharp.text.html.simpleparser.HTMLWorker.ParseToList(new StringReader(sb.ToString()), null);
 
