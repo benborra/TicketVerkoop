@@ -1,17 +1,16 @@
 ﻿@model Ticket.Model.AspNetUsers
 
 @{
-    ViewBag.Title = "View";
+    ViewBag.Title = "Profiel";
 }
 
 <h2>Profiel</h2>
 
 <div>
-    <h4>AspNetUsers</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.Label("Naam")
         </dt>
 
         <dd>
@@ -19,7 +18,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
+            @Html.Label("Voornaam")
         </dt>
 
         <dd>
@@ -35,7 +34,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.AdressLine)
+            @Html.Label("Adres")
         </dt>
 
         <dd>
@@ -43,7 +42,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.City)
+            @Html.Label("Stad")
         </dt>
 
         <dd>
@@ -53,7 +52,5 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Perssonlijke gegevens aanpassen", "Edit")
-    <text> | </text>
-    @Html.ActionLink("Paswoord wijzigen", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+    @Html.ActionLink("Paswoord wijzigen", "ChangePassword", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
 </p>

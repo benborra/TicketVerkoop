@@ -107,7 +107,9 @@ namespace Ticket.DAO
         {
             using (var db = new TicketEntities())
             {
-                return db.Wedstrijd.Where(r => r.thuisPloeg == id || r.bezoekersPloeg == id).Where(d => d.Date > DateTime.Now).Include(c => c.Clubs).ToList();
+                var list = db.Wedstrijd.Where(r => r.thuisPloeg == id || r.bezoekersPloeg == id).Where(d => d.Date > DateTime.Now).Include(c => c.Clubs).ToList();
+                var sorted = list.OrderByDescending(d => d.Date).Reverse().ToList();
+                return sorted;
             }
         }
     }

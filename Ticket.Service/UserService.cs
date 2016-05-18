@@ -47,5 +47,10 @@ namespace Ticket.Service
         {
             return userDao.GetUser(id);
         }
+
+        public void UpdateAdress(AspNetUsers entity)
+        {
+            userDao.UpdateAdress(entity);
+        }
     }
 }

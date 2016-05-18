@@ -90,6 +90,16 @@ namespace TicketVerkoopVoetbal.Models
         [Display(Name = "Bevestig paswoord")]
         [Compare("Password", ErrorMessage = "De paswoorden komen niet overeen.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "De {0} moet minstens {2} tekens lang zijn.", MinimumLength = 2)]
+        [Display(Name = "Adres")]
+        public string AddressLine { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "De {0} moet minstens {2} tekens lang zijn.", MinimumLength = 2)]
+        [Display(Name = "stad")]
+        public string City { get; set; }
     }
 
     public class ResetPasswordViewModel

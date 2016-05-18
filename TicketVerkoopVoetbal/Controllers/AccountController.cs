@@ -167,7 +167,7 @@ namespace TicketVerkoopVoetbal.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { Email = model.Email, UserName = model.Email, FirstName = model.FirstName, Name = model.Name };
+                var user = new ApplicationUser { Email = model.Email, UserName = model.Email, FirstName = model.FirstName, Name = model.Name, AdressLine = model.AddressLine, City = model.City };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -521,6 +521,7 @@ namespace TicketVerkoopVoetbal.Controllers
             message.Subject = "VoetbalTickets - Registratie bevestiging";
             message.Body = "</p>Beste " + model.FromName + System.Environment.NewLine + "</p><p>Er werd een account voor u aangemaakt op VoetbalTickets.</p>";
             message.Body += "</p>Gelieve uw account te bevestigen door op onderstaande link te drukken <br/><a href =\"" + callbackUrl + "\"><img class='transparent' alt='Link' src='http://zeldawiki.org/images/thumb/8/8a/LoZ_ST_Link.png/170px-LoZ_ST_Link.png'></a>";
+            message.Body += "<br /><a href =\"" + callbackUrl + "\">" + callbackUrl + "</a>";
             message.Body += "<p>Met vriendelijke groet</p>" + System.Environment.NewLine + "<p>Het VoetbalTickets-team</p>";
             message.IsBodyHtml = true;
 
@@ -539,6 +540,7 @@ namespace TicketVerkoopVoetbal.Controllers
             message.Subject = "VoetbalTickets - Paswoord herstellen";
             message.Body = "</p>Beste " + model.FromName + System.Environment.NewLine + "</p><p>Er werd een paswoordherstel gevraagd voor uw account.</p>";
             message.Body += "</p>Gelieve op onderstaande link te drukken <br/><a href =\"" + callbackUrl + "\"><img class='transparent' alt='http://zeldawiki.org/images/thumb/8/8a/LoZ_ST_Link.png/170px-LoZ_ST_Link.png' src='http://zeldawiki.org/images/thumb/8/8a/LoZ_ST_Link.png/170px-LoZ_ST_Link.png'></a>";
+            message.Body += "<br /><a href =\"" + callbackUrl + "\">" + callbackUrl + "</a>";
             message.Body += "<br /><p>Indien u geen paswoordherstel hebt aangevraagd gelieve deze mail dan te negeren.</p><br /><br />";
             message.Body += "<p>Met vriendelijke groet</p>" + System.Environment.NewLine + "<p>Het VoetbalTickets-team</p>";
             message.IsBodyHtml = true;
