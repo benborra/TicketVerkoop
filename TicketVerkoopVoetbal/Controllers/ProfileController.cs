@@ -1,11 +1,18 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
-using Ticket.Service;
 using Ticket.Model;
+using Ticket.Service;
 
 namespace TicketVerkoopVoetbal.Controllers
 {

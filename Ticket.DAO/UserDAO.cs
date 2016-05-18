@@ -46,6 +46,17 @@ namespace Ticket.DAO
             throw new NotImplementedException();
         }
 
+        public IEnumerable<AspNetUsers> UpdateAdress(AspNetUsers entity)
+        {
+            using (var db = new TicketEntities())
+            {
+                db.Entry(entity).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+
+            return null;
+        }
+
         public AspNetUsers GetUser(string id)
         {
             using (var db = new TicketEntities())

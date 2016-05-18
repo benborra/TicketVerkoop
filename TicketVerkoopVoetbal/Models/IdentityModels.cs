@@ -11,6 +11,8 @@ namespace TicketVerkoopVoetbal.Models
     {
         public string FirstName { get; set; }
         public string Name { get; set; }
+        public string AdressLine { get; set; }
+        public string City { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

@@ -64,8 +64,16 @@ namespace TicketVerkoopVoetbal.Controllers
                 Session["shoppingCart"] = cartList;
             }
 
+            if (cartList.abbo == null)
+            {
+                if(cartList.Cart == null || cartList.Cart.Count == 0)
+                {
+                    Session["shoppingCart"] = null;
+                    cartList = null;
+                }
+            }
 
-            return View("index", cartList);
+            return RedirectToAction("index", "ShoppingCart");
         }
 
         public ActionResult DeleteAbbo()
@@ -73,6 +81,16 @@ namespace TicketVerkoopVoetbal.Controllers
 
             ShoppingCartViewModel cartList = (ShoppingCartViewModel)Session["shoppingCart"];
             cartList.abbo = null;
+
+            if (cartList.abbo == null)
+            {
+                if (cartList.Cart == null || cartList.Cart.Count == 0)
+                {
+                    Session["shoppingCart"] = null;
+                    cartList = null;
+                }
+            }
+
             Session["ShoppingCart"] = cartList;
             return RedirectToAction("index", "ShoppingCart");
         }
