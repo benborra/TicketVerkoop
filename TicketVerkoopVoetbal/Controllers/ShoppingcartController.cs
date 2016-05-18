@@ -301,124 +301,137 @@ namespace TicketVerkoopVoetbal.Controllers
             }
         }
 
-
+        [Authorize]
         private Byte[] CreateTicketsPdf(List<int> tickets)
         {
+            //controle van eerste ticket of user die methode probeerdt te bereiken wel eigenaar is van ticket
+            TicketService ticketService = new TicketService();
+            string ticketId = ticketService.GetById(tickets[0]).Persoonid;
+
+            if (ticketId.Equals(User.Identity.GetUserId()))
+            { 
+
             MemoryStream memoryStream = new MemoryStream();
             Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 10f, 0f);
             StringReader sr = new StringReader("");
             HTMLWorker htmlparser = new HTMLWorker(pdfDoc);
             Byte[] bytes = { 0 };
 
-            using (StringWriter sw = new StringWriter())
-            {
-                using (HtmlTextWriter hw = new HtmlTextWriter(sw))
+                using (StringWriter sw = new StringWriter())
                 {
-                    using (memoryStream = new MemoryStream())
+                    using (HtmlTextWriter hw = new HtmlTextWriter(sw))
                     {
-                        using (PdfWriter writer = PdfWriter.GetInstance(pdfDoc, memoryStream))
+                        using (memoryStream = new MemoryStream())
                         {
-                            pdfDoc.Open();
-
-                            TicketService ticketService = new TicketService();
-                            UserService userService = new UserService();
-                            WedstrijdService wedstrijdService = new WedstrijdService();
-                            ClubService clubService = new ClubService();
-                            StadionService stadionService = new StadionService();
-                            VakService vakService = new VakService();
-
-                            AspNetUsers user = null;
-                            Wedstrijd wedstrijd = null;
-                            Clubs clubThuis = null;
-                            Clubs clubBez = null;
-                            Stadion stadion = null;
-                            Vak vak = null;
-
-                            for (int i = 0; i < tickets.Count; i++)
+                            using (PdfWriter writer = PdfWriter.GetInstance(pdfDoc, memoryStream))
                             {
-                                pdfDoc.NewPage();
+                                pdfDoc.Open();
 
-                                Tickets ticket = ticketService.GetById(tickets[i]);
-                                Tickets ticketOld = null;
+                                UserService userService = new UserService();
+                                WedstrijdService wedstrijdService = new WedstrijdService();
+                                ClubService clubService = new ClubService();
+                                StadionService stadionService = new StadionService();
+                                VakService vakService = new VakService();
 
-                                if (i > 0) ticketOld = ticketService.GetById(tickets[i - 1]);
+                                AspNetUsers user = null;
+                                Wedstrijd wedstrijd = null;
+                                Clubs clubThuis = null;
+                                Clubs clubBez = null;
+                                Stadion stadion = null;
+                                Vak vak = null;
 
-                                if ((i == 0) || (ticket.Wedstrijdid != ticketOld.Wedstrijdid) || (ticket.plaatsId != ticketOld.plaatsId))
+                                for (int i = 0; i < tickets.Count; i++)
                                 {
-                                    user = userService.GetUser(ticket.Persoonid);
-                                    wedstrijd = wedstrijdService.Get(ticket.Wedstrijdid);
-                                    clubThuis = clubService.Get(wedstrijd.thuisPloeg);
-                                    clubBez = clubService.Get(wedstrijd.bezoekersPloeg);
-                                    stadion = stadionService.Get(wedstrijd.stadionId);
-                                    vak = vakService.getVak(ticket.plaatsId);
+                                    pdfDoc.NewPage();
+
+                                    Tickets ticket = ticketService.GetById(tickets[i]);
+                                    Tickets ticketOld = null;
+
+                                    if (i > 0) ticketOld = ticketService.GetById(tickets[i - 1]);
+
+                                    if ((i == 0) || (ticket.Wedstrijdid != ticketOld.Wedstrijdid) || (ticket.plaatsId != ticketOld.plaatsId))
+                                    {
+                                        user = userService.GetUser(ticket.Persoonid);
+                                        wedstrijd = wedstrijdService.Get(ticket.Wedstrijdid);
+                                        clubThuis = clubService.Get(wedstrijd.thuisPloeg);
+                                        clubBez = clubService.Get(wedstrijd.bezoekersPloeg);
+                                        stadion = stadionService.Get(wedstrijd.stadionId);
+                                        vak = vakService.getVak(ticket.plaatsId);
+                                    }
+
+                                    //System.Drawing.Image imgT = System.Drawing.Image.FromFile(clubThuis.logo);
+                                    //iTextSharp.text.Image imgT = iTextSharp.text.Image.GetInstance(clubThuis.logo);
+                                    //imgT.SetAbsolutePosition(100f, 200f);
+
+
+                                    var imgBar = iTextSharp.text.Image.GetInstance(CreateBarcode(ticket.barcode.ToString()), System.Drawing.Imaging.ImageFormat.Jpeg);
+                                    //imgThuis.ScaleAbsoluteHeight(200);
+                                    //imgBez.ScaleAbsoluteHeight(200);
+                                    //imgThuis.SetAbsolutePosition((pdfDoc.PageSize.Width / 4), 200);
+                                    //imgBez.SetAbsolutePosition((pdfDoc.PageSize.Width * 3 / 4), 200);
+
+                                    StringBuilder sb = new StringBuilder();
+                                    sb.AppendLine("<!DOCTYPE html><html><head><title></title><meta charset=\"utf-8\" />");
+                                    sb.AppendLine("</head><body style=\"margin: 0;font-family: Arial;\">");
+                                    sb.AppendLine("<div style=\"margin: 20px;\"><div>");
+                                    sb.AppendLine("<div style=\"padding: 10px; color:darkgreen; font-weight: bold; background-color: grey;\"><h2>VoetbalTicketVerkoop.be</h2></div>");
+                                    sb.AppendLine("<h4 style=\"font-weight: bold\">Dit is uw ticket</h4>");
+                                    sb.AppendLine("<p style=\"float: left;\"><b>" + user.FirstName + " " + user.Name + " </b></p>");
+                                    sb.AppendLine("<br /><br />");
+                                    sb.AppendLine("<h2 style=\"font-weight: bold\">" + clubThuis.naam + "  vs  " + clubBez.naam + "</h2></div>");
+                                    sb.AppendLine("<table style=\"width: 100%\" cellspacing='0' cellpadding='2'>");
+                                    sb.AppendLine("<tr><th><br /><br /></th></tr>");
+                                    sb.AppendLine("<tr><th>Aanvang wedstrijd: " + wedstrijd.Date);
+                                    sb.AppendLine("</th><td style=\"text-align:center\"></td></tr><tr><td sty:e=\"font-weight: bold\">Plaats:</td></tr>");
+                                    sb.AppendLine("<tr><td></td>");
+                                    sb.AppendLine("<td >" + stadion.naam + "</td> </tr>");
+                                    sb.AppendLine("<tr><td></td><td>" + stadion.adres + "</td><td></td></tr>");
+                                    sb.AppendLine("<tr></tr><tr><td style=\"font-weight: bold\">Vaknaam: " + vak.naam + "</td></tr>");
+                                    sb.AppendLine("<tr><th></th></tr></table>");
+                                    sb.AppendLine("<br />");
+                                    sb.AppendLine("<p STYLE=\"text-align: justify;\">");
+                                    sb.AppendLine("Beste <br /> <br />Dit is het ticket die recht geeft tot u toegang zal geven tot het stadion en het door u gekozen vak.");
+                                    sb.AppendLine("Het ticket is enkel geldig voor de speel datum en tijdstip dat hierboven vermeld staat en in het stadion dat hierboven vermeld staat.");
+                                    sb.AppendLine("Het is niet toegelaten om het ticket door te verkopen. <br />");
+                                    sb.AppendLine("Tickets zijn ook enkel geldig wanneer deze bij voetbaltickets.be zijn aangekocht. ");
+                                    sb.AppendLine("Wanneer u deze van een andere persoon of website hebt gekocht kunnen wij geen garantie geven dat u toegang zult krijgen tot het stadion.");
+                                    sb.AppendLine("Wanneer enige twijfel mogelijk is heeft het stadion ook altijd het recht u de toegang te ontzeggen.<br />");
+                                    sb.AppendLine("Tickets kunnen ook slechts 1 keer gescanned worden. Wanneer een ticket meerdere keren gescanned wordt zal slechts het eerste toegelaten worden tot het stadion.<br /> <br />");
+                                    sb.AppendLine("Indien u wenst uw ticket te annuleren kan u dit doen tot 1 week voor de wedstrijd.");
+                                    sb.AppendLine("<br /><br />");
+                                    sb.AppendLine("Zorg ervoor dat onderstaande barcode goed leesbaar is.");
+                                    sb.AppendLine("<br /><br />");
+                                    sb.AppendLine("</p></div></body></html>");
+
+                                    List<IElement> htmlarraylist = iTextSharp.text.html.simpleparser.HTMLWorker.ParseToList(new StringReader(sb.ToString()), null);
+
+                                    //add the collection to the document
+                                    for (int k = 0; k < htmlarraylist.Count; k++)
+                                    {
+                                        pdfDoc.Add((IElement)htmlarraylist[k]);
+                                    }
+
+                                    pdfDoc.Add(imgBar);
+
                                 }
 
-                                //System.Drawing.Image imgT = System.Drawing.Image.FromFile(clubThuis.logo);
-                                //iTextSharp.text.Image imgT = iTextSharp.text.Image.GetInstance(clubThuis.logo);
-                                //imgT.SetAbsolutePosition(100f, 200f);
-
-
-                                var imgBar = iTextSharp.text.Image.GetInstance(CreateBarcode(ticket.barcode.ToString()), System.Drawing.Imaging.ImageFormat.Jpeg);
-                                //imgThuis.ScaleAbsoluteHeight(200);
-                                //imgBez.ScaleAbsoluteHeight(200);
-                                //imgThuis.SetAbsolutePosition((pdfDoc.PageSize.Width / 4), 200);
-                                //imgBez.SetAbsolutePosition((pdfDoc.PageSize.Width * 3 / 4), 200);
-
-                                StringBuilder sb = new StringBuilder();
-                                sb.AppendLine("<!DOCTYPE html><html><head><title></title><meta charset=\"utf-8\" />");
-                                sb.AppendLine("</head><body style=\"margin: 0;font-family: Arial;\">");
-                                sb.AppendLine("<div style=\"margin: 20px;\"><div>");
-                                sb.AppendLine("<div style=\"padding: 10px; color:darkgreen; font-weight: bold; background-color: grey;\"><h2>VoetbalTicketVerkoop.be</h2></div>");
-                                sb.AppendLine("<h4 style=\"font-weight: bold\">Dit is uw ticket</h4>");
-                                sb.AppendLine("<p style=\"float: left;\"><b>" + user.FirstName + " " + user.Name + " </b></p>");
-                                sb.AppendLine("<br /><br />");
-                                sb.AppendLine("<h2 style=\"font-weight: bold\">" + clubThuis.naam + "  vs  " + clubBez.naam + "</h2></div>");
-                                sb.AppendLine("<table style=\"width: 100%\" cellspacing='0' cellpadding='2'>");
-                                sb.AppendLine("<tr><th><br /><br /></th></tr>");
-                                sb.AppendLine("<tr><th>Aanvang wedstrijd: " + wedstrijd.Date);
-                                sb.AppendLine("</th><td style=\"text-align:center\"></td></tr><tr><td sty:e=\"font-weight: bold\">Plaats:</td></tr>");
-                                sb.AppendLine("<tr><td></td>");
-                                sb.AppendLine("<td >" + stadion.naam + "</td> </tr>");
-                                sb.AppendLine("<tr><td></td><td>" + stadion.adres + "</td><td></td></tr>");
-                                sb.AppendLine("<tr></tr><tr><td style=\"font-weight: bold\">Vaknaam: " + vak.naam + "</td></tr>");
-                                sb.AppendLine("<tr><th></th></tr></table>");
-                                sb.AppendLine("<br />");
-                                sb.AppendLine("<p STYLE=\"text-align: justify;\">");
-                                sb.AppendLine("Beste <br /> <br />Dit is het ticket die recht geeft tot u toegang zal geven tot het stadion en het door u gekozen vak.");
-                                sb.AppendLine("Het ticket is enkel geldig voor de speel datum en tijdstip dat hierboven vermeld staat en in het stadion dat hierboven vermeld staat.");
-                                sb.AppendLine("Het is niet toegelaten om het ticket door te verkopen. <br />");
-                                sb.AppendLine("Tickets zijn ook enkel geldig wanneer deze bij voetbaltickets.be zijn aangekocht. ");
-                                sb.AppendLine("Wanneer u deze van een andere persoon of website hebt gekocht kunnen wij geen garantie geven dat u toegang zult krijgen tot het stadion.");
-                                sb.AppendLine("Wanneer enige twijfel mogelijk is heeft het stadion ook altijd het recht u de toegang te ontzeggen.<br />");
-                                sb.AppendLine("Tickets kunnen ook slechts 1 keer gescanned worden. Wanneer een ticket meerdere keren gescanned wordt zal slechts het eerste toegelaten worden tot het stadion.<br /> <br />");
-                                sb.AppendLine("Indien u wenst uw ticket te annuleren kan u dit doen tot 1 week voor de wedstrijd.");
-                                sb.AppendLine("<br /><br />");
-                                sb.AppendLine("Zorg ervoor dat onderstaande barcode goed leesbaar is.");
-                                sb.AppendLine("<br /><br />");
-                                sb.AppendLine("</p></div></body></html>");
-
-                                List<IElement> htmlarraylist = iTextSharp.text.html.simpleparser.HTMLWorker.ParseToList(new StringReader(sb.ToString()), null);
-
-                                //add the collection to the document
-                                for (int k = 0; k < htmlarraylist.Count; k++)
-                                {
-                                    pdfDoc.Add((IElement)htmlarraylist[k]);
-                                }
-
-                                pdfDoc.Add(imgBar);
-
+                                pdfDoc.Close();
+                                bytes = memoryStream.ToArray();
+                                memoryStream.Close();
                             }
-
-                            pdfDoc.Close();
-                            bytes = memoryStream.ToArray();
-                            memoryStream.Close();
                         }
                     }
                 }
 
-
                 return bytes;
+
             }
+            else
+            {
+                return null;
+            }
+
+
         }
 
         [ValidateAntiForgeryToken]
@@ -450,6 +463,59 @@ namespace TicketVerkoopVoetbal.Controllers
             barcode.GenerateChecksum = true;
             barcode.StartStopText = true;
             return barcode.CreateDrawingImage(System.Drawing.Color.Black, System.Drawing.Color.White);
+        }
+
+        public ActionResult Download(int ticketsId)
+        {
+            TicketService ticketService = new TicketService();
+            List<int> ticketList = new List<int>();
+            ticketList.Add(ticketsId);
+            var ticket = ticketService.GetById(ticketsId);
+
+            if (ticket.Persoonid.Equals(User.Identity.GetUserId()))
+            {
+                Byte[] pdfByte = CreateTicketsPdf(ticketList);
+
+                Response.Clear();
+                MemoryStream ms = new MemoryStream(pdfByte);
+                Response.ContentType = "application/pdf";
+                Response.AddHeader("content-dispotition", "attachement;filename=Tickets.pdf");
+                Response.Buffer = true;
+                ms.WriteTo(Response.OutputStream);
+                Response.End();
+                return new FileStreamResult(ms, "ticket/pdf");
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
+
+        public ActionResult DeleteTicket(int ticketsId)
+        {
+            TicketService ticketService = new TicketService();
+            var ticket = ticketService.GetById(ticketsId);
+
+            if (ticket.Persoonid.Equals(User.Identity.GetUserId()))
+            {
+                WedstrijdService wedstrijdService = new WedstrijdService();
+                var wedstrijd = wedstrijdService.Get(ticket.Wedstrijdid);
+
+                if (wedstrijd.Date > DateTime.Now.AddDays(7))
+                {
+                    ticketService.Delete(ticket);
+                }
+                else
+                {
+                    TempData["ticketDelDayPass"] = true;
+                }
+
+                return RedirectToAction("View", "Profile");
+            }
+            else
+            {
+                return HttpNotFound();
+            }
         }
     }
 }

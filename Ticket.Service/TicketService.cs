@@ -54,5 +54,10 @@ namespace Ticket.Service
         {
             return ticketDao.ZoekTicketsBarcode(barcode);
         }
+
+        public void Delete(Tickets ticket)
+        {
+            ticketDao.Delete(ticket);
+        }
     }
 }

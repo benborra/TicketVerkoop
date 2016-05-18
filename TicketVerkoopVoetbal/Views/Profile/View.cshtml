@@ -14,6 +14,16 @@
 
 <hr />
 
+@if (TempData["ticketDelDayPass"] != null)
+{
+    TempData["ticketDelDayPass"] = null;
+    <div class="alert alert-danger">
+        <strong>Opgelet!</strong> <br />
+        Dit ticket kan niet meer worden verwijderd. U kan tot ten laatste 7 dagen voor een wedstrijd het ticket annuleren.
+
+    </div>
+}
+
 <div>
     <div class="content">
         @Html.Label("Persoonlijke info")
@@ -63,7 +73,7 @@
 
 
 
-    <div class="content" style="margin-right: 0px">
+    <div class="content">
         <table>
             @if (ViewBag.Wedstrijden != null)
             {
@@ -101,8 +111,13 @@
                                             {
                                                 <div class="list-group-item">
                                                     @ViewBag.plaatsNaam[ticket.plaatsId]
-                                                   
 
+
+                                                    <a href="@Url.Action("Download", "Shoppingcart", new { ticketsId = ticket.id })" class="btn btn-info btn-xs">Ticket</a>
+                                                    @if (date >= DateTime.Now.AddDays(7))
+                                                    {
+                                                        <a href="@Url.Action("DeleteTicket", "Shoppingcart", new { ticketsId = ticket.id })" class="btn btn-danger btn-xs">Inwisselen</a>
+                                                    }
                                                 </div>
                                             }
                                         }
@@ -195,6 +210,6 @@
 </div>
 
 <p>
-    
+
     @Html.ActionLink("Paswoord wijzigen", "ChangePassword", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
 </p>

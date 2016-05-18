@@ -63,6 +63,15 @@ namespace Ticket.DAO
             }
         }
 
+        public void Delete(Tickets ticket)
+        {
+            using (var db = new TicketEntities())
+            {
+                db.Entry(ticket).State = EntityState.Deleted;
+                db.SaveChanges();
+            }
+        }
+
         public void Add(Tickets ticket)
         {
             using (var db = new TicketEntities())
