@@ -14,41 +14,72 @@
     @Html.AntiForgeryToken()
 
     <hr />
-    if (Model.Date < DateTime.Now.AddDays(30))
+
+    if (TempData["gekochteTickets"] != null)
     {
-    <table>
-        <tr>
-            <th>
-                <img src="~/@Url.Content(Model.Clubs.logo)" alt="Logo" class="logo" />
-            </th>
-            <th>
-                <img src="~/images/shared/vs.bmp" alt="vs" class="vs" />
-            </th>
-            <th>
-                <img src="~/@Url.Content(Model.Clubs1.logo)" alt="Logo" class="logo" />
-            </th>
-        </tr>
-        <tr>
-            <th>
-                @Html.DisplayFor(model => model.Clubs.naam)
-            </th>
-            <th></th>
-            <th>
-                @Html.DisplayFor(model => model.Clubs1.naam)
-            </th>
-        </tr>
-    </table>
+        <div class="alert alert-danger">
+            <strong>Opgelet!</strong> <br />
 
-    <br />
+            @{
+                int tick = Convert.ToInt16(TempData["gekochteTickets"]);
+                int max = Convert.ToInt16(System.Configuration.ConfigurationManager.AppSettings["maxTicket"]);
+                TempData["gekochteTickets"] = null;
+            }
 
-    <div class="form-horizontal">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            Wij hebben een maximum van @max tickets per persoon en u hebt voor deze wedstrijd reeds tickets gekocht. <br />
+            U kan nog maximum @tick tickets kopen voor deze wedstrijd.
+
+        </div>
+                }
+
+                if (TempData["zelfdeDatum"] != null)
+                {
+                    TempData["gekochteTickets"] = null;
+                    <div class="alert alert-danger">
+                        <strong>Opgelet!</strong> <br />
+                        U hebt reeds een wedstrijd die doorgaat op deze dag. <br />
+                        Per onze policie staan we onze gebruikers toe om slechts 1 match per dag tickets voor te kopen. <br />
+                        Wenst u deze tickets te annuleren ga dan naar uw profiel pagina, hier kunt u uw tickets tot een week voor de match gratis annuleren.
+
+                    </div>
+                }
 
 
-        <div class="form-group">
-            @Html.Label("Hoeveel tickets wil u bestellen?", htmlAttributes: new { @class = "control-label col-md-2", @style = "padding-top: 0;" })
-            <div class="col-md-10">
-                @Html.DropDownList("AantalTickets", new SelectListItem[]{
+                if (Model.Date < DateTime.Now.AddDays(30))
+                {
+                    <table>
+                        <tr>
+                            <th>
+                                <img src="~/@Url.Content(Model.Clubs.logo)" alt="Logo" class="logo" />
+                            </th>
+                            <th>
+                                <img src="~/images/shared/vs.bmp" alt="vs" class="vs" />
+                            </th>
+                            <th>
+                                <img src="~/@Url.Content(Model.Clubs1.logo)" alt="Logo" class="logo" />
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayFor(model => model.Clubs.naam)
+                            </th>
+                            <th></th>
+                            <th>
+                                @Html.DisplayFor(model => model.Clubs1.naam)
+                            </th>
+                        </tr>
+                    </table>
+
+                    <br />
+
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                        <div class="form-group">
+                            @Html.Label("Hoeveel tickets wil u bestellen?", htmlAttributes: new { @class = "control-label col-md-2", @style = "padding-top: 0;" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("AantalTickets", new SelectListItem[]{
                 new SelectListItem() {Text = "1", Value="1"},
                 new SelectListItem() {Text = "2", Value="2"},
                 new SelectListItem() {Text = "3", Value="3"},
@@ -59,35 +90,35 @@
                 new SelectListItem() {Text = "8", Value="8"},
                 new SelectListItem() {Text = "9", Value="9"},
                 new SelectListItem() {Text = "10", Value="10"}}, htmlAttributes: new { @class = "form-control", @id = "aantal" })
-            </div>
-        </div>
+                            </div>
+                        </div>
 
-        <div class="form-group">
-            @Html.Label("Waar wilt u zitten?", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("vakNummer", null, htmlAttributes: new { @class = "form-control" })
-            </div>
+                        <div class="form-group">
+                            @Html.Label("Waar wilt u zitten?", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("vakNummer", null, htmlAttributes: new { @class = "form-control" })
+                            </div>
 
-            <img src="~/images/shared/veld.png" alt="veld" class="veld" usemap="#veldmap"/>
-            <map name="veldmap">
-                <area shape="rect" coords="35,145,65,355" alt="Tribune" href="test.html" />
-            </map>
-        </div>
+                            <img src="~/images/shared/veld.png" alt="veld" class="veld" usemap="#veldmap" />
+                            <map name="veldmap">
+                                <area shape="rect" coords="35,145,65,355" alt="Tribune" href="test.html" />
+                            </map>
+                        </div>
 
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Reserveer" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-    }
-    else
-    {
-        <h4>Er kunnen pas tickets voor de wedstrijd gekocht worden één maand voor de wedsrijd zelf.</h4>
-    }
-}
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Reserveer" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <h4>Er kunnen pas tickets voor de wedstrijd gekocht worden één maand voor de wedsrijd zelf.</h4>
+                    }
+                }
 
 <div>
-    @Html.ActionLink("Back to List", "Index","Wedstrijd")
+    @Html.ActionLink("Back to List", "Index", "Wedstrijd")
 </div>

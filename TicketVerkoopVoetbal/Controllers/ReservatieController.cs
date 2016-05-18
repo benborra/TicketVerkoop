@@ -9,6 +9,7 @@ using Ticket.Model;
 using System.Net;
 using TicketVerkoopVoetbal.Models;
 using Microsoft.AspNet.Identity;
+using System.Configuration;
 
 namespace TicketVerkoopVoetbal.Controllers
 {
@@ -81,10 +82,12 @@ namespace TicketVerkoopVoetbal.Controllers
                     else
                     {
                         // koopt meer dan 10 tickets voor de wedstrijd 
-                        int aantalTotaal = aantalTickets + ticketLijst.Count();
-                        if (aantalTotaal > 10)
+                        int gekochteTickets = ticketLijst.Where(t => t.Wedstrijdid == wedstrijd.id).Count();
+                        int aantalTotaal = aantalTickets + gekochteTickets;
+                        if (aantalTotaal > Convert.ToInt32(ConfigurationManager.AppSettings["maxTicket"]))
                         {
-                            return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+                            TempData["gekochteTickets"] = gekochteTickets;
+                            return RedirectToAction("index", "Reservatie", new { id = wedstrijd.id });
                         }
                     }
                 }
