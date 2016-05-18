@@ -70,25 +70,20 @@
             </tr>
             } 
 
-            @section scripts
-                {
-                    <script language="javascript" type="text/javascript">
-                        $(document).ready(function () {
-                            $("#datatable").DataTable({
-                                "aoColumns": [
-                            {"bSortable": true},
-                            {"bSortable": false},
-                            null,
-                            {"iDataSort": 4},
-                            {"bVisible": false}
-                                ]
-                            });
-                        });
-                    </script>
-                }
         </tbody>
     } @* End if *@
 
 
+  
 
 </table>
+@section scripts
+                {
+    <script language="javascript" type="text/javascript">
+                        $(document).ready(function () {
+                            $("#datatable").DataTable({
+                                "order": [[ 4, "asc" ]]
+                            });
+                        });
+    </script>
+}
