@@ -32,7 +32,10 @@ namespace Ticket.Service
         {
             abonnementDao.Update(entity);
         }
-
+        public IEnumerable<Abonnement> getFromClubdId(int id)
+        {
+            return abonnementDao.getFromClubdId(id);
+        }
         public void RemoveAbonnement(Abonnement abonnement)
         {
             abonnementDao.removeAbonnement(abonnement);

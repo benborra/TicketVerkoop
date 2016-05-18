@@ -57,5 +57,13 @@ namespace Ticket.DAO
                 db.SaveChanges();
             }
         }
+
+        public IEnumerable<Abonnement> getFromClubdId(int id)
+        {
+            using (var db = new TicketEntities())
+            {
+                return db.Abonnement.Where(wed => wed.Clubsid == id).ToList();
+            }
+        }
     }
 }

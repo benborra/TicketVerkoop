@@ -17,6 +17,7 @@ namespace TicketVerkoopVoetbal.Controllers
         TicketService ticketService;
         StadionService stadionService;
         VakService vakService;
+        AbonnementService abboService;
 
         public WedstrijdController()
         {
@@ -25,6 +26,8 @@ namespace TicketVerkoopVoetbal.Controllers
             ticketService = new TicketService();
             stadionService = new StadionService();
             vakService = new VakService();
+            abboService = new AbonnementService();
+            
         }
 
         // GET: Wedstrijd
@@ -43,7 +46,12 @@ namespace TicketVerkoopVoetbal.Controllers
         {
             Wedstrijd w = wedstrijdService.Get(id);
             //aantal aanwezigen
+            // tickets die nog in abonnemlenten zitten
+
+            int abboTickets = abboService.getFromClubdId(w.thuisPloeg).Count();
+
             int numberOfTickets = ticketService.getTicketsPerWedstrijd(id).Count();
+            numberOfTickets += abboTickets;
             ViewBag.AantalTickets = Convert.ToString(numberOfTickets);
             // meegeven hoeveel tickets er nog te verkrijgen zijn
             Stadion stad = stadionService.Get(w.stadionId);

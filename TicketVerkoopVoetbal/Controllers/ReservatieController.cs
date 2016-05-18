@@ -68,21 +68,27 @@ namespace TicketVerkoopVoetbal.Controllers
             {
                 c = wedstrijdService.Get(tick.Wedstrijdid);
                 // indien de dag hetzelfde is throwen we een fout
-                if (c.Date.Day == wedstrijd.Date.Day )
+                if (c.Date == wedstrijd.Date )
                 {
-                    // TODO: wanneer wedstrijd vandaag valt wordt geen pagina geladen, page blijft blanco. Of mogen dan geen tickets meer gekocht worden?
-
-
 
                     // indien zelfde wedstrijd is id gelijk
                     if (c.id != wedstrijd.id)
                     {
                         // TODO: wil ik gelijk oplossen me een error pagina
-                        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+                        return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+                    }
+                    else
+                    {
+                        // koopt meer dan 10 tickets voor de wedstrijd 
+                        int aantalTotaal = aantalTickets + ticketLijst.Count();
+                        if (aantalTotaal > 10)
+                        {
+                            return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+                        }
                     }
                 }
             }
-
 
             if (id != null && aantalTickets >= 1 && aantalTickets <= 10)
             {
