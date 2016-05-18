@@ -1,0 +1,26 @@
+﻿
+
+.content {
+    float: left;
+    margin-right: 40px;
+}
+
+
+footer, p {
+    float: left;
+    width: 100%;
+}
+
+.tableHead {
+    background-color: Darkgreen;
+    color: white;
+}
+
+.tickets {
+    color: black;
+}
+
+.Tickets:hover {
+    background-color: #F2F2F2;
+    cursor:pointer;
+}

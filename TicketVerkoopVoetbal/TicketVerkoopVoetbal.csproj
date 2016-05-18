@@ -362,6 +362,7 @@
     <Content Include="Content\DataTables\images\sort_desc.png" />
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\Profiel.css" />
     <Content Include="Content\Stadion.css" />
     <Content Include="Content\tabel.css" />
     <Content Include="Content\Reservatie.css" />

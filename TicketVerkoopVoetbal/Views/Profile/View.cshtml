@@ -1,56 +1,132 @@
 ﻿@model Ticket.Model.AspNetUsers
+@using Ticket.Model;
 
-@{
-    ViewBag.Title = "Profiel";
-}
+@Styles.Render("~/Content/ProfielPagina")
 
-<h2>Profiel</h2>
+<header>
+    @{
+        ViewBag.Title = "Profiel";
+    }
+
+    <h2>Profiel</h2>
+
+</header>
+
+<hr />
 
 <div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.Label("Naam")
-        </dt>
+    <div class="content">
+        @Html.Label("Persoonlijke info")
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.Label("Naam")
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
 
-        <dt>
-            @Html.Label("Voornaam")
-        </dt>
+            <dt>
+                @Html.Label("Voornaam")
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
 
-        <dt>
-            @Html.Label("Adres")
-        </dt>
+            <dt>
+                @Html.Label("Adres")
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.AdressLine)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.AdressLine)
+            </dd>
 
-        <dt>
-            @Html.Label("Stad")
-        </dt>
+            <dt>
+                @Html.Label("Stad")
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.City)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.City)
+            </dd>
 
-    </dl>
+        </dl>
+    </div>
+
+
+
+    <div class="content" style="margin-right: 0px">
+        <table>
+            @if (ViewBag.Wedstrijden != null)
+            {
+                <tr>
+                    <td>
+                        @Html.Label("Toekomstige wedstrijden:")
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class"list-group">
+                            @foreach (int key in ViewBag.Wedstrijden.Keys)
+                            {
+                                var item = ViewBag.Wedstrijden[key];
+
+                                DateTime date = Convert.ToDateTime(item.Date);
+
+                                <div class="list-group-item tableHead" @*onclick="location.href='@Url.Action("Details", "Wedstrijd", new { id = item.id })'"*@>
+
+                                    @date.ToString("d")
+                                    @date.ToString("t")
+
+                                    <text>  |  </text>
+
+                                    <img src="~/@Url.Content(ViewBag.ClubLogo[item.thuisPloeg])" alt="logo" style="max-height: 35px; max-width: 35px" />
+                                    <text>  -  </text>
+                                    <img src="~/@Url.Content(ViewBag.ClubLogo[item.bezoekersPloeg])" alt="logo" style="max-height: 35px; max-width: 35px" />
+
+                                    <div class="tickets">
+
+                                        @foreach (var ticket in ViewBag.Tickets)
+                                        {
+
+                                            if (ticket.Wedstrijdid == item.id)
+                                            {
+                                                <div class="list-group-item">
+                                                    @ViewBag.plaatsNaam[ticket.plaatsId]
+                                                   
+
+                                                </div>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+
+                            } @* end foreach *@
+                        </div>
+                    </td>
+                </tr>
+            } // end first if
+            else
+            {
+                <tr>
+                    <td>
+                        <div class="alert alert-info">Ploeg heeft nog geen wedstrijden in de nabije toekomst.</div>
+                    </td>
+                </tr>
+            } @* end else if *@
+        </table>
+    </div>
 </div>
+
 <p>
+    
     @Html.ActionLink("Paswoord wijzigen", "ChangePassword", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
 </p>

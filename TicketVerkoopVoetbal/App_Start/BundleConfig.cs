@@ -42,6 +42,9 @@ namespace TicketVerkoopVoetbal
             bundles.Add(new StyleBundle("~/Content/ClubDetail").Include(
                       "~/Content/ClubDetail.css"));
 
+            bundles.Add(new StyleBundle("~/Content/ProfielPagina").Include(
+                      "~/Content/Profiel.css"));
+
             // datatbles
             bundles.Add(new ScriptBundle("~/bundles/datatables").Include("~/Scripts/DataTables/jquery.dataTables.min.js",
                     "~/Scripts/DataTables/dataTables.bootstrap.min.js",
