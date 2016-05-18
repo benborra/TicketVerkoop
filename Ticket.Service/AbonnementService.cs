@@ -27,6 +27,10 @@ namespace Ticket.Service
         {
             return abonnementDao.Get(id);
         }
+        public Abonnement GetFromUserId(string id)
+        {
+            return abonnementDao.GetFromUserId(id);
+        }
 
         public void Update(Abonnement entity)
         {

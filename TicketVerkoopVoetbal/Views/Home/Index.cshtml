@@ -48,14 +48,45 @@
         </p>
         <p><a class="btn btn-default" href="@Url.Action("Index","Abonnement")">Abonnement kiezen  &raquo;</a></p>
     </div>
-    <div class="col-md-4 homeInfo" >
-        <img src="~/images/icons/ball.png" alt="iconSub" class="homeIcons" />
-        <h2>Wedstrijden</h2>
-        <p>
-            Klik hier om de aankomende wedstrijden te zien.
-        </p>
-        <p><a class="btn btn-default" href="@Url.Action("Index","Wedstrijd")">Wedstrijden &raquo;</a></p>
-    </div>
+    @*is user logged in?*@
+    @if (ViewBag.ClubNaam == null)
+    {
+        @* geef standaard log in link*@
+        <div class="col-md-4 homeInfo">
+            <img src="~/images/icons/ball.png" alt="iconSub" class="homeIcons" />
+            <h2>Inloggen</h2>
+            <p>
+                Je bent niet ingelogd. Je dient je in te loggen om wedstrijden te bekijken.
+            </p>
+            <p><a class="btn btn-default" href="@Url.Action("Login", "Account")">Inloggen &raquo;</a></p>
+        </div>
+    }
+    else
+    {
+        if (ViewBag.ClubNaam == "newuser")
+        {
+            <div class="col-md-4 homeInfo">
+                <img src="~/images/icons/ball.png" alt="iconSub" class="homeIcons" />
+                <h2>Wedstrijden</h2>
+                <p>
+                    Klik hier om de aankomende wedstrijden te zien.
+                </p>
+                <p><a class="btn btn-default" href="@Url.Action("Index", "Wedstrijd")">Wedstrijden &raquo;</a></p>
+            </div>
+        }
+        else
+        {
+            @* als de if hier komt dan zitten er items in club en image*@
+            <div class="col-md-4 homeInfo">
+                <img src="~/@Url.Content(ViewBag.Image)" alt="iconSub" class="homeIcons" />
+                <h2>Kijkt snel of @Html.Raw((string)ViewBag.ClubNaam) speelt</h2>
+                <p>
+                    Klik hier om de aankomende wedstrijden te zien.
+                </p>
+                <p><a class="btn btn-default" href="@Url.Action("Index", "Wedstrijd")">Wedstrijden &raquo;</a></p>
+            </div>
+        }
+    }
     <div class="col-md-4 homeInfo">
         <img src="~/images/icons/schild.png" alt="iconSub" class="homeIcons" />
         <h2>Ploegen</h2>
