@@ -1,6 +1,7 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.html.simpleparser;
 using iTextSharp.text.pdf;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -115,67 +116,81 @@ namespace TicketVerkoopVoetbal.Controllers
             TicketService ticketService = new TicketService();
             List<int> tickets = new List<int>();
             Tickets ticket = new Tickets();
-
-            for (int i = 0; i < shopping.Cart.Count; i++)
+            if (shopping.Cart != null)
             {
-                cart = shopping.Cart[i];
-                int ticketsBeschikbaar = plaatsService.GetPlaats(cart.Plaats).aantal - ticketService.getTicketsPerWedstrijdPerVak(cart.WedstrijdId, cart.Plaats);
-                int countTicket = ticketService.GetTicketsPerPersoonPerWedstrijd(user.Id, cart.WedstrijdId).Count();
-
-                if (ticketsBeschikbaar >= cart.Aantal)
+                for (int i = 0; i < shopping.Cart.Count; i++)
                 {
-                    if ((countTicket + cart.Aantal) <= maxTickets)
+                    cart = shopping.Cart[i];
+                    Delete(cart.WedstrijdId);
+                    int ticketsBeschikbaar = plaatsService.GetPlaats(cart.Plaats).aantal - ticketService.getTicketsPerWedstrijdPerVak(cart.WedstrijdId, cart.Plaats);
+                    int countTicket = ticketService.GetTicketsPerPersoonPerWedstrijd(user.Id, cart.WedstrijdId).Count();
+
+                    if (ticketsBeschikbaar >= cart.Aantal)
                     {
-                        for (int j = 0; j < cart.Aantal; j++)
+                        if ((countTicket + cart.Aantal) <= maxTickets)
                         {
-                            ticket.Persoonid = user.Id;
-                            ticket.Wedstrijdid = cart.WedstrijdId;
-                            ticket.plaatsId = cart.Plaats;
-                            ticket.Betaald = true;
-
-                            Boolean unique = false;
-                            long barcode = -1;
-
-                            while (!unique)
+                            for (int j = 0; j < cart.Aantal; j++)
                             {
-                                Random r = new Random();
-                                int bar = r.Next(100000000, 999999999);
+                                ticket.Persoonid = user.Id;
+                                ticket.Wedstrijdid = cart.WedstrijdId;
+                                ticket.plaatsId = cart.Plaats;
+                                ticket.Betaald = true;
 
-                                barcode = Convert.ToInt64(bar.ToString() + ticket.Wedstrijdid.ToString() + ticket.plaatsId.ToString());
+                                Boolean unique = false;
+                                long barcode = -1;
 
-                                if (ticketService.ZoekTicketBarcode(barcode) == 0) unique = true;
+                                while (!unique)
+                                {
+                                    Random r = new Random();
+                                    int bar = r.Next(100000000, 999999999);
+
+                                    barcode = Convert.ToInt64(bar.ToString() + ticket.Wedstrijdid.ToString() + ticket.plaatsId.ToString());
+
+                                    if (ticketService.ZoekTicketBarcode(barcode) == 0) unique = true;
+                                }
+
+                                ticket.barcode = barcode;
+
+                                // Ticket toevoegen aan db
+                                ticketService.Add(ticket);
+
+                                // Ticket ID in lijst stoppen zodanig deze later terug opgehaald kan worden om aan mail toe te voegen
+                                tickets.Add(ticket.id);
+                                
                             }
-
-                            ticket.barcode = barcode;
-
-                            // Ticket toevoegen aan db
-                            ticketService.Add(ticket);
-
-                            // Ticket ID in lijst stoppen zodanig deze later terug opgehaald kan worden om aan mail toe te voegen
-                            tickets.Add(ticket.id);
+                        }
+                        else
+                        {
+                            TempData["Tickets"] = countTicket;
+                            TempData["Thuis"] = cart.ThuisPloegNaam;
+                            TempData["Bezoek"] = cart.BezoekersPloegNaam;
+                            return RedirectToAction("index", "ShoppingCart");
                         }
                     }
                     else
                     {
-                        TempData["Tickets"] = countTicket;
+
+
+                        TempData["Tickets2"] = countTicket;
                         TempData["Thuis"] = cart.ThuisPloegNaam;
                         TempData["Bezoek"] = cart.BezoekersPloegNaam;
                         return RedirectToAction("index", "ShoppingCart");
                     }
                 }
-                else
-                {
-
-
-                    TempData["Tickets2"] = countTicket;
-                    TempData["Thuis"] = cart.ThuisPloegNaam;
-                    TempData["Bezoek"] = cart.BezoekersPloegNaam;
-                    return RedirectToAction("index", "ShoppingCart");
-                }
+                await SendPdfTickets(user, tickets);
             }
-
-            await SendPdfTickets(user, tickets);
-
+            if (shopping.abbo != null)
+            {
+                // er is een abonnement in de session
+                AbonnementViewModel b =  shopping.abbo;
+                AbonnementService obboserv = new AbonnementService();
+                Abonnement bz = new Abonnement();
+                bz.PlaatsId = b.PlaatsId;
+                bz.Persoonid = user.Id;
+                bz.Seizoenid = b.Seizoenid;
+                bz.Clubsid = b.ClubsId;
+                await SendPdfTickets(user, b);
+            }
             //}
             //catch (Exception ex)
             //{
@@ -187,10 +202,107 @@ namespace TicketVerkoopVoetbal.Controllers
 
         private async Task<ActionResult> SendPdfTickets(AspNetUsers user, List<int> tickets)
         {
+            
             await SendTicketMail(user, CreateTicketsPdf(tickets));
 
             return null;
         }
+        private async Task<ActionResult> SendPdfTickets(AspNetUsers user, AbonnementViewModel b)
+        {
+            await SendTicketMail(user, CreateAbboPdf(b));
+            DeleteAbbo();
+            return null;
+        }
+
+
+        private Byte[] CreateAbboPdf(AbonnementViewModel abboView)
+        {
+            MemoryStream memoryStream = new MemoryStream();
+            Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 10f, 0f);
+            StringReader sr = new StringReader("");
+            HTMLWorker htmlparser = new HTMLWorker(pdfDoc);
+            Byte[] bytes = { 0 };
+
+            using (StringWriter sw = new StringWriter())
+            {
+                using (HtmlTextWriter hw = new HtmlTextWriter(sw))
+                {
+                    using (memoryStream = new MemoryStream())
+                    {
+                        using (PdfWriter writer = PdfWriter.GetInstance(pdfDoc, memoryStream))
+                        {
+                            pdfDoc.Open();
+
+                            pdfDoc.NewPage();
+                            UserService userService = new UserService();
+                            WedstrijdService wedstrijdService = new WedstrijdService();
+                            ClubService clubService = new ClubService();
+                            StadionService stadionService = new StadionService();
+                            VakService vakService = new VakService();
+                            SeizoenService seizoen = new SeizoenService();
+                            Seizoen sez = seizoen.Get(abboView.Seizoenid);
+
+                            AspNetUsers user = null;
+                            Wedstrijd wedstrijd = null;
+                            Clubs clubThuis = null;
+                            
+                            Stadion stadion = null;
+                            Vak vak = null;
+
+
+                            var userid = User.Identity.GetUserId();
+                            user = userService.GetUser(userid);
+                            clubThuis = clubService.Get(abboView.ClubsId);
+                            stadion = stadionService.Get(wedstrijd.stadionId);
+                            vak = vakService.getVak(abboView.PlaatsId);
+
+                            StringBuilder sb = new StringBuilder();
+
+                            sb.AppendLine("<!DOCTYPE html><html><head><title></title><meta charset=\"utf-8\" />");
+                            sb.AppendLine("</head><body style=\"padding: 10px;font-family: Arial;\">");
+                            sb.AppendLine("<div style=\"padding: 10px; margin:auto; text-align:center;\"><h2>Aankoop Abonnement</h2>	</div>");
+                            sb.AppendLine("<div style=\"padding: 10px;\" margin-left: 30px;>");
+                            sb.AppendLine("<p>Beste "+ user.FirstName+" "+ user.Name +"");
+                            sb.AppendLine("</br></br>");
+                            sb.AppendLine("Hierbij ontvangt u het betalingsbewijs van uw abonnement.</br>");
+                            sb.AppendLine("Met dit bewijs kan u aan het loket van het stadion een fysiek exemplaar van uw abonnement afhalen.");
+                            sb.AppendLine("</br>");
+                            sb.AppendLine("</br>");
+                            sb.AppendLine("Controleer ook nog eens volgende gegevens:");
+                            sb.AppendLine("</br>");
+                            sb.AppendLine("Club :"+ clubThuis.naam+ " </br>");
+                            sb.AppendLine("Vak : "+ vak.naam+" </br>");
+                            sb.AppendLine("Voor het seizoen : " + sez.SeizoenString + " </br>");
+                            sb.AppendLine("</br>");
+                            sb.AppendLine("Vergeet niet dat u aan het loket "+abboView.Prijs +" euro zal moeten betalen.</br></br>");
+                            sb.AppendLine("Met vriendelijke groeten");
+                            sb.AppendLine("</br>");
+                            sb.AppendLine("Tickerverkoop");
+                            sb.AppendLine("</p></div>");
+                            sb.AppendLine("</body>");
+
+
+
+                            List<IElement> htmlarraylist = iTextSharp.text.html.simpleparser.HTMLWorker.ParseToList(new StringReader(sb.ToString()), null);
+
+                            //add the collection to the document
+                            for (int k = 0; k < htmlarraylist.Count; k++)
+                            {
+                                pdfDoc.Add((IElement)htmlarraylist[k]);
+                            }
+
+                            pdfDoc.Close();
+                            bytes = memoryStream.ToArray();
+                            memoryStream.Close();
+                        }
+                    }
+                }
+
+
+                return bytes;
+            }
+        }
+
 
         private Byte[] CreateTicketsPdf(List<int> tickets)
         {

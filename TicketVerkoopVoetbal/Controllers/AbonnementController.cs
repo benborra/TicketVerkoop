@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using Ticket.Service;
 using Ticket.Model;
 using TicketVerkoopVoetbal.Models;
+using Microsoft.AspNet.Identity;
+using System.Net;
 
 namespace TicketVerkoopVoetbal.Controllers
 {
@@ -44,9 +46,18 @@ namespace TicketVerkoopVoetbal.Controllers
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
-            
+
             //// geeft 2015, 2016,.. terug
             // TODO: heeft deze persoon al een abonnement?
+            var userid = User.Identity.GetUserId();
+            Abonnement abbonnement = abboService.GetFromUserId(userid);
+            if (abbonnement != null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+
+
+
             // month is september, dan is de competitie al gestart, in september kunnen ze nog kopen
             if (Convert.ToInt32(collection["Seizoen"]) <= DateTime.Now.Year && DateTime.Now.Month > 9)
             {
