@@ -25,6 +25,7 @@ namespace TicketVerkoopVoetbal.Controllers
         PlaatsService plaatsService;
         VakService vakService;
 
+        [Authorize]
         public new ActionResult View()
         {
             userService = new UserService();
@@ -35,16 +36,20 @@ namespace TicketVerkoopVoetbal.Controllers
             vakService = new VakService();
 
             Dictionary<int, Wedstrijd> wedstrijden = new Dictionary<int, Wedstrijd>();
+            Dictionary<int, Wedstrijd> wedstrijdenOld = new Dictionary<int, Wedstrijd>();
             Dictionary<int, string> clubLogo = new Dictionary<int, String>();
             Dictionary<int, string> plaatsNaam = new Dictionary<int, string>(); //int geet plaatsId, plaats geeft vaknaam waarin ticket geldig is
             var user = userService.Get(User.Identity.Name);
+
             var tickets = ticketService.getTicketsperPersoon(user.Id);
 
             foreach (var ticket in tickets)
             {
-                if (!(wedstrijden.ContainsKey(ticket.Wedstrijdid)))
+                if (!(wedstrijden.ContainsKey(ticket.Wedstrijdid) || wedstrijdenOld.ContainsKey(ticket.Wedstrijdid)))
                 {
-                    wedstrijden.Add(ticket.Wedstrijdid, wedstrijdService.Get(ticket.Wedstrijdid));
+                    var wedstrijd = wedstrijdService.Get(ticket.Wedstrijdid);
+                    if (wedstrijd.Date >= DateTime.Now) wedstrijden.Add(ticket.Wedstrijdid, wedstrijdService.Get(ticket.Wedstrijdid));
+                    else wedstrijdenOld.Add(ticket.Wedstrijdid, wedstrijdService.Get(ticket.Wedstrijdid));
                 }
 
                 if (!(plaatsNaam.ContainsKey(ticket.plaatsId)))
@@ -53,7 +58,6 @@ namespace TicketVerkoopVoetbal.Controllers
                     plaatsNaam.Add(ticket.plaatsId, vakService.getVak(plaatsService.GetPlaats(ticket.plaatsId).id).naam);
                 }
             }
-
 
             foreach (int id in wedstrijden.Keys)
             {
@@ -70,7 +74,23 @@ namespace TicketVerkoopVoetbal.Controllers
                 }
             }
 
+            foreach (int id in wedstrijdenOld.Keys)
+            {
+                Wedstrijd wedtr = wedstrijdenOld[id];
+
+                if (!(clubLogo.ContainsKey(wedtr.thuisPloeg)))
+                {
+                    clubLogo.Add(wedtr.thuisPloeg, clubService.GetClubLogo(wedtr.thuisPloeg));
+                }
+
+                if (!(clubLogo.ContainsKey(wedtr.bezoekersPloeg)))
+                {
+                    clubLogo.Add(wedtr.bezoekersPloeg, clubService.GetClubLogo(wedtr.bezoekersPloeg));
+                }
+            }
+
             ViewBag.Wedstrijden = wedstrijden;
+            ViewBag.WedstrijdenOld = wedstrijdenOld;
             ViewBag.Tickets = tickets;
             ViewBag.ClubLogo = clubLogo;
             ViewBag.PlaatsNaam = plaatsNaam;

@@ -124,6 +124,74 @@
             } @* end else if *@
         </table>
     </div>
+
+    <div class="content" style="margin-right: 0px">
+        <table>
+            @if (ViewBag.WedstrijdenOld != null)
+            {
+                <tr>
+                    <td>
+                        @Html.Label("Voorbije wedstrijden:")
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class"list-group">
+                            @foreach (int key in ViewBag.WedstrijdenOld.Keys)
+                            {
+                                var item = ViewBag.WedstrijdenOld[key];
+
+                                DateTime date = Convert.ToDateTime(item.Date);
+
+                                <div class="list-group-item tableHead" @*onclick="location.href='@Url.Action("Details", "Wedstrijd", new { id = item.id })'"*@>
+
+                                    @date.ToString("d")
+                                    @date.ToString("t")
+
+                                    <text>   |   </text>
+
+                                    <img src="~/@Url.Content(ViewBag.ClubLogo[item.thuisPloeg])" alt="logo" style="max-height: 35px; max-width: 35px" />
+                                    <text>  -  </text>
+                                    <img src="~/@Url.Content(ViewBag.ClubLogo[item.bezoekersPloeg])" alt="logo" style="max-height: 35px; max-width: 35px" />
+
+                                    <text>   |   </text>
+
+                                    @item.scoreThuis
+                                    <text>  -  </text>
+                                    @item.scoreBezoekers
+
+                                    <div class="tickets">
+
+                                        @foreach (var ticket in ViewBag.Tickets)
+                                        {
+
+                                            if (ticket.Wedstrijdid == item.id)
+                                            {
+                                                <div class="list-group-item">
+                                                    @ViewBag.plaatsNaam[ticket.plaatsId]
+
+
+                                                </div>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+
+                            } @* end foreach *@
+                        </div>
+                    </td>
+                </tr>
+            } // end first if
+            else
+            {
+                <tr>
+                    <td>
+                        <div class="alert alert-info">Ploeg heeft nog geen wedstrijden in de nabije toekomst.</div>
+                    </td>
+                </tr>
+            } @* end else if *@
+        </table>
+    </div>
 </div>
 
 <p>
