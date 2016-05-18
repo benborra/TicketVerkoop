@@ -27,6 +27,14 @@ namespace Ticket.DAO
             }
         }
 
+        public Abonnement GetFromUserId(string id)
+        {
+            using (var db = new TicketEntities())
+            {
+                return db.Abonnement.Where(s => s.Persoonid == id).FirstOrDefault();
+            }
+        }
+
         public void Add(Abonnement abonnement)
         {
             using (var db = new TicketEntities())
