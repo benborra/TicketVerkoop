@@ -12,6 +12,14 @@
     </p>
 }
 
+@if (TempData["cantDelete"] != null)
+            {
+                TempData["cantDelete"] = null;
+    <div class="alert alert-danger">
+        <strong>Opgelet!</strong> Dit stadion heeft nog clubs gekoppeld en kan niet worden verwijdered. <br />
+        Koppel eerst de club aan een ander stadion voor je dit stadion kan verwijderen. 
+    </div>
+}
 
     @foreach (var item in Model)
     {
@@ -29,9 +37,9 @@
                     <br />
                     @if (ViewContext.HttpContext.User.IsInRole("Admin"))
                     {
-                        @Html.ActionLink("Edit", "Edit", new { area = "Admin", id = item.Stadion.id })
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Stadion.id })
                         <text> | </text>
-                        @Html.ActionLink("Delete", "Delete", new { area = "Admin", id = item.Stadion.id })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Stadion.id })
                     }
                 </p>
             </div>

@@ -37,12 +37,25 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+    @if (TempData["cantDelete"] != null)
+            {
+                TempData["cantDelete"] = null;
+        <div class="alert alert-danger">
+            <strong>Opgelet!</strong> Deze Club heeft nog wedstrijden en kan niet worden verwijdered, verwijder eerst de wedstrijden voor je de club verwijderd. <br />
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
         </div>
     }
+    else
+    {
+        using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    }
+
 </div>

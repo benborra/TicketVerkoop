@@ -33,7 +33,7 @@ namespace TicketVerkoopVoetbal.Controllers
         }
 
         // GET: Club/Details/5
-        
+
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -70,7 +70,7 @@ namespace TicketVerkoopVoetbal.Controllers
                 ViewBag.clubs = c;
 
             }
-            
+
             return View(clubs);
         }
 
@@ -167,7 +167,17 @@ namespace TicketVerkoopVoetbal.Controllers
             StadionService stadionService = new StadionService();
             ViewBag.StadionId = new SelectList(stadionService.All(), "Stadion nr", "Naam");
 
-            return View(clubs);
+
+            var wedstrijd = wedstrijdService.GetWedStrijdPerPloeg(Convert.ToInt32(id));
+            if (wedstrijd == null)
+            {
+                return View(clubs);
+            }
+            else
+            {
+                TempData["cantDelete"] = true;
+                return View(clubs);
+            }
         }
 
         // POST: Club/Delete/5
@@ -179,7 +189,6 @@ namespace TicketVerkoopVoetbal.Controllers
             {
                 Clubs club = clubService.Get(id);
                 clubService.RemoveClub(club);
-
                 return RedirectToAction("Index");
             }
             catch
