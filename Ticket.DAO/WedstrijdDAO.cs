@@ -100,6 +100,18 @@ namespace Ticket.DAO
             }
         }
 
+        public void UpdateWedsrijd(Wedstrijd w)
+        {
+            Wedstrijd we = Get(w.id);
+            we.Date = w.Date;
+
+            using (var db = new TicketEntities())
+            {
+                db.Wedstrijd.Attach(we);
+                db.Entry(we).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
 
 
         // get wedstrijdPerPloeg die nog gespeeld moeten worden
