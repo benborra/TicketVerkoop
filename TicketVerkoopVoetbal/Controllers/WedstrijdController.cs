@@ -56,7 +56,7 @@ namespace TicketVerkoopVoetbal.Controllers
             // meegeven hoeveel tickets er nog te verkrijgen zijn
             Stadion stad = stadionService.Get(w.stadionId);
             ViewBag.AantalTicketsBeschikbaar = Convert.ToString(vakService.getAantalZitPlaatsenPerStadion(stad) - numberOfTickets);
-
+            ViewBag.TicketSold = Convert.ToString(numberOfTickets);
 
             return View(w);
         }
