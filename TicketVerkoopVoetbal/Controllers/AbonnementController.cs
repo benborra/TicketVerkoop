@@ -59,9 +59,14 @@ namespace TicketVerkoopVoetbal.Controllers
                 return RedirectToAction("Index");
             }
 
-            // month is september, dan is de competitie al gestart, in september kunnen ze nog kopen
-            if (Convert.ToInt32(collection["Seizoen"]) <= DateTime.Now.Year && DateTime.Now.Month > 9)
+            if (s.jaar < DateTime.Now.Year)
             {
+                TempData["datumerror"] = true;
+                return RedirectToAction("Index");
+            }
+            if (s.jaar == DateTime.Now.Year && DateTime.Now.Month > 9)
+            {
+                TempData["datumerror"] = true;
                 return RedirectToAction("Index");
             }
             Clubs c = clubService.Get(Convert.ToInt32(collection["Ploegen"]));
