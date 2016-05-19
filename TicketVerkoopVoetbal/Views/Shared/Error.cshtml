@@ -10,6 +10,11 @@
     <div class="alert alert-error">
         Er is een fout gebeurd, gelieve contact op te nemen met de administrator.
     </div>
+
+    <div style="text-align: center;">
+        <button type="button" class="btn btn-primary btn-xl" onclick="location.href='@Url.Action("Index", "Home")'">Keer terug</button>
+    </div>
+
     @if (Model != null && HttpContext.Current.IsDebuggingEnabled)
     {
         <div>

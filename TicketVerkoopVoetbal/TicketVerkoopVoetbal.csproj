@@ -361,6 +361,7 @@
     <Content Include="Content\DataTables\images\sort_both.png" />
     <Content Include="Content\DataTables\images\sort_desc.png" />
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
+    <Content Include="Content\navbar.css" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
     <Content Include="Content\Profiel.css" />
     <Content Include="Content\Stadion.css" />
@@ -492,6 +493,8 @@
     <Content Include="Content\bootstrap\wells.less" />
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
+    <None Include="Properties\PublishProfiles\Vives - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\VoetbalTicket.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
