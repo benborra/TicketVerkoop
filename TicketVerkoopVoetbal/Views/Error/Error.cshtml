@@ -10,6 +10,12 @@
     <div class="alert alert-error">
         Een overwachte error is opgetreden. Gelieve contact op te nemen met de administrator.
     </div>
+
+    <div style="text-align: center;">
+        <button type="button" class="btn btn-primary btn-xl" onclick="location.href='@Url.Action("Index", "Home")'">Keer terug</button>
+    </div>
+
+
     @if (Model != null && HttpContext.Current.IsDebuggingEnabled)
     {
         <div>
