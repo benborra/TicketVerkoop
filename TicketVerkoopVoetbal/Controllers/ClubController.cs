@@ -118,7 +118,7 @@ namespace TicketVerkoopVoetbal.Controllers
             }
 
 
-            ViewBag.stadionNr = new SelectList(stadionService.All(), "id", "naam");
+            ViewBag.Stadionid = new SelectList(stadionService.All(), "id", "naam", clubs.Stadionid);
 
             return View(clubs);
         }
@@ -127,7 +127,7 @@ namespace TicketVerkoopVoetbal.Controllers
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Edit(
-            [Bind(Include = "Id, Naam, StadionId, Logo")]Clubs entity, string stadionId)
+            [Bind(Include = "Id, Naam, Stadionid, Logo")]Clubs entity, string stadionId)
         {
             try
             {
