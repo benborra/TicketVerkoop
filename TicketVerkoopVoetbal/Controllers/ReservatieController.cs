@@ -75,8 +75,6 @@ namespace TicketVerkoopVoetbal.Controllers
                     // indien zelfde wedstrijd is id gelijk
                     if (c.id != wedstrijd.id)
                     {
-                        // TODO: wil ik gelijk oplossen me een error pagina
-
                         return new HttpStatusCodeResult(HttpStatusCode.NotFound);
                     }
                     else

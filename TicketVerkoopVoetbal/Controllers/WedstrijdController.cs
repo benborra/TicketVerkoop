@@ -150,7 +150,7 @@ namespace TicketVerkoopVoetbal.Controllers
             return RedirectToAction("Index");
         }
 
-        // TODO fix diz shat
+
         [HttpPost]
         public ActionResult FilterPloeg(FormCollection collection)
         {
