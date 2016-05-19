@@ -27,7 +27,7 @@ namespace TicketVerkoopVoetbal.Controllers
             stadionService = new StadionService();
             vakService = new VakService();
             abboService = new AbonnementService();
-            
+
         }
 
         // GET: Wedstrijd
@@ -60,6 +60,31 @@ namespace TicketVerkoopVoetbal.Controllers
 
             return View(w);
         }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            int ticket = ticketService.getTicketsPerWedstrijd(Convert.ToInt32(id)).Count();
+
+            if (ticket == 0)
+            {
+                wedstrijdService.Remove(wedstrijdService.Get(Convert.ToInt32(id)));
+            }
+            else
+            {
+                TempData["cantDelete"] = true;
+            }
+
+            return RedirectToAction("Index");
+
+
+        }
+
         [Authorize(Roles = "Admin")]
         public ActionResult New()
         {
