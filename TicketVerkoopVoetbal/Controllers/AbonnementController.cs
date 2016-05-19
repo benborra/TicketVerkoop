@@ -48,7 +48,6 @@ namespace TicketVerkoopVoetbal.Controllers
         {
 
             //// geeft 2015, 2016,.. terug
-            // TODO: heeft deze persoon al een abonnement?
             var userid = User.Identity.GetUserId();
             Seizoen s = seizoenService.Get(Convert.ToInt32(collection["Seizoen"]));
             Abonnement abbonnement = abboService.GetFromUserIdEnSeizoen(userid, s.id);

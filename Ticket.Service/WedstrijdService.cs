@@ -66,5 +66,10 @@ namespace Ticket.Service
         {
             return wedstrijdDAO.GetWedStrijdPerPloegToekomst(id);
         }
+
+        public void Remove(Wedstrijd wedstrijd)
+        {
+            wedstrijdDAO.Remove(wedstrijd);
+        }
     }
 }

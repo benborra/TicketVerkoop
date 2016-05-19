@@ -6,12 +6,14 @@
     ViewBag.Title = "Overzicht clubs";
 }
 
-<h2>Index</h2>
+<h2>
+    Overzicht van de clubs
+</h2>
 
 @if (ViewContext.HttpContext.User.IsInRole("Admin"))
 {
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Club toevoegen", "Create")
     </p>
 }
 

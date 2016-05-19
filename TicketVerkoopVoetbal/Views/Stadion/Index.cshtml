@@ -2,13 +2,13 @@
 @{
     ViewBag.Title = "Alle stadions in Belgie";
 }
-<h2>Index</h2>
+<h2>Stadion overzicht</h2>
 
 @Styles.Render("~/Content/Stadion.css")
 @if (ViewContext.HttpContext.User.IsInRole("Admin"))
 {
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Stadion toevoegen", "Create")
     </p>
 }
 

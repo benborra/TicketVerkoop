@@ -65,6 +65,16 @@ namespace Ticket.DAO
                 return db.Wedstrijd.Where(r => r.thuisPloeg == id || r.bezoekersPloeg == id).Include(c => c.Clubs).ToList();
             }
         }
+
+        public void Remove(Wedstrijd wedstrijd)
+        {
+            using (var db = new TicketEntities())
+            {
+                db.Entry(wedstrijd).State = EntityState.Deleted;
+                db.SaveChanges();
+            }
+        }
+
         // get wedstrijd per datum
 
         public IEnumerable<Wedstrijd> WedstrijdPerDatum(DateTime time)

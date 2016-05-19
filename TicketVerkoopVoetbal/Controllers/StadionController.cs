@@ -45,8 +45,7 @@ namespace TicketVerkoopVoetbal.Controllers
             {
                 return HttpNotFound();
             }
-
-            // TODO: wat doet deze ddl?
+            
 
             return View(stadion);
         }

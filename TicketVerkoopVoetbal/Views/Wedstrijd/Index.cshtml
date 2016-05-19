@@ -2,10 +2,12 @@
 
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Wedstrijden";
 }
 
-<h2>Index</h2>
+
+<h2>Overzicht van alle toekomstige wedstrijden</h2>
+
 
 <p>
 @if (ViewContext.HttpContext.User.IsInRole("Admin"))
@@ -13,6 +15,15 @@
     @Html.ActionLink("Maak een nieuwe wedstrijd", "New")
 }
 </p>
+
+@if (TempData["cantDelete"] != null)
+            {
+                TempData["cantDelete"] = null;
+    <div class="alert alert-danger">
+        <strong>Opgelet!</strong>
+        Voor deze wedstrijd zijn al tickets verkocht, hierdoor kan u deze niet meer verwijderen.
+    </div>
+}
 
 @Html.ActionLink("Bekijk geschiedenis", "Geschiedenis")<br />
 <table class="table" id="datatable">
