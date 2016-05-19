@@ -74,11 +74,22 @@ namespace TicketVerkoopVoetbal.Controllers
         public ActionResult Delete(int id)
         {
             // controle of het stadion in gebruik is, dan kan je niet verwijderen
-            Stadion s = stadionService.Get(id);
-            stadionService.RemoveStadion(s);
+            clubService = new ClubService();
+            var clubs = clubService.Get(Convert.ToInt32(id));
+            if (clubs == null)
+            {
+                Stadion s = stadionService.Get(id);
+                stadionService.RemoveStadion(s);
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                TempData["cantDelete"] = true;
+                return RedirectToAction("Index");
+            }
         }
+
         [Authorize(Roles = "Admin")]
         // klikt actionLink
         public ActionResult Create()
