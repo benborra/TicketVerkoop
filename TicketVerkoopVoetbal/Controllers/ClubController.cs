@@ -117,8 +117,8 @@ namespace TicketVerkoopVoetbal.Controllers
                 return HttpNotFound();
             }
 
-            StadionService stadionService = new StadionService();
-            ViewBag.StadionId = new SelectList(stadionService.All(), "Stadion nr", "Naam");
+
+            ViewBag.stadionNr = new SelectList(stadionService.All(), "id", "naam");
 
             return View(clubs);
         }
