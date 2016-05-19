@@ -50,7 +50,11 @@ namespace Ticket.Service
         {
             wedstrijdDAO.AddWedstrijd(w);
         }
-       
+
+        public void UpdateWedsrijd(Wedstrijd w)
+        {
+            wedstrijdDAO.UpdateWedsrijd(w);
+        }
 
         public IEnumerable<Wedstrijd> All()
         {

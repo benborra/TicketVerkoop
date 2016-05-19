@@ -56,7 +56,7 @@ namespace TicketVerkoopVoetbal.Controllers
             // meegeven hoeveel tickets er nog te verkrijgen zijn
             Stadion stad = stadionService.Get(w.stadionId);
             ViewBag.AantalTicketsBeschikbaar = Convert.ToString(vakService.getAantalZitPlaatsenPerStadion(stad) - numberOfTickets);
-
+            ViewBag.TicketSold = Convert.ToString(numberOfTickets);
 
             return View(w);
         }
@@ -112,6 +112,41 @@ namespace TicketVerkoopVoetbal.Controllers
 
             wedstrijdService.AddWedstrijd(wedstrd);
 
+            return RedirectToAction("Index");
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult Edit(int? id)
+        {
+            Wedstrijd w = wedstrijdService.Get(Convert.ToInt32(id));
+
+            ViewBag.TPloegen =
+                new SelectList(clubService.All(), "id", "naam", w.thuisPloeg);
+            ViewBag.BPloegen =
+               new SelectList(clubService.All(), "id", "naam", w.bezoekersPloeg);
+
+            ViewBag.Stadion =
+                new SelectList(stadionService.All(), "id", "naam",w.stadionId);
+            ViewBag.Date = w.Date;
+            ViewBag.WedstrijdId = w.id;
+            return View(w);
+
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public ActionResult Update(int? id, FormCollection collection)
+        {
+
+            Wedstrijd wedstrd = wedstrijdService.Get(Convert.ToInt32(id)); ;
+            CultureInfo us = new CultureInfo("en-US");
+            
+            wedstrd.stadionId = Convert.ToInt32(collection["Stadion"]);
+            wedstrd.thuisPloeg = Convert.ToInt32(collection["TPloegen"]);
+            wedstrd.bezoekersPloeg = Convert.ToInt32(collection["BPloegen"]);
+            wedstrd.Date = DateTime.Parse(collection["Date"], us, System.Globalization.DateTimeStyles.AssumeLocal);
+
+            wedstrijdService.UpdateWedsrijd(wedstrd);
             return RedirectToAction("Index");
         }
 
