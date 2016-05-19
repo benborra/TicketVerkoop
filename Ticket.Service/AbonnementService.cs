@@ -22,7 +22,10 @@ namespace Ticket.Service
         {
             return abonnementDao.All();
         }
-
+        public Abonnement GetFromUserIdEnSeizoen(string id, int sezId)
+        {
+            return abonnementDao.GetFromUserIdEnSeizoen(id, sezId);
+        }
         public Abonnement Get(int id)
         {
             return abonnementDao.Get(id);

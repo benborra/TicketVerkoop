@@ -189,6 +189,7 @@ namespace TicketVerkoopVoetbal.Controllers
                 bz.Persoonid = user.Id;
                 bz.Seizoenid = b.Seizoenid;
                 bz.Clubsid = b.ClubsId;
+                obboserv.Add(bz);
                 await SendPdfTickets(user, b);
             }
             //}

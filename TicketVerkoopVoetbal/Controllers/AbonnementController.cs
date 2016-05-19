@@ -50,13 +50,14 @@ namespace TicketVerkoopVoetbal.Controllers
             //// geeft 2015, 2016,.. terug
             // TODO: heeft deze persoon al een abonnement?
             var userid = User.Identity.GetUserId();
-            Abonnement abbonnement = abboService.GetFromUserId(userid);
+            Seizoen s = seizoenService.Get(Convert.ToInt32(collection["Seizoen"]));
+            Abonnement abbonnement = abboService.GetFromUserIdEnSeizoen(userid, s.id);
+
             if (abbonnement != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+                TempData["cantDelete"] = true;
+                return RedirectToAction("Index");
             }
-
-
 
             // month is september, dan is de competitie al gestart, in september kunnen ze nog kopen
             if (Convert.ToInt32(collection["Seizoen"]) <= DateTime.Now.Year && DateTime.Now.Month > 9)

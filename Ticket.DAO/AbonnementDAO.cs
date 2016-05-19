@@ -35,6 +35,14 @@ namespace Ticket.DAO
             }
         }
 
+        public Abonnement GetFromUserIdEnSeizoen(string id, int sezId)
+        {
+            using (var db = new TicketEntities())
+            {
+                return db.Abonnement.Where(s => s.Persoonid == id).Where(k => k.Seizoenid == sezId).FirstOrDefault();
+            }
+        }
+
         public void Add(Abonnement abonnement)
         {
             using (var db = new TicketEntities())
@@ -43,7 +51,6 @@ namespace Ticket.DAO
                 db.SaveChanges();
             }
 
-            throw new NotImplementedException();
         }
 
         public IEnumerable<Abonnement> Update(Abonnement entity)
